@@ -1,8 +1,8 @@
 var Module =( function (){
-	
+	var c=0;
 	var sumaDePuntos = function(total,num){
 		return total+num;
-	}
+	};
 	
 	var mapeador = function(plano){
 		if(plano){
@@ -34,13 +34,25 @@ var Module =( function (){
             }
 	};
 	
-	var porAutor = function(){
-			author = document.getElementById("author").value;
-			document.getElementById("bpname").innerHTML = author;
-			apimock.getBlueprintsByAuthor(author,mapeador);
-		};
+	var newInput = function ()
+	{
+		var inpt = document.createElement("input");
+		inpt.type="number";
+		inpt.name="ticket_"+c;
+		inpt.id="input_"+c;
+		inpt.placeholder="Ticket Number";
+		c+=1;
+		
+		
+		var formulario = document.getElementById("IngresoDeTiquetes");
+		var boton = document.getElementById("boton");
+		formulario.insertBefore(inpt,boton);
+
+	};
+	
+
 	
 	return {
-		porAutor: porAutor
+		newInput: newInput
 	};
 })();

@@ -70,7 +70,7 @@ header {
 .form .message {
   margin: 15px 0 0;
   color: #b3b3b3;
-  font-size: 12px;
+  font-size: 20px;
 }
 .form .message a {
   color: #3c9d9b;
@@ -136,10 +136,10 @@ body {
 	
 	<div class="login-page">
 	  <div class="form">
-		<form class="login-form">
-		  <input type="number" placeholder="Ticket Number"/>
-		  <button>Entrar al parque</button>
-		  <p class="message">Not registered? <a href="#">Create an account</a></p>
+		<form id="IngresoDeTiquetes" class="login-form" action="main.html">
+		  <input name="ticket0" type="number" placeholder="Ticket Number"/>
+		  <button id="boton" >Go to the park</button>
+		  <p class="message">More Tickets? <a href="javascript:Module.newInput()">Add Ticket</a></p>
 		</form>
 	  </div>
 	</div>
