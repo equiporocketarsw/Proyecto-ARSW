@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - BlueprintsAPIApplication",
+            "request": "launch",
+            "mainClass": "edu.eci.arsw.blueprintsapi.BlueprintsAPIApplication",
+            "projectName": "blueprints_rest_api"
+        }
+    ]
+}

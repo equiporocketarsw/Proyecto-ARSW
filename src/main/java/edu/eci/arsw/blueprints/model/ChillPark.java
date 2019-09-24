@@ -11,7 +11,6 @@ public class ChillPark {
 		atracciones = new ArrayList<Atraccion>();
 	}
 	
-	
 	public ArrayList<Tiquete> getTiquetes(){
 		return tiquetes;
 	}
@@ -22,6 +21,10 @@ public class ChillPark {
 	
 	public void setTiquetes(ArrayList<Tiquete> tiquetes){
 		this.tiquetes = tiquetes;
+	}
+
+	public void addTiquete(Tiquete t){
+		this.tiquetes.add(t);
 	}
 	
 	public ArrayList<Atraccion> getAtracciones(){
@@ -34,6 +37,10 @@ public class ChillPark {
 	
 	public void setAtracciones(ArrayList<Atraccion> atracciones){
 		this.atracciones = atracciones;
+	}
+
+	public void addAtraccion(Atraccion a){
+		this.atracciones.add(a);
 	}
 	
 }
