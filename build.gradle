@@ -37,5 +37,12 @@ dependencies {
     compile group: 'org.webjars', name: 'bootstrap', version: '4.1.2'
     compile group: 'org.webjars', name: 'jquery', version: '3.1.0'
 
+    compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
+    testCompile group: 'org.hsqldb', name: 'hsqldb', version: '2.4.0'
+    compile group: 'postgresql', name: 'postgresql', version: '9.1-901-1.jdbc4'
+    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.17'
+    testCompile group: 'com.h2database', name: 'h2', version: '1.4.199'
+
+
 
 }

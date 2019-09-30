@@ -28,16 +28,15 @@ import edu.eci.arsw.chillpark.repository.UsuarioRepository;
 @RequestMapping(value = "/chillpark")
 public class ChillParkAPIController {
 	
-	@Autowired
-	private UsuarioRepository usuariorepository;	
+	
 	
     @Autowired
     @Qualifier("chillparkservices")
     ChillParkServices cps;
     
     @RequestMapping(path="/usuarios",method = RequestMethod.GET)
-    public Iterable<Usuario> getUsuario() {
-        return usuariorepository.findAll();
+    public Iterable<Usuario> getUsuarios() {
+        return cps.getAllUsers();
     }
     
     

@@ -11,23 +11,32 @@ import edu.eci.arsw.chillpark.model.Atraccion;
 import edu.eci.arsw.chillpark.model.Tiquete;
 import edu.eci.arsw.chillpark.model.Usuario;
 import edu.eci.arsw.chillpark.persistence.ChillParkPersistence;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  * ChillParkServices
  */
-@Service
+@Service("chillparkservices")
 public class ChillParkServices {
     @Autowired 
     @Qualifier("Imp")
     ChillParkPersistence cpp;
-    
-    @Autowired
-    UsuarioRepository userrepo;
 
-    public Usuario saveUser(Usuario user){
+    
+
+    @Autowired
+    private UsuarioRepository userrepo;
+
+    public Usuario addUser(Usuario user){
         return userrepo.saveAndFlush(user);
     }
     
+    public List<Usuario> getAllUsers(){
+        return userrepo.findAll(); 
+    }
     
     
     public void addTiquete(Tiquete t){
