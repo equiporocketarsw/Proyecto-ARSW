@@ -1,9 +1,9 @@
 package edu.eci.arsw.chillpark.repository;
 
 import edu.eci.arsw.chillpark.model.Usuario;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 
-public interface UsuarioRepository extends CrudRepository<Usuario, Long>{
+public interface UsuarioRepository extends JpaRepository<Usuario, String>{
 
 }

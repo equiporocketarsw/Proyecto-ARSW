@@ -9,20 +9,24 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+@Entity
 public class Usuario implements Serializable{
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+        
+        
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private String username;
 	ArrayList<Atraccion> atracciones;
 	ArrayList<Tiquete> tiquetes;
 	public Usuario() {
+            /*
 		atracciones = new ArrayList<Atraccion>();	
-		tiquetes = new ArrayList<Tiquete>();
+		tiquetes = new ArrayList<Tiquete>();*/
 	}
 
 	public ArrayList<Atraccion> getAtracciones(){

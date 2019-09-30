@@ -1,5 +1,6 @@
 package edu.eci.arsw.chillpark.controllers;
 
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -16,8 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 import edu.eci.arsw.chillpark.model.Atraccion;
 import edu.eci.arsw.chillpark.model.Tiquete;
 import edu.eci.arsw.chillpark.model.Usuario;
-import edu.eci.arsw.chillpark.repository.UsuarioRepository;
 import edu.eci.arsw.chillpark.services.ChillParkServices;
+import edu.eci.arsw.chillpark.repository.UsuarioRepository;
+
 
 /**
  * ChillParkAPIController
@@ -33,8 +35,8 @@ public class ChillParkAPIController {
     @Qualifier("chillparkservices")
     ChillParkServices cps;
     
-    @RequestMapping("/all")
-	public Iterable<Usuario> getUsuario() {
+    @RequestMapping(path="/usuarios",method = RequestMethod.GET)
+    public Iterable<Usuario> getUsuario() {
         return usuariorepository.findAll();
     }
     

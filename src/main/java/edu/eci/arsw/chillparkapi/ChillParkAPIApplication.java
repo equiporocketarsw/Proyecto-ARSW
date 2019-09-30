@@ -7,10 +7,14 @@ package edu.eci.arsw.chillparkapi;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.boot.autoconfigure.*;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+
 
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"edu.eci.arsw.blueprints"})
+@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
+@ComponentScan(basePackages = "edu.eci.arsw.chillpark")
 public class ChillParkAPIApplication {
 
     public static void main(String[] args) {
