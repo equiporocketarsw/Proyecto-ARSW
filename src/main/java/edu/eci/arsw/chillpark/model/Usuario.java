@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="usuario")
@@ -21,8 +22,16 @@ public class Usuario implements Serializable{
         
         
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+        @Column(name="username")
 	private String username;
+        
+        @Column(name="rol")
+        private String rol;
+        
+        
+        @Column(name="contrasena")
+        private String contrasena;
+        
 	ArrayList<Atraccion> atracciones;
 	ArrayList<Tiquete> tiquetes;
 	public Usuario() {
@@ -53,6 +62,22 @@ public class Usuario implements Serializable{
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+        
+        public String getRol() {
+		return rol;
+	}
+
+	public void setRol(String rol) {
+		this.rol = rol;
+	}
+        
+        public String getContrasena() {
+		return contrasena;
+	}
+
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
 	}
 	
 }

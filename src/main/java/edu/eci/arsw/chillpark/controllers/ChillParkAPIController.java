@@ -17,15 +17,18 @@ import org.springframework.web.bind.annotation.RestController;
 import edu.eci.arsw.chillpark.model.Atraccion;
 import edu.eci.arsw.chillpark.model.Tiquete;
 import edu.eci.arsw.chillpark.model.Usuario;
+import edu.eci.arsw.chillpark.persistence.ChillParkException;
 import edu.eci.arsw.chillpark.services.ChillParkServices;
 import edu.eci.arsw.chillpark.repository.UsuarioRepository;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 
 /**
  * ChillParkAPIController
  */
 @RestController
-@RequestMapping(value = "/chillpark")
+@RequestMapping(path = "/chillpark")
 public class ChillParkAPIController {
 	
 	
@@ -33,13 +36,50 @@ public class ChillParkAPIController {
     @Autowired
     @Qualifier("chillparkservices")
     ChillParkServices cps;
-    
-    @RequestMapping(path="/usuarios",method = RequestMethod.GET)
-    public Iterable<Usuario> getUsuarios() {
+    /*
+    @RequestMapping(method = RequestMethod.GET)
+    public ResponseEntity<?> getUsuarios() {
+        
+        try {
+            return new ResponseEntity<>(cps.getAllUsers(),HttpStatus.ACCEPTED);
+        } catch (Exception ex) {
+            Logger.getLogger(ChillParkAPIController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>(ex.getMessage(),HttpStatus.NOT_FOUND);
+        }
+        
+    }
+    */
+    @RequestMapping("/usuario")
+	public Iterable<Usuario> getPersona() {
         return cps.getAllUsers();
     }
     
-    
+        
+    @RequestMapping(value="/login",method = RequestMethod.POST)
+	public ResponseEntity<?> postLogIn(HttpServletRequest req, HttpSession session){
+	    try {
+	    	Usuario us = cps.getCredenciales(req).get();
+                
+	        ResponseEntity<?> ans = new ResponseEntity<>("Accepted",HttpStatus.ACCEPTED);
+	        session.setAttribute("nick", us.getUsername());
+	        return ans;
+	    } catch (Exception ex) {
+	        return new ResponseEntity<>(ex.getMessage(),HttpStatus.NOT_FOUND);
+	    }
+	}
+        
+        
+    @RequestMapping(value="/signup", method = RequestMethod.POST)
+	public ResponseEntity<?> addUser(HttpServletRequest req,HttpSession session){
+		try {
+	    	Usuario us= cps.createUser(req);
+	    	ResponseEntity<?> ans = new ResponseEntity<>("Accepted",HttpStatus.CREATED);
+	    	session.setAttribute("nick", us);
+	        return ans;
+	    } catch (ChillParkException ex) {
+	        return new ResponseEntity<>(ex.getMessage(),HttpStatus.FORBIDDEN);            
+	    }
+	}
     /*
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<?> manejadorGetRecursoTiquetes(){
