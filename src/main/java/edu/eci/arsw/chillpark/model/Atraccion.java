@@ -2,6 +2,7 @@ package edu.eci.arsw.chillpark.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import javax.persistence.Column;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,19 +18,36 @@ public class Atraccion implements Serializable{
         
         
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+        @Column(name="id")
         int id;
-	ArrayList<Usuario> usuarios;
+	
+        
+        @Column(name="nombre")
 	String nombre;
+        
+        @Column(name="capacidad")
 	int capacidad;
+        
+        @Column(name="tiempo")
 	int tiempo;
-	public Atraccion(String nombre, int capacidad, int tiempo) {
+        
+        
+        @Column(name="activo")
+	boolean activo;
+        
+        @Column(name="descripcion")
+	String descripcion;
+        
+       /* ArrayList<Usuario> usuarios;*/
+        
+	public Atraccion() {
+            /*
 		this.nombre = nombre;
 		this.capacidad = capacidad;
 		this.tiempo = tiempo;
-		usuarios = new ArrayList<Usuario>();
+		usuarios = new ArrayList<Usuario>();*/
 	}
-
+/*
 	public ArrayList<Usuario> getUsuarios(){
 		return usuarios;
 	}
@@ -45,7 +63,7 @@ public class Atraccion implements Serializable{
 	public void addUsuario(Usuario u){
 		this.usuarios.add(u);
 	}
-
+*/
 	 public String getNombre(){
 		 return nombre;
 	 }
@@ -69,5 +87,24 @@ public class Atraccion implements Serializable{
 	public void setTiempo(int tiempo){
 		this.tiempo = tiempo;
 	}
+        
+        
+        public boolean isActivo(){
+		return activo;
+	}
+
+	public void setActivo(boolean activo){
+		this.activo = activo;
+	}
+        
+        
+        
+        public String getDescrpcion(){
+		 return descripcion;
+	 }
+
+	 public void setDescrpcion(String descripcion){
+		 this.descripcion = descripcion;
+	 }
 }
 

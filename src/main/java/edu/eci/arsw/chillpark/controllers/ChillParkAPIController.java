@@ -53,6 +53,12 @@ public class ChillParkAPIController {
 	public Iterable<Usuario> getPersona() {
         return cps.getAllUsers();
     }
+        
+        
+    @RequestMapping("/atraccion")
+	public Iterable<Atraccion> getAtracciones() {
+        return cps.getAllAtractions();
+    }
     
         
     @RequestMapping(value="/login",method = RequestMethod.POST)
@@ -87,7 +93,7 @@ public class ChillParkAPIController {
             return new ResponseEntity<>(cps.getTiquetes(),HttpStatus.ACCEPTED);
         } catch (Exception ex) {
             Logger.getLogger(ChillParkAPIController.class.getName()).log(Level.SEVERE, null, ex);
-            return new ResponseEntity<>("Error en la petición",HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Error en la peticiÃ³n",HttpStatus.NOT_FOUND);
         }
     }
 
@@ -117,7 +123,7 @@ public class ChillParkAPIController {
             return new ResponseEntity<>(cps.getAtracciones(),HttpStatus.ACCEPTED);
         } catch (Exception ex) {
             Logger.getLogger(ChillParkAPIController.class.getName()).log(Level.SEVERE, null, ex);
-            return new ResponseEntity<>("Error en la petición",HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Error en la peticiÃ³n",HttpStatus.NOT_FOUND);
         }
     }
 

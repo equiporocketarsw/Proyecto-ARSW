@@ -1,6 +1,7 @@
 package edu.eci.arsw.chillpark.services;
 
 import edu.eci.arsw.chillpark.repository.UsuarioRepository;
+import edu.eci.arsw.chillpark.repository.AtraccionRepository;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,10 @@ public class ChillParkServices {
 
     @Autowired
     private UsuarioRepository userrepo;
+    
+    
+    @Autowired
+    private AtraccionRepository atracrepo;
 
     public Usuario addUser(Usuario user){
         return userrepo.saveAndFlush(user);
@@ -41,6 +46,10 @@ public class ChillParkServices {
     
     public List<Usuario> getAllUsers(){
         return userrepo.findAll(); 
+    }
+    
+    public List<Atraccion> getAllAtractions() {
+        return atracrepo.findAll(); 
     }
     
     
@@ -60,6 +69,7 @@ public class ChillParkServices {
          
          user.setUsername(req.getParameter("username"));
          user.setContrasena(req.getParameter("psw"));
+         user.setRol("Cliente");
          userrepo.saveAndFlush(user);
          return userrepo.saveAndFlush(user) ;
     }
@@ -91,6 +101,8 @@ public class ChillParkServices {
     }
 
     */
+
+    
 
     
 }

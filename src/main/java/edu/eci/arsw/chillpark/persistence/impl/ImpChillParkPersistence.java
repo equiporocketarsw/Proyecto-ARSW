@@ -17,10 +17,12 @@ import edu.eci.arsw.chillpark.persistence.ChillParkPersistence;
 public class ImpChillParkPersistence implements ChillParkPersistence {
 
     private ChillPark chill = new ChillPark();
+    
+    /*
     public ImpChillParkPersistence(){
         chill.addAtraccion(new Atraccion("Montaña rusa", 60, 20));
     }
-
+    */
 
     @Override
     public void guardarTiquete(Tiquete t) {
