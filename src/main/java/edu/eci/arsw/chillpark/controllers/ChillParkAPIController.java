@@ -21,15 +21,10 @@ import edu.eci.arsw.chillpark.model.Usuario;
 import edu.eci.arsw.chillpark.persistence.ChillParkException;
 import edu.eci.arsw.chillpark.services.ChillParkServices;
 import edu.eci.arsw.chillpark.repository.UsuarioRepository;
-import edu.eci.arsw.chillpark.services.JwtUserDetailsService;
-import edu.eci.arsw.config.JwtTokenUtil;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.DisabledException;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UserDetails;
+
 
 
 /**
@@ -62,6 +57,9 @@ public class ChillParkAPIController {
         return cps.getAllUsers();
     }
         
+      
+        
+        
         
     @RequestMapping("/atraccion")
 	public Iterable<Atraccion> getAtracciones() {
@@ -69,66 +67,24 @@ public class ChillParkAPIController {
     }
     
         
-    @RequestMapping(value="/login",method = RequestMethod.POST)
-	public ResponseEntity<?> postLogIn(HttpServletRequest req, HttpSession session){
-	    try {
-	    	Usuario us = cps.getCredenciales(req).get();
-                
-	        ResponseEntity<?> ans = new ResponseEntity<>("Accepted",HttpStatus.ACCEPTED);
-	        session.setAttribute("nick", us.getUsername());
-	        return ans;
-	    } catch (Exception ex) {
-	        return new ResponseEntity<>(ex.getMessage(),HttpStatus.NOT_FOUND);
-	    }
-	}
-        
-        
-    @RequestMapping(value="/signup", method = RequestMethod.POST)
-	public ResponseEntity<?> addUser(HttpServletRequest req,HttpSession session){
-		try {
-	    	Usuario us= cps.createUser(req);
-	    	ResponseEntity<?> ans = new ResponseEntity<>("Accepted",HttpStatus.CREATED);
-	    	session.setAttribute("nick", us);
-	        return ans;
-	    } catch (ChillParkException ex) {
-	        return new ResponseEntity<>(ex.getMessage(),HttpStatus.FORBIDDEN);            
-	    }
-	}
-        
+    @RequestMapping(method = RequestMethod.GET, value = "/usuario/{usuario}")
+    public ResponseEntity<?> getUsuario(@PathVariable(name = "usuario") String username) {
+        try {
+            //obtener datos que se enviaran a traves del API
+            Usuario user = cps.getUsuario(username);
+            return new ResponseEntity<>(user, HttpStatus.ACCEPTED);
+
+        } catch (Exception ex) {
+            return new ResponseEntity<>("400 bad request", HttpStatus.NOT_FOUND);
+        }
+    }
+
         
         
      
-        @Autowired
-	private AuthenticationManager authenticationManager;
-
-	@Autowired
-	private JwtTokenUtil jwtTokenUtil;
-
-	@Autowired
-	private JwtUserDetailsService userDetailsService;
-
-	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
-	public ResponseEntity<?> createAuthenticationToken(@RequestBody Usuario us) throws Exception {
-
-		authenticate(us.getUsername(), us.getContrasena());
-
-		final UserDetails userDetails = userDetailsService
-				.loadUserByUsername(us.getUsername());
-
-		final String token = jwtTokenUtil.generateToken(userDetails);
-
-		return ResponseEntity.ok(new JwtResponse(token));
-	}
-
-	private void authenticate(String username, String password) throws Exception {
-		try {
-			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
-		} catch (DisabledException e) {
-			throw new Exception("USER_DISABLED", e);
-		} catch (BadCredentialsException e) {
-			throw new Exception("INVALID_CREDENTIALS", e);
-		}
-	}
+        
+        
+      
     /*
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<?> manejadorGetRecursoTiquetes(){

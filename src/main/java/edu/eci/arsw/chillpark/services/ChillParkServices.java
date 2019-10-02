@@ -53,6 +53,11 @@ public class ChillParkServices {
     }
     
     
+    public Usuario getUsuario(String username){
+           return userrepo.findById(username).get();
+    }
+    
+    
     public Optional<Usuario> getCredenciales(HttpServletRequest req){
         String username = req.getParameter("username");
         String pass = req.getParameter("psw");
