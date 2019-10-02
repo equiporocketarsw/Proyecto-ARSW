@@ -15,13 +15,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.eci.arsw.chillpark.model.Atraccion;
+import edu.eci.arsw.chillpark.model.JwtResponse;
 import edu.eci.arsw.chillpark.model.Tiquete;
 import edu.eci.arsw.chillpark.model.Usuario;
 import edu.eci.arsw.chillpark.persistence.ChillParkException;
 import edu.eci.arsw.chillpark.services.ChillParkServices;
 import edu.eci.arsw.chillpark.repository.UsuarioRepository;
+import edu.eci.arsw.chillpark.services.JwtUserDetailsService;
+import edu.eci.arsw.config.JwtTokenUtil;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.DisabledException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UserDetails;
 
 
 /**
@@ -85,6 +93,41 @@ public class ChillParkAPIController {
 	    } catch (ChillParkException ex) {
 	        return new ResponseEntity<>(ex.getMessage(),HttpStatus.FORBIDDEN);            
 	    }
+	}
+        
+        
+        
+     
+        @Autowired
+	private AuthenticationManager authenticationManager;
+
+	@Autowired
+	private JwtTokenUtil jwtTokenUtil;
+
+	@Autowired
+	private JwtUserDetailsService userDetailsService;
+
+	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
+	public ResponseEntity<?> createAuthenticationToken(@RequestBody Usuario us) throws Exception {
+
+		authenticate(us.getUsername(), us.getContrasena());
+
+		final UserDetails userDetails = userDetailsService
+				.loadUserByUsername(us.getUsername());
+
+		final String token = jwtTokenUtil.generateToken(userDetails);
+
+		return ResponseEntity.ok(new JwtResponse(token));
+	}
+
+	private void authenticate(String username, String password) throws Exception {
+		try {
+			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
+		} catch (DisabledException e) {
+			throw new Exception("USER_DISABLED", e);
+		} catch (BadCredentialsException e) {
+			throw new Exception("INVALID_CREDENTIALS", e);
+		}
 	}
     /*
     @RequestMapping(method = RequestMethod.GET)
