@@ -30,11 +30,12 @@ repositories {
 }
 
 dependencies {
-	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('org.springframework.boot:spring- -starter-web')
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('org.springframework.boot:spring-boot-starter-aop')
 	compile('org.springframework.boot:spring-boot-starter-test')
 	compile('org.springframework.boot:spring-boot-autoconfigure')
+	compile('org.springframework.boot:spring-boot-starter-security')
 	
 	
     testCompile group: 'junit', name: 'junit', version: '4.12'
@@ -48,6 +49,8 @@ dependencies {
     compile group: 'postgresql', name: 'postgresql', version: '9.1-901-1.jdbc4'
     compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.17'
     testCompile group: 'com.h2database', name: 'h2', version: '1.4.199'
+	
+	compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
 	
 
 
