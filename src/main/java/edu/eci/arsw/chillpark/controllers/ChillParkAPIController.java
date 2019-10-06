@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.eci.arsw.chillpark.model.Atraccion;
-import edu.eci.arsw.chillpark.model.JwtResponse;
+
 import edu.eci.arsw.chillpark.model.Tiquete;
 import edu.eci.arsw.chillpark.model.Usuario;
 import edu.eci.arsw.chillpark.persistence.ChillParkException;
@@ -52,10 +52,7 @@ public class ChillParkAPIController {
         
     }
     */
-    @RequestMapping("/usuario")
-	public Iterable<Usuario> getPersona() {
-        return cps.getAllUsers();
-    }
+    
         
       
         
@@ -67,17 +64,7 @@ public class ChillParkAPIController {
     }
     
         
-    @RequestMapping(method = RequestMethod.GET, value = "/usuario/{usuario}")
-    public ResponseEntity<?> getUsuario(@PathVariable(name = "usuario") String username) {
-        try {
-            //obtener datos que se enviaran a traves del API
-            Usuario user = cps.getUsuario(username);
-            return new ResponseEntity<>(user, HttpStatus.ACCEPTED);
-
-        } catch (Exception ex) {
-            return new ResponseEntity<>("400 bad request", HttpStatus.NOT_FOUND);
-        }
-    }
+    
 
         
         

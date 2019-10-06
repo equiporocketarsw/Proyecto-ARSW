@@ -9,12 +9,16 @@ import edu.eci.arsw.chillpark.model.Usuario;
 import edu.eci.arsw.chillpark.persistence.ChillParkException;
 import edu.eci.arsw.chillpark.services.ChillParkServices;
 import edu.eci.arsw.chillpark.services.UsuarioServices;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,42 +30,44 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping(path = "/Usuario")
 public class UsuarioAPIController {
     
     @Autowired
     @Qualifier("usuarioservices")
     UsuarioServices us;
     
-    public Iterable<Usuario> getPersona() {
+ 
+    
+    @RequestMapping("/usuario")
+	public Iterable<Usuario> getPersons() {
         return us.getAllUsers();
     }
-    
-    @RequestMapping(value="/login",method = RequestMethod.POST)
-	public ResponseEntity<?> postLogIn(HttpServletRequest req, HttpSession session){
-	    try {
-	    	Usuario u = us.getCredenciales(req).get();
-                
-	        ResponseEntity<?> ans = new ResponseEntity<>("Accepted",HttpStatus.ACCEPTED);
-	        session.setAttribute("nick", u.getUsername());
-	        return ans;
-	    } catch (Exception ex) {
-	        return new ResponseEntity<>(ex.getMessage(),HttpStatus.NOT_FOUND);
-	    }
-	}
+     
         
+    @RequestMapping(method = RequestMethod.GET, value = "/usuario/{usuario}")
+    public ResponseEntity<?> getUsuario(@PathVariable(name = "usuario") String username) {
+        try {
+            //obtener datos que se enviaran a traves del API
+            Usuario user = us.getUsuario(username);
+            return new ResponseEntity<>(user, HttpStatus.ACCEPTED);
+
+        } catch (Exception ex) {
+            return new ResponseEntity<>("400 bad request", HttpStatus.NOT_FOUND);
+        }
+    }  
+    
+    /*
+    @RequestMapping(method = RequestMethod.POST)	
+    public ResponseEntity<?> manejadorPostRecursoUsuario(@RequestBody Usuario usuario){
         
-    @RequestMapping(value="/signup", method = RequestMethod.POST)
-	public ResponseEntity<?> addUser(HttpServletRequest req,HttpSession session){
-		try {
-	    	Usuario u= us.createUser(req);
-	    	ResponseEntity<?> ans = new ResponseEntity<>("Accepted",HttpStatus.CREATED);
-	    	session.setAttribute("nick", u);
-	        return ans;
-	    } catch (ChillParkException ex) {
-	        return new ResponseEntity<>(ex.getMessage(),HttpStatus.FORBIDDEN);            
-	    }
-	}
-    
-    
+        try {
+            us.addUser(usuario);
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } catch (Exception ex) {
+            Logger.getLogger(UsuarioAPIController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>(ex.getMessage(),HttpStatus.FORBIDDEN);            
+        }        
+
+    }
+*/       
 }

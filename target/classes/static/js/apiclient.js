@@ -1,22 +1,31 @@
 apiClient= (function(){
     return {
 
-        /*saveCuenta: function(cuenta){
+        saveCuenta: function(usuario){
             $.ajax({
-                url: "cuentas/" + cuenta ,
+                url: "usuario/" + usuario.username ,
                 type: "POST",
-                data: cuenta,
-                contentType: "application/json"
+                data: JSON.stringify(usuario),
+                contentType: "application/json",
+                success: function() {
+                  alert("Usuario "+usuario.username+" creado satisfactoriamente");
+                },
+                 error: function(XMLHttpRequest, textStatus, errorThrown) { 
+                    alert("Error: Nombre de usuario ya tomado"); 
+                }
             });
         },
-*/
+
         checkPassword: function(username,callback){
             jQuery.ajax({
-                url: "cuentas/" + username ,
+                url: "usuario/" + username ,
                 success: function(result) {
-                    console.log(result);
                   callback(result);
                 },
+                 error: function(XMLHttpRequest, textStatus, errorThrown) { 
+                     alert("Usuario no encontrado");
+                    //alert("Status: " + textStatus + " Error: " + errorThrown); 
+                } ,
                 async: true
             });
         }

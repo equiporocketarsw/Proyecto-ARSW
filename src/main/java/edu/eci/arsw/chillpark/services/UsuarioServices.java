@@ -33,26 +33,10 @@ public class UsuarioServices {
     public List<Usuario> getAllUsers(){
         return userrepo.findAll(); 
     }
-    
-    public Optional<Usuario> getCredenciales(HttpServletRequest req){
-        String username = req.getParameter("username");
-        String pass = req.getParameter("psw");
-        return userrepo.findById(username);
- 
-    }
-    
-    public Usuario createUser(HttpServletRequest req) throws ChillParkException{
-         Usuario user = new Usuario();
-         
-         if (!req.getParameter("psw").equals(req.getParameter("conpsw"))){
-             throw new ChillParkException("Contraseñas no coinciden");
-         }
-         
-         user.setUsername(req.getParameter("username"));
-         user.setContrasena(req.getParameter("psw"));
-         user.setRol("Cliente");
-         userrepo.saveAndFlush(user);
-         return userrepo.saveAndFlush(user) ;
+   
+    public Usuario getUsuario(String username){
+           Usuario user = userrepo.findById(username).get();
+           return user;
     }
     
 }

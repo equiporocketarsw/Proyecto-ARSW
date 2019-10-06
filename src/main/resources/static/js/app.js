@@ -6,25 +6,34 @@ var Module =( function (){
             var username = $('#username').val();
             apiClient.checkPassword(username,validarCuenta);
         }
-        /*
+        
         var addAcount = function(){
-            var correo = $('#nick').val();
-            var nick = $('#nick').val();
-            var password = $('#nick').val();        
+            var name = $('#name').val();
+            var password = $('#newpsw').val();
+            var passwordtwo = $('#newconpsw').val();  
+            
+            if (password == passwordtwo){
+                var user = {"username":name,"rol":"Cliente","contrasena":password}
+                apiClient.saveCuenta(user);
+            }
+            else{
+                alert("Las contraseñas no coinciden");
+            }
+            
         }
-        */
+        
         var validarCuenta = function(username){
             var password = $('#psw').val();
-            console.log(password + " username"+ username)
-            if (username.contrasena === password){
-                console.log(password + " "+ cuenta[0]);
+            var hash = CryptoJS.SHA256(password);           
+            if (username.contrasena == hash){
+                
                 if(username.rol === "Admin"){
                     
                     location.href = "/adminMain.html"
                 }
                 else{
                     
-                    location.href = "/main.html"
+                    location.href = "/ingresarTiquete.html"
                 }
                 
               
@@ -54,6 +63,7 @@ var Module =( function (){
 	
 	return {
 		newInput: newInput,
-                checkPassword: checkPassword
+                checkPassword: checkPassword,
+                addAcount: addAcount
 	};
 })();

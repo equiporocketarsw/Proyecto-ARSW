@@ -12,7 +12,6 @@ import edu.eci.arsw.chillpark.model.Atraccion;
 import edu.eci.arsw.chillpark.model.Tiquete;
 import edu.eci.arsw.chillpark.model.Usuario;
 import edu.eci.arsw.chillpark.persistence.ChillParkException;
-import edu.eci.arsw.chillpark.persistence.ChillParkPersistence;
 import java.util.List;
 import java.util.Optional;
 import javax.persistence.EntityManager;
@@ -44,40 +43,17 @@ public class ChillParkServices {
         return userrepo.saveAndFlush(user);
     }
     
-    public List<Usuario> getAllUsers(){
-        return userrepo.findAll(); 
-    }
+    
     
     public List<Atraccion> getAllAtractions() {
         return atracrepo.findAll(); 
     }
     
     
-    public Usuario getUsuario(String username){
-           return userrepo.findById(username).get();
-    }
     
     
-    public Optional<Usuario> getCredenciales(HttpServletRequest req){
-        String username = req.getParameter("username");
-        String pass = req.getParameter("psw");
-        return userrepo.findById(username);
- 
-    }
     
-    public Usuario createUser(HttpServletRequest req) throws ChillParkException{
-         Usuario user = new Usuario();
-         
-         if (!req.getParameter("psw").equals(req.getParameter("conpsw"))){
-             throw new ChillParkException("Contraseñas no coinciden");
-         }
-         
-         user.setUsername(req.getParameter("username"));
-         user.setContrasena(req.getParameter("psw"));
-         user.setRol("Cliente");
-         userrepo.saveAndFlush(user);
-         return userrepo.saveAndFlush(user) ;
-    }
+    
     /*
     public void addTiquete(Tiquete t){
         cpp.guardarTiquete(t);

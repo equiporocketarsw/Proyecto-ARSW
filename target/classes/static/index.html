@@ -8,7 +8,8 @@
     <script src="/webjars/bootstrap/4.1.2/js/bootstrap.min.js"></script>
 	<script src="js/apimock.js"></script>
 	<script src="js/app.js"></script>
-	
+	<script src="js/apiclient.js"></script>
+        <script src="js/sha256.js"></script>
 	
     <link rel="stylesheet"
       href="/webjars/bootstrap/4.1.2/css/bootstrap.min.css" />
@@ -142,17 +143,17 @@ body {
 	</header>
 	<div class="login-page">
 	  <div class="form">
-		<form class="register-form" action="/signup" method="post" id="signup">
-		  <input type="text" placeholder="Username" name="username"/>
-		  <input type="password" placeholder="Password" name="psw"/>
-		  <input type="password" placeholder="Confirm Password"  name="conpsw"/>
-		  <button onclick="location.href='ingresarTiquete.html';">create</button>
+		<form class="register-form" action='javascript:Module.addAcount()' id="signup">
+		  <input type="text" placeholder="Username" id="name" />
+		  <input type="password" placeholder="Password" id="newpsw"/>
+		  <input type="password" placeholder="Confirm Password"  id="newconpsw"/>
+		  <button>create</button>
 		  <p class="message">Already registered? <a href="#">Sign In</a></p>
 		</form>
               
               
               
-		<form class="login-form" action='Module.checkPassword()' >
+		<form class="login-form" action='javascript:Module.checkPassword()' >
 		  <input type="text" placeholder="Username"  id="username"/>
 		  <input type="password" placeholder="Password"  id="psw"/>
 		  <button>login</button>
