@@ -6,9 +6,9 @@
 package edu.eci.arsw.chillpark.controllers;
 
 import edu.eci.arsw.chillpark.model.Usuario;
-import edu.eci.arsw.chillpark.persistence.ChillParkException;
-import edu.eci.arsw.chillpark.services.ChillParkServices;
 import edu.eci.arsw.chillpark.services.UsuarioServices;
+
+import edu.eci.arsw.chillpark.services.impl.UsuarioServicesImpl;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
@@ -30,6 +30,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
+@RequestMapping(value="/usuario")
 public class UsuarioAPIController {
     
     @Autowired
@@ -38,13 +39,20 @@ public class UsuarioAPIController {
     
  
     
-    @RequestMapping("/usuario")
-	public Iterable<Usuario> getPersons() {
-        return us.getAllUsers();
-    }
+    @RequestMapping(method = RequestMethod.GET)
+	public ResponseEntity<?> getPersons() {
+        try{
+            return new ResponseEntity<>(us.getAllUsers(), HttpStatus.ACCEPTED);
+        }
+        catch (Exception ex) {
+            Logger.getLogger(UsuarioAPIController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>(ex.getMessage(),HttpStatus.FORBIDDEN);            
+        }  
+     }
+          
      
         
-    @RequestMapping(method = RequestMethod.GET, value = "/usuario/{usuario}")
+    @RequestMapping(path = "/{usuario}", method = RequestMethod.GET)
     public ResponseEntity<?> getUsuario(@PathVariable(name = "usuario") String username) {
         try {
             //obtener datos que se enviaran a traves del API
@@ -56,7 +64,7 @@ public class UsuarioAPIController {
         }
     }  
     
-    /*
+    
     @RequestMapping(method = RequestMethod.POST)	
     public ResponseEntity<?> manejadorPostRecursoUsuario(@RequestBody Usuario usuario){
         
@@ -69,5 +77,5 @@ public class UsuarioAPIController {
         }        
 
     }
-*/       
+      
 }

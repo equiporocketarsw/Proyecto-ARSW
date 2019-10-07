@@ -23,110 +23,177 @@
 	</script>
 	  
       <style>
-@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+@import "compass/css3";
 
-header {
+@import "compass/css3";
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,900);
 
-  text-align: center;
-}
-.login-page {
-  width: 360px;
-  padding: 2% 0 0;
-  margin: auto;
-}
-.form {
-  position: relative;
-  z-index: 1;
-  background: #ffffff;
-  max-width: 360px;
-  margin: 0 auto 100px;
-  padding: 45px;
-  text-align: center;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-}
-.form input {
-  font-family: "Roboto", sans-serif;
-  outline: 0;
-  background: #f2f2f2;
-  width: 100%;
-  border: 0;
-  margin: 0 0 15px;
-  padding: 15px;
+html {
   box-sizing: border-box;
-  font-size: 14px;
+  height: 100%;
 }
-.form button {
-  font-family: "Roboto", sans-serif;
-  text-transform: uppercase;
-  outline: 0;
-  background: #3c9d9b;
-  width: 100%;
-  border: 0;
-  padding: 15px;
-  color: #FFFFFF;
-  font-size: 14px;
-  -webkit-transition: all 0.3 ease;
-  transition: all 0.3 ease;
-  cursor: pointer;
+*, *:before, *:after {
+  box-sizing: inherit;
 }
-.form button:hover,.form button:active,.form button:focus {
-  background: #46b9b7;
-}
-.form .message {
-  margin: 15px 0 0;
-  color: #b3b3b3;
-  font-size: 12px;
-}
-.form .message a {
-  color: #3c9d9b;
-  text-decoration: none;
-}
-.form .register-form {
-  display: none;
-}
-.container {
-  position: relative;
-  z-index: 1;
-  max-width: 300px;
-  margin: 0 auto;
-}
-.container:before, .container:after {
-  content: "";
-  display: block;
-  clear: both;
-}
-.container .info {
-  margin: 50px auto;
-  text-align: center;
-}
-.container .info h1 {
-  margin: 0 0 15px;
-  padding: 0;
-  font-size: 36px;
-  font-weight: 300;
-  color: #1a1a1a;
-}
-.container .info span {
-  color: #4d4d4d;
-  font-size: 12px;
-}
-.container .info span a {
-  color: #000000;
-  text-decoration: none;
-}
-.container .info span .fa {
-  color: #EF3B3A;
-}
+
 body {
   background: #52de97; /* fallback for old browsers */
   background: -webkit-linear-gradient(right, #52de97, #7ee7b3);
   background: -moz-linear-gradient(right, #52de97, #7ee7b3);
   background: -o-linear-gradient(right, #52de97, #7ee7b3);
   background: linear-gradient(to left, #52de97, #7ee7b3);
+  
+  
+  @include filter-gradient(#394a6d, #201e22, horizontal);
+  @include background-image(radial-gradient(circle at top,  rgba(83,69,91,1) 0,rgba(32,30,34,1) 70%));
+  color: #fff;
+  
   font-family: "Roboto", sans-serif;
+  
+  font-size: 100%;
+  min-height: 100%;
+  line-height: 1.5;
+  padding: 2.5em 0;
+  
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;      
 }
+
+.container {
+  margin: 0 auto;
+  width: 90%;
+  max-width: 400px;
+}
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.grid-1-5 {
+  border: 2px solid #5d4e65;   
+  min-height: 400px;
+  padding: 1.25em;
+  position: relative;
+  text-align: center;
+  transition: all .2s ease-in-out;
+  
+  @media screen and (min-width: 700px) {
+    & {
+      float: left;
+      width: 50%;
+    }
+    &:nth-child(odd) {
+      clear: left;
+    }
+  }
+  
+  @media screen and (min-width: 800px) {
+    & {      
+      width: 33.3333333%;
+    }
+    &:nth-child(3n+1) {
+      clear: left;
+    }
+    &:nth-child(odd) {
+      clear: none;
+    }    
+  }
+  
+  @media screen and (min-width: 1120px) {
+    & {
+       width: 20%;
+    }
+    &:nth-child(odd), &:nth-child(3n+1) {
+       clear: none;
+    }    
+  }
+  
+}
+.grid-1-5:hover {
+  background-color: rgb(57,74,109);
+  @include filter-gradient(#394a6d, #232e43, vertical);
+  @include background-image(linear-gradient(top,  rgba(57,74,109,1) 0%,rgba(35,46,67,1) 100%));  
+  border-top: 2px solid #80ff66;
+  border-bottom: 2px solid #95ff80;
+  box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 1);
+  transform: scale(1.025);
+  z-index: 2;
+
+  &:before, &:after {
+    content: ""; 
+    position: absolute; 
+    background-color: rgb(246,125,53);
+    @include filter-gradient(#f67d35, #ff4f68, vertical);
+    @include background-image(linear-gradient(top,  rgba(246,125,53,1) 0%,rgba(255,79,104,1) 100%));
+    top: -2px; 
+    bottom: -2px; 
+    width: 2px;    
+  }
+
+  &:before { 
+    left: -2px; 
+  }
+  &:after { 
+    right: -2px; 
+  }  
+
+  & .button {
+    background-color: rgb(238,122,54);
+    @include filter-gradient(#ee7a36, #eb495d, horizontal);
+    @include background-image(linear-gradient(left,  rgba(238,122,54,1) 0%,rgba(235,73,93,1) 100%));    
+  }
+}
+h2, h3, p, ul {
+  margin: 0
+}
+h2 {
+  font-size: 1em;
+  font-weight: 400;
+  margin: 0 0 0.5em;
+}
+h3 {
+  font-size: 1.5em;
+  letter-spacing: 0.0625em;
+  margin: 0 0 0.3333333333333333em;
+}
+p {
+  font-size: 0.875em;  
+}
+p, ul {
+  margin:0 0 1.5em
+}
+ul {
+  color: #3c9d9b;
+  font-size: 0.75em;
+  list-style-type: none;
+  padding: 0;
+
+  li {
+    margin: 0 0 0.8333333333333333em;
+  }
+}
+.button {
+  background-color: #80ff66;
+  border-radius: 20px;
+  color: #fff;
+  font-size: 1em;
+  font-weight: 700;
+  padding: 0.75em 1.5em;
+  position: absolute;
+  bottom: 1.25em;
+  left: 50%;
+  margin-left: -60px;
+  text-decoration: none;
+  width: 120px;
+}
+.uppercase, .button, h2 {
+  text-transform: uppercase;
+}
+sup, .small {
+  font-size: 0.6125em;
+}
+
+
 </style>
       
       
@@ -135,7 +202,64 @@ body {
 
 <body>
 	
-	
+	<div class="container group">
+		<div class="grid-1-5">
+			<h2>Basic</h2>
+			<h3><span class="uppercase">Free</span></h3>
+			<p>10,000 monthly visits</p>
+			<ul>
+				<li>Limited Email Support</li>
+				<li>Unlimited Data Transfer</li>
+				<li>10GB Local Storage</li>
+			</ul>
+			<a href="" class="button">Sign Up</a>
+		</div>
+		<div class="grid-1-5">
+			<h2>Startup</h2>
+			<h3><sup>$</sup>79<span class="small">/mo</span></h3>
+			<p>25,000 monthly visits</p>
+			<ul>
+				<li>Limited Email Support</li>
+				<li>Unlimited Data Transfer</li>
+				<li>20GB Local Storage</li>
+			</ul>		
+			<a href="" class="button">Sign Up</a>	
+		</div>
+		<div class="grid-1-5">
+			<h2>Growth</h2>
+			<h3><sup>$</sup>179<span class="small">/mo</span></h3>
+			<p>75,000 monthly visits</p>
+			<ul>
+				<li>Email Support</li>
+				<li>Unlimited Data Transfer</li>
+				<li>30GB Local Storage</li>
+			</ul>	
+			<a href="" class="button">Sign Up</a>		
+		</div>
+		<div class="grid-1-5">
+			<h2>Premium</h2>
+			<h3><sup>$</sup>499<span class="small">/mo</span></h3>
+			<p>225,000 monthly visits</p>
+			<ul>
+				<li>Email Support</li>
+				<li>Phone Support</li>
+				<li>Unlimited Data Transfer</li>
+			</ul>	
+			<a href="" class="button">Sign Up</a>		
+		</div>
+		<div class="grid-1-5">
+			<h2>Enterprise</h2>
+			<h3><span class="uppercase">Let's Talk</span></h3>
+			<p>1M+ monthly visits</p>
+			<ul>
+				<li>Email Support</li>
+				<li>Phone Support</li>
+				<li>Dedicated Environment</li>
+				<li>Customized Plan</li>
+			</ul>
+			<a href="" class="button">Sign Up</a>
+		</div>		
+	</div>
 	
 	<table border="1" id="TP">
 		<thead>

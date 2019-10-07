@@ -2,6 +2,7 @@ package edu.eci.arsw.chillpark.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,29 +17,63 @@ public class Tiquete implements Serializable{
         
         
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	String id;
+        @Column(name="id")
+	int id;
+        
+        @Column(name="tipo")
 	String tipo;
+        
+        @Column(name="fecha")
 	Date fecha;
-	public Tiquete(String id, String tipo, Date fecha) {
-		this.id = id;
-		this.tipo = tipo;
-		this.fecha = fecha;
+        
+        @Column(name="valido")
+        boolean valido;
+        
+        @Column(name="usuario")
+        String usuario;
+        
+	public Tiquete() {
+		
 	}
 
-	public String getId(){
-		return id;
+	public int getId(){
+            return id;
 	}
+        
+        public void setId(int id){
+                this.id=id;
+        }
 
 	public String getTipo(){
 		return tipo;
 	}
+        
+        public void setTipo(String tipo){
+                this.tipo=tipo;
+        }
 
 	public Date getFecha(){
 		return fecha;
 	}
+        
+        public void setFecha(Date fecha){
+                this.fecha=fecha;
+        }
 
-	public void setTipo(String tipo){
-		this.tipo = tipo;
+        public boolean getValido(){
+		return valido;
 	}
+            
+	public void setValido(boolean valido){
+		this.valido = valido;
+	}
+        
+        public String getUsuario(){
+		return usuario;
+	}
+        
+        public void setUsuario(String usuario){
+                this.usuario=usuario;
+        }
+        
 }

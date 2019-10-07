@@ -13,8 +13,12 @@ var Module =( function (){
             var passwordtwo = $('#newconpsw').val();  
             
             if (password == passwordtwo){
-                var user = {"username":name,"rol":"Cliente","contrasena":password}
+                var hash=CryptoJS.SHA256(password);
+
+                var user = {"username":name,"rol":"Cliente","contrasena":hash.toString()};
                 apiClient.saveCuenta(user);
+
+               
             }
             else{
                 alert("Las contraseñas no coinciden");
@@ -39,7 +43,7 @@ var Module =( function (){
               
             }
             else {
-                alert("Incorrect password");
+                alert("Contraseña incorrecta");
             }
         }
 	

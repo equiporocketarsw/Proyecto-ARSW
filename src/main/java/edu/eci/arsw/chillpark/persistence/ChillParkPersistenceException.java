@@ -7,16 +7,11 @@ package edu.eci.arsw.chillpark.persistence;
 
 /**
  *
- * @author 2133832
+ * @author Santiago
  */
-public class ChillParkException extends Exception{
+public class ChillParkPersistenceException extends Exception {
 
-    public ChillParkException(String message) {
-        super(message);
-    }
-
-    public ChillParkException(String message, Throwable cause) {
-        super(message, cause);
+    public ChillParkPersistenceException(String message) {
     }
     
 }

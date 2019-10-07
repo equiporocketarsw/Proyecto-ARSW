@@ -2,13 +2,15 @@ apiClient= (function(){
     return {
 
         saveCuenta: function(usuario){
+
             $.ajax({
-                url: "usuario/" + usuario.username ,
+                url: "http://localhost:8080/usuario/" ,
                 type: "POST",
                 data: JSON.stringify(usuario),
                 contentType: "application/json",
                 success: function() {
                   alert("Usuario "+usuario.username+" creado satisfactoriamente");
+                   location.href = "/index.html";
                 },
                  error: function(XMLHttpRequest, textStatus, errorThrown) { 
                     alert("Error: Nombre de usuario ya tomado"); 
@@ -24,7 +26,7 @@ apiClient= (function(){
                 },
                  error: function(XMLHttpRequest, textStatus, errorThrown) { 
                      alert("Usuario no encontrado");
-                    //alert("Status: " + textStatus + " Error: " + errorThrown); 
+                     
                 } ,
                 async: true
             });

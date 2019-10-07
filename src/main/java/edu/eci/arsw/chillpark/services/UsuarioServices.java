@@ -6,37 +6,18 @@
 package edu.eci.arsw.chillpark.services;
 
 import edu.eci.arsw.chillpark.model.Usuario;
-import edu.eci.arsw.chillpark.persistence.ChillParkException;
-import edu.eci.arsw.chillpark.repository.UsuarioRepository;
+import edu.eci.arsw.chillpark.persistence.ChillParkNotFoundException;
+import edu.eci.arsw.chillpark.persistence.ChillParkPersistenceException;
 import java.util.List;
-import java.util.Optional;
-import javax.servlet.http.HttpServletRequest;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 /**
  *
- * @author 2128408
+ * @author Santiago
  */
-
-@Service("usuarioservices")
-public class UsuarioServices {
+public interface UsuarioServices {
+    public Usuario addUser(Usuario user) throws ChillParkPersistenceException;
     
-    
-    @Autowired
-    private UsuarioRepository userrepo;
-    
-    public Usuario addUser(Usuario user){
-        return userrepo.saveAndFlush(user);
-    }
-    
-    public List<Usuario> getAllUsers(){
-        return userrepo.findAll(); 
-    }
+    public List<Usuario> getAllUsers();
    
-    public Usuario getUsuario(String username){
-           Usuario user = userrepo.findById(username).get();
-           return user;
-    }
-    
+    public Usuario getUsuario(String username) throws ChillParkNotFoundException;
 }

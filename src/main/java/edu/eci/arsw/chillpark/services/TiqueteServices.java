@@ -5,18 +5,21 @@
  */
 package edu.eci.arsw.chillpark.services;
 
-import edu.eci.arsw.chillpark.model.Atraccion;
+import edu.eci.arsw.chillpark.model.Tiquete;
 import edu.eci.arsw.chillpark.persistence.ChillParkNotFoundException;
 import java.util.List;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author Santiago
  */
-public interface AtraccionServices {
-    
-    public List<Atraccion> getAllAtractions();
 
-    public Atraccion getAtraccion(int nombreatraccion) throws ChillParkNotFoundException;
-    
+
+public interface TiqueteServices {
+    public void addTiquete(Tiquete t);
+
+    public Tiquete getTiquete(int i) throws ChillParkNotFoundException;
+   
+    public List<Tiquete> getTiquetes();
 }

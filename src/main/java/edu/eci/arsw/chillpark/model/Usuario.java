@@ -32,14 +32,17 @@ public class Usuario implements Serializable{
         @Column(name="contrasena")
         private String contrasena;
         
+        
+        
+        /*
 	ArrayList<Atraccion> atracciones;
-	ArrayList<Tiquete> tiquetes;
+	ArrayList<Tiquete> tiquetes;*/
 	public Usuario() {
             /*
 		atracciones = new ArrayList<Atraccion>();	
 		tiquetes = new ArrayList<Tiquete>();*/
 	}
-
+/*
 	public ArrayList<Atraccion> getAtracciones(){
 		return atracciones;
 	}
@@ -54,7 +57,7 @@ public class Usuario implements Serializable{
 
 	public void setTiquetes(ArrayList<Tiquete> tiquetes){
 		this.tiquetes = tiquetes;
-	}
+	}*/
 
 	public String getUsername() {
 		return username;
