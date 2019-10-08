@@ -8,6 +8,9 @@
     <script src="/webjars/bootstrap/4.1.2/js/bootstrap.min.js"></script>
 	<script src="js/apimock.js"></script>
 	<script src="js/app.js"></script>
+        <script src="js/tiqueteApp.js"></script>
+        <script src="js/tiqueteClient.js"></script>
+        
 	<script>
 		$('.message a').click(function(){
 			$('form').animate({height: "toggle", opacity: "toggle"}, "slow");
@@ -136,8 +139,8 @@ body {
 	
 	<div class="login-page">
 	  <div class="form">
-		<form id="IngresoDeTiquetes" class="login-form" action="main.html">
-		  <input name="ticket0" type="number" placeholder="Ticket Number"/>
+		<form id="IngresoDeTiquetes" class="login-form" action="javascript:tiqueteApp.asignarTiquetes()">
+		  <input id="input_0" name="ticket0" type="number" placeholder="Ticket Number"/>
 		  <button id="boton" >Go to the park</button>
 		  <p class="message">More Tickets? <a href="javascript:Module.newInput()">Add Ticket</a></p>
 		</form>

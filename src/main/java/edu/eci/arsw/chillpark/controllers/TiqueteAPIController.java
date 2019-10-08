@@ -6,6 +6,7 @@
 package edu.eci.arsw.chillpark.controllers;
 
 import edu.eci.arsw.chillpark.model.Tiquete;
+import edu.eci.arsw.chillpark.persistence.ChillParkPersistenceException;
 import edu.eci.arsw.chillpark.services.TiqueteServices;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -62,6 +63,19 @@ public class TiqueteAPIController {
         } catch (Exception ex) {
             Logger.getLogger(TiqueteAPIController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>("Error al intentar crear el nuevo tiquete",HttpStatus.FORBIDDEN);            
+        }
+    }
+    
+    
+    @RequestMapping(path = "/{id}",method = RequestMethod.PUT)	
+    public ResponseEntity<?> PutBlueprint(@PathVariable ("id") int id,@RequestBody Tiquete tiq ){
+        
+        try {
+            ts.modifyTiquete(tiq,id);
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } catch (ChillParkPersistenceException ex) {
+            Logger.getLogger(TiqueteAPIController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>(ex.getMessage(),HttpStatus.FORBIDDEN);
         }
     }
     

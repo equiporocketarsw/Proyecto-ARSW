@@ -39,10 +39,10 @@ public class Atraccion implements Serializable{
 	String descripcion;
         
          @Column(name="estaturamin")
-	int estaturamin;
+	String estaturamin;
         
          @Column(name="estaturamax")
-	int estaturamax;
+	String estaturamax;
          
           @Column(name="tipo")
 	String tipo;
@@ -117,19 +117,19 @@ public class Atraccion implements Serializable{
 	 }
          
          
-         public int getEstaturamin(){
+         public String getEstaturamin(){
 		return estaturamin;
 	}
 
-	public void setEstaturamin(int estaturamin){
+	public void setEstaturamin(String estaturamin){
 		this.estaturamin = estaturamin;
 	}
         
-        public int getEstaturamax(){
+        public String getEstaturamax(){
 		return estaturamax;
 	}
 
-	public void setEstaturamax(int estaturamax){
+	public void setEstaturamax(String estaturamax){
 		this.estaturamax = estaturamax;
 	}
         

@@ -1,6 +1,7 @@
 var Module =( function (){
 	
 	var c=1;
+        var nombreUsuario = ""; 
 	
          var  checkPassword= function(){
             var username = $('#username').val();
@@ -28,7 +29,12 @@ var Module =( function (){
         
         var validarCuenta = function(username){
             var password = $('#psw').val();
-            var hash = CryptoJS.SHA256(password);           
+            var hash = CryptoJS.SHA256(password); 
+            
+
+            localStorage.setItem("currentUser",username.username);
+            
+            
             if (username.contrasena == hash){
                 
                 if(username.rol === "Admin"){
@@ -40,7 +46,6 @@ var Module =( function (){
                     location.href = "/ingresarTiquete.html"
                 }
                 
-              
             }
             else {
                 alert("ContraseÃ±a incorrecta");
@@ -63,11 +68,27 @@ var Module =( function (){
 
 	};
 	
+        var getNombreUsuario = function ()
+	{
+
+		return nombreUsuario;
+
+	};
+        
+        var getC = function ()
+	{
+
+		return c;
+
+	};
+        
 
 	
 	return {
 		newInput: newInput,
                 checkPassword: checkPassword,
-                addAcount: addAcount
+                addAcount: addAcount,
+                getNombreUsuario: getNombreUsuario,
+                getC: getC
 	};
 })();

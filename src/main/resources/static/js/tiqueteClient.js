@@ -10,7 +10,7 @@ tiqueteClient= (function(){
                 contentType: "application/json",
                 success: function() {
                   alert("Tiquete añadido satisfactoriamente");
-                   location.href = "/index.html";
+
                 },
                  error: function(XMLHttpRequest, textStatus, errorThrown) { 
                     alert("Error: Nombre de usuario ya tomado"); 
@@ -30,7 +30,39 @@ tiqueteClient= (function(){
                 } ,
                 async: true
             });
+        },
+        
+        getTiquete: function(callback,idTiq){
+            jQuery.ajax({
+                url: "tiquete/"+idTiq,
+                success: function(result) {
+                  callback(result);
+                },
+                 error: function(XMLHttpRequest, textStatus, errorThrown) { 
+                     alert("Error obteniendo tiquete");
+                     
+                } ,
+                async: true
+            });
+        },
+        
+        asignarTiqueteaUsuario: function(tiquete){
+
+            $.ajax({
+                url: "http://localhost:8080/tiquete/"+tiquete.id,
+                type: "PUT",
+                data: JSON.stringify(tiquete),
+                contentType: "application/json",
+                success: function() {
+
+                   location.href = "/main.html";
+                },
+                 error: function(XMLHttpRequest, textStatus, errorThrown) { 
+                    alert("Error al asignar"); 
+                }
+            });
         }
+        
     };
 })();
 

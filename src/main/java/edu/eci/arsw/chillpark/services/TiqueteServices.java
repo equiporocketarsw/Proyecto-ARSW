@@ -7,6 +7,7 @@ package edu.eci.arsw.chillpark.services;
 
 import edu.eci.arsw.chillpark.model.Tiquete;
 import edu.eci.arsw.chillpark.persistence.ChillParkNotFoundException;
+import edu.eci.arsw.chillpark.persistence.ChillParkPersistenceException;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
@@ -22,4 +23,6 @@ public interface TiqueteServices {
     public Tiquete getTiquete(int i) throws ChillParkNotFoundException;
    
     public List<Tiquete> getTiquetes();
+
+    public void modifyTiquete(Tiquete tiq, int id) throws ChillParkPersistenceException;
 }

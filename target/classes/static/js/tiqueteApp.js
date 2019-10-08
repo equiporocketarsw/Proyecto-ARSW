@@ -22,12 +22,34 @@ var tiqueteApp =( function (){
             
         }
         
+        
+        var asignarTiquetes = function(){
+            var numT = Module.getC();
+
+            for (var i = 0; i < numT; i++) {
+                   var idTiq = $('#input_'+i).val();
+                   tiqueteClient.getTiquete(asignarAUsuario,idTiq);
+                
+              };    
+        }
+        
+        var asignarAUsuario = function(tiquete){
+            
+            var user = localStorage.getItem('currentUser');
+         
+            tiquete.usuario=user;
+            tiqueteClient.asignarTiqueteaUsuario(tiquete);
+        }
+
+        
+        
 	
 
 	
 	return {
 		mostrarTiquetes: mostrarTiquetes,
-                imprimirTiquetes: imprimirTiquetes
+                imprimirTiquetes: imprimirTiquetes,
+                asignarTiquetes: asignarTiquetes
 	};
 })();
 

@@ -8,6 +8,7 @@ package edu.eci.arsw.chillpark.services.impl;
 import edu.eci.arsw.chillpark.model.Atraccion;
 import edu.eci.arsw.chillpark.model.Tiquete;
 import edu.eci.arsw.chillpark.persistence.ChillParkNotFoundException;
+import edu.eci.arsw.chillpark.persistence.ChillParkPersistenceException;
 import edu.eci.arsw.chillpark.repository.TiqueteRepository;
 import edu.eci.arsw.chillpark.services.TiqueteServices;
 import java.util.List;
@@ -38,12 +39,18 @@ public class TiqueteServicesImpl implements TiqueteServices{
             return tiquete;
         }
         catch(java.util.NoSuchElementException e){
-           throw new ChillParkNotFoundException("No existe el usuario");
+           throw new ChillParkNotFoundException("No existe el tiquete");
         }      }
 
     @Override
     public List<Tiquete> getTiquetes() {
         return tiqrepo.findAll();
+    }
+
+    @Override
+    public void modifyTiquete(Tiquete tiq, int id) throws ChillParkPersistenceException{
+        tiqrepo.deleteById(id);
+        tiqrepo.saveAndFlush(tiq);
     }
     
 }
