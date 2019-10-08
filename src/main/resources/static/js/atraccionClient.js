@@ -1,10 +1,10 @@
 atraccionClient= (function(){
     return {
 
-        saveCuenta: function(usuario){
+        saveAtraccion: function(usuario){
 
             $.ajax({
-                url: "http://localhost:8080/usuario/" ,
+                url: "http://localhost:8080/atraccion/" ,
                 type: "POST",
                 data: JSON.stringify(usuario),
                 contentType: "application/json",

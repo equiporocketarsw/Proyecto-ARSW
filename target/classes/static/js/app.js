@@ -1,6 +1,6 @@
 var Module =( function (){
 	
-	
+	var c=1;
 	
          var  checkPassword= function(){
             var username = $('#username').val();
@@ -21,7 +21,7 @@ var Module =( function (){
                
             }
             else{
-                alert("Las contraseñas no coinciden");
+                alert("Las contraseÃ±as no coinciden");
             }
             
         }
@@ -43,7 +43,7 @@ var Module =( function (){
               
             }
             else {
-                alert("Contraseña incorrecta");
+                alert("ContraseÃ±a incorrecta");
             }
         }
 	

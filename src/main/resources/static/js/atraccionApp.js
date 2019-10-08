@@ -10,7 +10,10 @@ var atraccionApp =( function (){
         
        var  imprimirAtracciones= function(atracciones){
                 atracciones.map(function(atraccion){
-                    var contenedor = "<div class=\"grid-1-5\"><h3><span class=\"uppercase\">"+atraccion.nombre+"</span></h3> <p>"+atraccion.descripcion+"</p><ul><li> Capacidad "+atraccion.capacidad+" personas</li><li> Duracion atraccion: "+atraccion.tiempo+" minutos</li></ul><a href=\"\" class=\"button\">Editar</a></div>"
+                    var contenedor = "<div class=\"grid-1-5\"><h2>"+atraccion.tipo+"</h2><h3><span class=\"uppercase\">"+atraccion.nombre+"</span></h3> <p>Capacidad: "+atraccion.capacidad+"</p>    <p>Estatura minima: "+atraccion.estaturamin+"</p>   <p>Estatura maxima: "+atraccion.estaturamax+"</p>  <p>"+atraccion.descrpcion+"</p>  <a href=\"\" class=\"button\">Editar</a></div>";
+			
+			
+			
                            
                     $("#tablaAtracciones").append(contenedor);
 
