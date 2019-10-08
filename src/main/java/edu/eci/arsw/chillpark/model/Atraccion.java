@@ -38,6 +38,15 @@ public class Atraccion implements Serializable{
         @Column(name="descripcion")
 	String descripcion;
         
+         @Column(name="estaturamin")
+	int estaturamin;
+        
+         @Column(name="estaturamax")
+	int estaturamax;
+         
+          @Column(name="tipo")
+	String tipo;
+        
        /* ArrayList<Usuario> usuarios;*/
         
 	public Atraccion() {
@@ -105,6 +114,32 @@ public class Atraccion implements Serializable{
 
 	 public void setDescrpcion(String descripcion){
 		 this.descripcion = descripcion;
+	 }
+         
+         
+         public int getEstaturamin(){
+		return estaturamin;
+	}
+
+	public void setEstaturamin(int estaturamin){
+		this.estaturamin = estaturamin;
+	}
+        
+        public int getEstaturamax(){
+		return estaturamax;
+	}
+
+	public void setEstaturamax(int estaturamax){
+		this.estaturamax = estaturamax;
+	}
+        
+        
+        public String getTipo(){
+		 return tipo;
+	 }
+
+	 public void setTipo(String tipo){
+		 this.tipo = tipo;
 	 }
 }
 
