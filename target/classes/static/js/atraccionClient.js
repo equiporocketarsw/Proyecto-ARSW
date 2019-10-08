@@ -18,11 +18,11 @@ atraccionClient= (function(){
             });
         },
 
-        getAtracciones: function(callback){
+        getAtracciones: function(callback,tipo){
             jQuery.ajax({
                 url: "atraccion/",
                 success: function(result) {
-                  callback(result);
+                  callback(result,tipo);
                 },
                  error: function(XMLHttpRequest, textStatus, errorThrown) { 
                      alert("Error obteniendo atracciones");
