@@ -234,7 +234,7 @@ h1 {
 
   &:before, &:after {
     content: ""; 
-    position: absolute; 
+    position: relative; 
     background-color: rgb(246,125,53);
     @include filter-gradient(#f67d35, #ff4f68, vertical);
     @include background-image(linear-gradient(top,  rgba(246,125,53,1) 0%,rgba(255,79,104,1) 100%));
@@ -313,7 +313,7 @@ sup, .small {
 	  
 </head>
 
-<body onLoad="atraccionApp.mostrarAtracciones();tiqueteApp.mostrarTiquetes();">
+<body onLoad="atraccionApp.mostrarAtracciones();tiqueteApp.mostrarTiquetes();Module.validarUsuario();Module.validarAdmin();">
 	
 	<div id="wrapper">
   <h1>Tiquetes</h1>
