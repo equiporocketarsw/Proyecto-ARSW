@@ -1,38 +1,56 @@
 var Module =( function (){
-	var c=0;
-	var sumaDePuntos = function(total,num){
-		return total+num;
-	};
 	
-	var mapeador = function(plano){
-		if(plano){
-				
-				
-				$("#BP tbody").empty();
-				
-                var objetos = plano.map(function (plane){
-					
-					return {"name":plane.name,"n_points":plane.points.length}
-				}
-				)
-				
-				var numberpoints = objetos.map(function (plano){
-					return plano.n_points;
-					
-				}
-				)
-				
-				document.getElementById("userPoints").innerHTML = numberpoints.reduce(sumaDePuntos);
-				
-				
-				objetos.map(function (obj){
-					var name = obj.name;
-					var numpoints = obj.n_points;
-					var fila = "<tr><td>" + name + "</td><td>" + numpoints + "</td></tr>";
-					$("#BP tbody").append(fila);
-				})
+	var c=1;
+        var nombreUsuario = ""; 
+	
+         var  checkPassword= function(){
+            var username = $('#username').val();
+            apiClient.checkPassword(username,validarCuenta);
+        }
+        
+        var addAcount = function(){
+            var name = $('#name').val();
+            var password = $('#newpsw').val();
+            var passwordtwo = $('#newconpsw').val();  
+            
+            if (password == passwordtwo){
+                var hash=CryptoJS.SHA256(password);
+
+                var user = {"username":name,"rol":"Cliente","contrasena":hash.toString()};
+                apiClient.saveCuenta(user);
+
+               
             }
-	};
+            else{
+                alert("Las contraseÃ±as no coinciden");
+            }
+            
+        }
+        
+        var validarCuenta = function(username){
+            var password = $('#psw').val();
+            var hash = CryptoJS.SHA256(password); 
+            
+
+            localStorage.setItem("currentUser",username.username);
+            
+            
+            if (username.contrasena == hash){
+                
+                if(username.rol === "Admin"){
+                    
+                    location.href = "/adminMain.html"
+                }
+                else{
+                    
+                    location.href = "/ingresarTiquete.html"
+                }
+                
+            }
+            else {
+                alert("ContraseÃ±a incorrecta");
+            }
+        }
 	
 	var newInput = function ()
 	{
@@ -50,9 +68,27 @@ var Module =( function (){
 
 	};
 	
+        var getNombreUsuario = function ()
+	{
+
+		return nombreUsuario;
+
+	};
+        
+        var getC = function ()
+	{
+
+		return c;
+
+	};
+        
 
 	
 	return {
-		newInput: newInput
+		newInput: newInput,
+                checkPassword: checkPassword,
+                addAcount: addAcount,
+                getNombreUsuario: getNombreUsuario,
+                getC: getC
 	};
 })();

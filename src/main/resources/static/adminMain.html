@@ -118,7 +118,7 @@ h1 {
 
 
 /** page structure **/
-#wrapper {
+.wrapper {
   display: block;
   width: 850px;
   background: #94ebbf;
@@ -315,7 +315,7 @@ sup, .small {
 
 <body onLoad="atraccionApp.mostrarAtracciones();tiqueteApp.mostrarTiquetes();">
 	
-	<div id="wrapper">
+	<div class="wrapper">
   <h1>Tiquetes</h1>
   
   <table id="keywords" cellspacing="0" cellpadding="0">
@@ -338,7 +338,15 @@ sup, .small {
   
  </div> 
 	
-	
+	<div class = "wrapper">
+    <form id = "TiquetesNuevos">
+      <input name="numeroTiquetes" type="number" placeholder="Numero de tiqueres"/>
+      <input name="TipoTiquetes" type="text" placeholder="Tipo de tiquetes"/>
+      <button id="agregartiquetes" onclick="javascript:tiqueteApp.AgregarTiquetes()">Agregar tiquetes(s)</button>
+    </form>
+
+
+  </div>
 	<div class="container group" id="tablaAtracciones">
 		
 		

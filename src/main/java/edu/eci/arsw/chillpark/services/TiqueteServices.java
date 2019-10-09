@@ -18,6 +18,9 @@ import org.springframework.stereotype.Service;
 
 
 public interface TiqueteServices {
+
+    /*public void addTiquete(String tipo);*/
+
     public void addTiquete(Tiquete t);
 
     public Tiquete getTiquete(int i) throws ChillParkNotFoundException;

@@ -25,7 +25,13 @@ public class TiqueteServicesImpl implements TiqueteServices{
 
     @Autowired
     private TiqueteRepository tiqrepo;
-    
+    /*
+    @Override
+    public void addTiquete(String tipo){
+        Tiquete t = new Tiquete();
+        t.setTipo(tipo);
+        tiqrepo.saveAndFlush(t);
+    }*/
     
     @Override
     public void addTiquete(Tiquete t) {
