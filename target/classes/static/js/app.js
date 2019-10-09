@@ -32,7 +32,8 @@ var Module =( function (){
             var hash = CryptoJS.SHA256(password); 
             
 
-            localStorage.setItem("currentUser",username.username);
+            sessionStorage.setItem("currentUser",username.username);
+            sessionStorage.setItem("currentRol",username.rol);
             
             
             if (username.contrasena == hash){
@@ -68,12 +69,35 @@ var Module =( function (){
 
 	};
 	
-        var getNombreUsuario = function ()
-	{
-
-		return nombreUsuario;
-
-	};
+        var validarUsuario = function(){
+            var user = sessionStorage.getItem('currentUser');
+            
+            if (user==null){
+                location.href = "/index.html";
+            }
+               
+        }
+        
+        
+        var validarAdmin = function(){
+            var user = sessionStorage.getItem('currentUser');
+            var rol = sessionStorage.getItem('currentRol');
+            
+            if (rol!="Admin" && user!=null ){
+                location.href = "/main.html";
+            }
+               
+        }
+        
+        var validarCliente = function(){
+            var user = sessionStorage.getItem('currentUser');
+            var rol = sessionStorage.getItem('currentRol');
+            
+            if (rol!="Cliente" && user!=null){
+                location.href = "/adminMain.html";
+            }
+               
+        }
         
         var getC = function ()
 	{
@@ -88,7 +112,9 @@ var Module =( function (){
 		newInput: newInput,
                 checkPassword: checkPassword,
                 addAcount: addAcount,
-                getNombreUsuario: getNombreUsuario,
-                getC: getC
+                validarUsuario: validarUsuario,
+                getC: getC,
+                validarCliente: validarCliente,
+                validarAdmin: validarAdmin
 	};
 })();

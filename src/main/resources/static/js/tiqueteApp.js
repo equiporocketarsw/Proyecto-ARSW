@@ -36,7 +36,7 @@ var tiqueteApp =( function (){
         var asignarAUsuario = function(tiquete){
             if (tiquete.usuario==null){
                 if(tiquete.valido){
-                    var user = localStorage.getItem('currentUser');
+                    var user = sessionStorage.getItem('currentUser');
 
                     tiquete.usuario=user;
                     tiqueteClient.asignarTiqueteaUsuario(tiquete);
