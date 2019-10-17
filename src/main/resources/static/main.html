@@ -10,6 +10,8 @@
 	<script src="js/app.js"></script>
 	 <script src="js/atraccionApp.js"></script>
         <script src="js/atraccionClient.js"></script>
+        <script src="js/tiqueteApp.js"></script>
+        <script src="js/tiqueteClient.js"></script>
  
 	
     <link rel="stylesheet"
@@ -83,27 +85,9 @@ body {
 ::-moz-selection { background: #5f74a0; color: #555555; }
 ::-webkit-selection { background: #5f74a0; color: #555555; }
 
-br { display: block; line-height: 1.6em; } 
 
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
-ol, ul { list-style: none; }
 
-input, textarea { 
-  -webkit-font-smoothing: antialiased;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  outline: none; 
-}
 
-blockquote, q { quotes: none; }
-blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
-strong, b { font-weight: bold; } 
-
-table { border-collapse: collapse; border-spacing: 0; }
-img { border: 0; max-width: 100%; }
 
 h1 { 
   font-family: 'Roboto', Tahoma, sans-serif;
@@ -115,65 +99,15 @@ h1 {
 }
 
 
-/** page structure **/
-#wrapper {
-  display: block;
-  width: 850px;
-  background: #94ebbf;
-  margin: 0 auto;
-  padding: 10px 17px;
-  -webkit-box-shadow: 2px 2px 3px -1px rgba(0,0,0,0.35);
-}
-
-#keywords {
-  margin: 0 auto;
-  font-size: 1.2em;
-  margin-bottom: 15px;
-}
-
-
-#keywords thead {
-  cursor: pointer;
-  background: #3c9d9b;
-}
-#keywords thead tr th { 
-  font-weight: bold;
-  padding: 12px 30px;
-  padding-left: 42px;
-}
-#keywords thead tr th span { 
-  padding-right: 20px;
-  background-repeat: no-repeat;
-  background-position: 100% 100%;
-}
-
-#keywords thead tr th.headerSortUp, #keywords thead tr th.headerSortDown {
-  background: #acc8dd;
-}
-
-#keywords thead tr th.headerSortUp span {
-  background-image: url('https://i.imgur.com/SP99ZPJ.png');
-}
-#keywords thead tr th.headerSortDown span {
-  background-image: url('https://i.imgur.com/RkA9MBo.png');
-}
-
-
-#keywords tbody tr { 
-  color: #555;
-}
-#keywords tbody tr td {
-  text-align: center;
-  padding: 15px 10px;
-}
-#keywords tbody tr td.lalign {
-  text-align: left;
-}
 
 .container {
   margin: 0 auto;
   width: 90%;
-  max-width: 400px;
+  max-width: 1600px;
+  display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  
 }
 .group:after {
   content: "";
@@ -183,6 +117,8 @@ h1 {
 .grid-1-5 {
   border: 2px solid #5d4e65;   
   min-height: 500px;
+  max-width: 400px;
+  float: left;
   padding: 1.25em;
   position: relative;
   text-align: center;
@@ -296,6 +232,7 @@ ul {
   margin-left: -60px;
   text-decoration: none;
   width: 120px;
+  
 }
 .uppercase, .button, h2 {
   text-transform: uppercase;
@@ -303,6 +240,25 @@ ul {
 sup, .small {
   font-size: 0.6125em;
 }
+.otherbutton {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #3c9d9b;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  font-weight: 700;
+}
+.otherbutton:hover,.otherbutton:active,.otherbutton:focus {
+  background: #46b9b7;
+}
+
 
 
 </style>
@@ -311,26 +267,38 @@ sup, .small {
 	  
 </head>
 
-<body onLoad="atraccionApp.mostrarAtraccionesCliente();Module.validarUsuario();Module.validarCliente();">
+<body onLoad="atraccionApp.mostrarAtraccionesCliente();Module.validarUsuario();Module.validarCliente();tiqueteApp.numerodeTiquetes();">
 	
                 <div class="container-fluid">
 
                     <div class="row">
+                        <div class="col"  style="background-color:#3c9d9b">
+                          <h1>Usuario: <label id="currentUser"></label> </h1> 
+    
+                        </div>
                       <div class="col"  style="background-color:#3c9d9b">
-                        <h1>Numero de tiquetes:</h1> 
-
-                      </div>
-                      <div class="col-md-auto"  style="background-color:#3c9d9b">
-                        <h1>xd</h1> 
+                        <h1> Numero de tiquetes: <label id="numtiquetes"></label> </h1> 
                         
                       </div>
                       <div class="col col-lg-2"  style="background-color:#3c9d9b">
-                        <a href="" class="button"> Añadir mas tiquetes  </a></div>
+                          <form action="ingresarTiquete.html">
+
+                              <button class="otherbutton">Añadir mas tiquetes</button>
+    
+                          </form>
+                          
+                          <form action="javascript:Module.cerrarSesion();">
+
+                              <button class="otherbutton">Log out</button>
+    
+                            </form>
+
+
                       </div>
                    </div>
 
  
-
+<br/>
 	
 	
 	<div class="container group" id="tablaAtracciones">

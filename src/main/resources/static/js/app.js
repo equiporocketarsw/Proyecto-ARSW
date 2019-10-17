@@ -67,7 +67,20 @@ var Module =( function (){
 		var boton = document.getElementById("boton");
 		formulario.insertBefore(inpt,boton);
 
-	};
+    };
+    
+
+    var deleteInput = function(){
+
+        if (c==1){
+            alert("Debe de haber al menos un tiquete");
+        }
+        else{
+            var inpt = document.getElementById("input_"+(c-1));
+            inpt.remove();
+            c=c-1;
+        }
+    };
 	
         var validarUsuario = function(){
             var user = sessionStorage.getItem('currentUser');
@@ -106,7 +119,12 @@ var Module =( function (){
 
 	};
         
+    var cerrarSesion = function(){
+        sessionStorage.setItem("currentUser",null);
+        sessionStorage.setItem("currentRol",null);
+        location.href = "/index.html";
 
+    }
 	
 	return {
 		newInput: newInput,
@@ -115,6 +133,8 @@ var Module =( function (){
                 validarUsuario: validarUsuario,
                 getC: getC,
                 validarCliente: validarCliente,
-                validarAdmin: validarAdmin
+                validarAdmin: validarAdmin,
+                deleteInput: deleteInput,
+                cerrarSesion: cerrarSesion
 	};
 })();

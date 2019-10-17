@@ -4,7 +4,7 @@
             "type": "java",
             "name": "CodeLens (Launch) - BlueprintsAPIApplication",
             "request": "launch",
-            "mainClass": "edu.eci.arsw.blueprintsapi.BlueprintsAPIApplication",
+            "mainClass": "edu.eci.arsw.chillparkapi.ChillParkAPIApplication",
             "projectName": "blueprints_rest_api"
         }
     ]
