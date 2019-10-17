@@ -42,7 +42,7 @@ dependencies {
     compile group: 'org.webjars', name: 'bootstrap', version: '4.1.2'
     compile group: 'org.webjars', name: 'jquery', version: '3.1.0'
 
-    runtime group: 'org.gradle', name: 'gradle-wrapper', version: '5.2.1'
+    
 
     compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
     testCompile group: 'org.hsqldb', name: 'hsqldb', version: '2.4.0'
