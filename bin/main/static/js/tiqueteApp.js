@@ -74,8 +74,9 @@ var tiqueteApp =( function (){
             }
         }
 
-        /*
+        
         var AgregarTiquetes = function(){
+            /*
             var numero = null;
             var tipo = null;
             numero = document.getElementByName("numeroTiquetes").val;
@@ -83,7 +84,8 @@ var tiqueteApp =( function (){
             for (var i=0; i<numero; i++){
                 tiqueteClient.crearTiquete(tipo);
             }
-        }*/
+            */
+        }
         
 	
 
@@ -92,7 +94,8 @@ var tiqueteApp =( function (){
 		mostrarTiquetes: mostrarTiquetes,
                 imprimirTiquetes: imprimirTiquetes,
                 asignarTiquetes: asignarTiquetes,
-                numerodeTiquetes: numerodeTiquetes
+                numerodeTiquetes: numerodeTiquetes,
+                AgregarTiquetes: AgregarTiquetes
 	};
 })();
 
