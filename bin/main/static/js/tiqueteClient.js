@@ -13,7 +13,7 @@ tiqueteClient= (function(){
 
                 },
                  error: function(XMLHttpRequest, textStatus, errorThrown) { 
-                    alert("Error: Nombre de usuario ya tomado"); 
+                    alert("Error: Tiquete ya tomado"); 
                 }
             });
         },
@@ -25,7 +25,7 @@ tiqueteClient= (function(){
                   callback(result);
                 },
                  error: function(XMLHttpRequest, textStatus, errorThrown) { 
-                     alert("Error obteniendo tiquete");
+                     alert("El tiquete no esta resgitrado");
                      
                 } ,
                 async: true

@@ -1,6 +1,29 @@
 var tiqueteApp =( function (){
 	
-	
+    
+
+        var  numerodeTiquetes= function(){
+
+            
+            tiqueteClient.getTiquetes(imprimirnumTiquetes);
+        }
+        
+        var  imprimirnumTiquetes= function(tiquetes){
+            var contador=0;
+            tiquetes.map(function(tiquete){
+                var currentUser = sessionStorage.getItem('currentUser');
+                var ticketUser = tiquete.usuario;
+                
+                if (currentUser==ticketUser){
+                    contador=contador+1;
+                }
+                
+            })
+            document.getElementById('numtiquetes').innerHTML = contador;
+            document.getElementById('currentUser').innerHTML = sessionStorage.getItem('currentUser');
+        
+    }
+
 	
          var  mostrarTiquetes= function(){
 
@@ -34,11 +57,21 @@ var tiqueteApp =( function (){
         }
         
         var asignarAUsuario = function(tiquete){
-            
-            var user = localStorage.getItem('currentUser');
-         
-            tiquete.usuario=user;
-            tiqueteClient.asignarTiqueteaUsuario(tiquete);
+            if (tiquete.usuario==null){
+                if(tiquete.valido){
+                    var user = sessionStorage.getItem('currentUser');
+
+                    tiquete.usuario=user;
+                    tiqueteClient.asignarTiqueteaUsuario(tiquete);
+                }else{
+                    alert("El tiquete "+tiquete.id+" no es valido");
+                }
+                
+            }
+            else{
+                alert("El tiquete "+tiquete.id+" ya esta asignado");
+                
+            }
         }
 
         /*
@@ -58,7 +91,8 @@ var tiqueteApp =( function (){
 	return {
 		mostrarTiquetes: mostrarTiquetes,
                 imprimirTiquetes: imprimirTiquetes,
-                asignarTiquetes: asignarTiquetes
+                asignarTiquetes: asignarTiquetes,
+                numerodeTiquetes: numerodeTiquetes
 	};
 })();
 

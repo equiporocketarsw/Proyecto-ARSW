@@ -32,7 +32,8 @@ var Module =( function (){
             var hash = CryptoJS.SHA256(password); 
             
 
-            localStorage.setItem("currentUser",username.username);
+            sessionStorage.setItem("currentUser",username.username);
+            sessionStorage.setItem("currentRol",username.rol);
             
             
             if (username.contrasena == hash){
@@ -66,14 +67,50 @@ var Module =( function (){
 		var boton = document.getElementById("boton");
 		formulario.insertBefore(inpt,boton);
 
-	};
+    };
+    
+
+    var deleteInput = function(){
+
+        if (c==1){
+            alert("Debe de haber al menos un tiquete");
+        }
+        else{
+            var inpt = document.getElementById("input_"+(c-1));
+            inpt.remove();
+            c=c-1;
+        }
+    };
 	
-        var getNombreUsuario = function ()
-	{
-
-		return nombreUsuario;
-
-	};
+        var validarUsuario = function(){
+            var user = sessionStorage.getItem('currentUser');
+            
+            if (user==null){
+                location.href = "/index.html";
+            }
+               
+        }
+        
+        
+        var validarAdmin = function(){
+            var user = sessionStorage.getItem('currentUser');
+            var rol = sessionStorage.getItem('currentRol');
+            
+            if (rol!="Admin" && user!=null ){
+                location.href = "/main.html";
+            }
+               
+        }
+        
+        var validarCliente = function(){
+            var user = sessionStorage.getItem('currentUser');
+            var rol = sessionStorage.getItem('currentRol');
+            
+            if (rol!="Cliente" && user!=null){
+                location.href = "/adminMain.html";
+            }
+               
+        }
         
         var getC = function ()
 	{
@@ -82,13 +119,22 @@ var Module =( function (){
 
 	};
         
+    var cerrarSesion = function(){
+        sessionStorage.setItem("currentUser",null);
+        sessionStorage.setItem("currentRol",null);
+        location.href = "/index.html";
 
+    }
 	
 	return {
 		newInput: newInput,
                 checkPassword: checkPassword,
                 addAcount: addAcount,
-                getNombreUsuario: getNombreUsuario,
-                getC: getC
+                validarUsuario: validarUsuario,
+                getC: getC,
+                validarCliente: validarCliente,
+                validarAdmin: validarAdmin,
+                deleteInput: deleteInput,
+                cerrarSesion: cerrarSesion
 	};
 })();

@@ -131,7 +131,7 @@ body {
 	  
 </head>
 
-<body>
+<body onLoad="Module.validarUsuario();Module.validarCliente();">
 	<header>
 		<img src="img/logo.png">
 
@@ -142,7 +142,9 @@ body {
 		<form id="IngresoDeTiquetes" class="login-form" action="javascript:tiqueteApp.asignarTiquetes()">
 		  <input id="input_0" name="ticket0" type="number" placeholder="Ticket Number"/>
 		  <button id="boton" >Go to the park</button>
-		  <p class="message">More Tickets? <a href="javascript:Module.newInput()">Add Ticket</a></p>
+      <p class="message">More Tickets? <a href="javascript:Module.newInput()">Add Ticket</a></p>
+      <p class="message">Many Tickets? <a href="javascript:Module.deleteInput()">Remove Ticket</a></p>
+      <p class="message">Already Entered Tickets? <a href="main.html">Go to the park w/o new tickets</a></p>
 		</form>
 	  </div>
 	</div>

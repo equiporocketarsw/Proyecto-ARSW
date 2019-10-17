@@ -1,15 +1,15 @@
 atraccionClient= (function(){
     return {
 
-        saveAtraccion: function(usuario){
+        saveAtraccion: function(atraccion){
 
             $.ajax({
                 url: "http://localhost:8080/atraccion/" ,
                 type: "POST",
-                data: JSON.stringify(usuario),
+                data: JSON.stringify(atraccion),
                 contentType: "application/json",
                 success: function() {
-                  alert("Usuario "+usuario.username+" creado satisfactoriamente");
+                  alert("Atraccion "+atraccion.nombre+" creado satisfactoriamente");
                    location.href = "/index.html";
                 },
                  error: function(XMLHttpRequest, textStatus, errorThrown) { 
