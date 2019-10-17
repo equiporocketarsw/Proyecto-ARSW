@@ -105,8 +105,8 @@ typings/
 
 
 ### Gradle ###
-.gradle
-**/build/
+#.gradle
+#**/build/
 
 # Ignore Gradle GUI config
 gradle-app.setting
