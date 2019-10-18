@@ -4,7 +4,7 @@ atraccionClient= (function(){
         saveAtraccion: function(atraccion){
 
             $.ajax({
-                url: "http://localhost:8080/atraccion/" ,
+                url: "atraccion/" ,
                 type: "POST",
                 data: JSON.stringify(atraccion),
                 contentType: "application/json",

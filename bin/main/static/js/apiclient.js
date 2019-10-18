@@ -4,7 +4,7 @@ apiClient= (function(){
         saveCuenta: function(usuario){
 
             $.ajax({
-                url: "http://localhost:8080/usuario/" ,
+                url: "usuario/" ,
                 type: "POST",
                 data: JSON.stringify(usuario),
                 contentType: "application/json",

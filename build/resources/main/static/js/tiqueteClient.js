@@ -4,7 +4,7 @@ tiqueteClient= (function(){
         saveTiquete: function(tiquete){
 
             $.ajax({
-                url: "http://localhost:8080/tiquete/" ,
+                url: "tiquete/" ,
                 type: "POST",
                 data: JSON.stringify(tiquete),
                 contentType: "application/json",
@@ -49,7 +49,7 @@ tiqueteClient= (function(){
         asignarTiqueteaUsuario: function(tiquete){
 
             $.ajax({
-                url: "http://localhost:8080/tiquete/"+tiquete.id,
+                url: "tiquete/"+tiquete.id,
                 type: "PUT",
                 data: JSON.stringify(tiquete),
                 contentType: "application/json",
@@ -66,7 +66,7 @@ tiqueteClient= (function(){
         crearTiquete: function(tiquete){
 
             var postTiquete =$.ajax({
-                url: "http://localhost:8080/tiquete/",
+                url: "tiquete/",
                 type: "POST",
                 data: JSON.stringify(tiquete),
                 contentType: "application/json",
