@@ -330,6 +330,18 @@ sup, .small {
   background: #46b9b7;
 }
 
+.inputtype {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
 
 </style>
       
@@ -363,14 +375,18 @@ sup, .small {
  </div> 
 	
 	<div class = "wrapper">
-    <form id = "TiquetesNuevos">
-      <input name="numeroTiquetes" type="number" placeholder="Numero de tiqueres"/>
-      <input name="TipoTiquetes" type="text" placeholder="Tipo de tiquetes"/>
-      <button class="otherbutton" id="agregartiquetes" onclick="javascript:tiqueteApp.AgregarTiquetes()">Agregar tiquetes(s)</button>
+    <h1>Agregar</h1>
+
+    <form id = "TiquetesNuevos" action="javascript:tiqueteApp.AgregarTiquetes()"> 
+      <input class="inputtype" id="numeroTiquetes" type="number" placeholder="Numero de tiqueres"/>
+      <input class="inputtype" id="TipoTiquetes" type="text" placeholder="Tipo de tiquetes"/>
+      <button class="otherbutton" id="agregartiquetes">Agregar tiquete(s)</button>
     </form>
 
 
   </div>
+</br>
+
 	<div class="container group" id="tablaAtracciones">
 		
 		

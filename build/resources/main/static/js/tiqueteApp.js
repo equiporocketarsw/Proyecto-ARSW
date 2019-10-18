@@ -32,10 +32,11 @@ var tiqueteApp =( function (){
         }
         
        var  imprimirTiquetes= function(tiquetes){
+           $("#keywords tbody tr").remove(); 
                 tiquetes.map(function(tiquete){
                     var contenedor = "<tr><td class=\"lalign\">"+tiquete.id+"</td>  <td>"+ tiquete.tipo+"</td>  <td>"+ tiquete.fecha+"</td>  <td>"+ tiquete.valido+"</td> <td>"+ tiquete.usuario+"</td> </tr>";
                                            
-                                            
+                    
 			
 		
                            
@@ -74,16 +75,19 @@ var tiqueteApp =( function (){
             }
         }
 
-        /*
+        
         var AgregarTiquetes = function(){
+            
             var numero = null;
             var tipo = null;
-            numero = document.getElementByName("numeroTiquetes").val;
-            tipo = document.getElementByName("TipoTiquetes").val;
+            numero = $('#numeroTiquetes').val();
+            tipo = $('#TipoTiquetes').val();
             for (var i=0; i<numero; i++){
-                tiqueteClient.crearTiquete(tipo);
+                var tiquete = {"id":null,"tipo":tipo,"fecha":null,"valido":true,"usuario":null};
+                tiqueteClient.crearTiquete(tiquete).then(mostrarTiquetes);
             }
-        }*/
+            
+        }
         
 	
 
@@ -92,7 +96,8 @@ var tiqueteApp =( function (){
 		mostrarTiquetes: mostrarTiquetes,
                 imprimirTiquetes: imprimirTiquetes,
                 asignarTiquetes: asignarTiquetes,
-                numerodeTiquetes: numerodeTiquetes
+                numerodeTiquetes: numerodeTiquetes,
+                AgregarTiquetes: AgregarTiquetes
 	};
 })();
 

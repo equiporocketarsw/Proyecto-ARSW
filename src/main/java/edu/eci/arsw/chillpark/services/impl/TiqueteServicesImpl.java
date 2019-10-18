@@ -25,19 +25,19 @@ public class TiqueteServicesImpl implements TiqueteServices{
 
     @Autowired
     private TiqueteRepository tiqrepo;
-    /*
-    @Override
-    public void addTiquete(String tipo){
-        Tiquete t = new Tiquete();
-        t.setTipo(tipo);
-        tiqrepo.saveAndFlush(t);
-    }*/
     
+    @Override
+    public void addTiquete(Tiquete t){
+        
+        tiqrepo.postTiquete(t);
+
+    }
+    /*
     @Override
     public void addTiquete(Tiquete t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    */
     @Override
     public Tiquete getTiquete(int id) throws ChillParkNotFoundException{
         try{
@@ -55,8 +55,7 @@ public class TiqueteServicesImpl implements TiqueteServices{
 
     @Override
     public void modifyTiquete(Tiquete tiq, int id) throws ChillParkPersistenceException{
-        tiqrepo.deleteById(id);
-        tiqrepo.saveAndFlush(tiq);
+        tiqrepo.updateTiquete(tiq, id);
     }
     
 }

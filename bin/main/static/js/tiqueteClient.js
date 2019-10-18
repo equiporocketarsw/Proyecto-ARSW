@@ -61,24 +61,29 @@ tiqueteClient= (function(){
                     alert("Error al asignar"); 
                 }
             });
-        }/*,
+        },
 
-        crearTiquete: function(tipo){
+        crearTiquete: function(tiquete){
 
-            $.ajax({
+            var postTiquete =$.ajax({
                 url: "http://localhost:8080/tiquete/",
                 type: "POST",
                 data: JSON.stringify(tiquete),
                 contentType: "application/json",
-                success: function() {
-
-                   location.href = "/adminMain.html";
-                },
-                 error: function(XMLHttpRequest, textStatus, errorThrown) { 
-                    alert("Error al crear tiquetes"); 
-                }
+                
             });
-        }*/
+
+            postTiquete.then(
+                function () {
+                    console.info("OK");
+                },
+                function () {
+                    alert("ERROR");
+                }
+
+        );
+                return postTiquete;
+        }
         
     };
 })();

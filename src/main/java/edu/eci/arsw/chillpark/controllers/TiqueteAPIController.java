@@ -5,20 +5,22 @@
  */
 package edu.eci.arsw.chillpark.controllers;
 
-import edu.eci.arsw.chillpark.model.Tiquete;
-import edu.eci.arsw.chillpark.persistence.ChillParkPersistenceException;
-import edu.eci.arsw.chillpark.services.TiqueteServices;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestBody;
+
+import edu.eci.arsw.chillpark.model.Tiquete;
+import edu.eci.arsw.chillpark.persistence.ChillParkPersistenceException;
+import edu.eci.arsw.chillpark.services.TiqueteServices;
 
 /**
  *
@@ -56,9 +58,9 @@ public class TiqueteAPIController {
     }
     
     @RequestMapping(method = RequestMethod.POST)	
-    public ResponseEntity<?> manejadorPostRecursoTiquete(@RequestBody Tiquete t){
+    public ResponseEntity<?> manejadorPostRecursoTiquete(@RequestBody Tiquete tiquete){
         try {
-            ts.addTiquete(t);
+            ts.addTiquete(tiquete);
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (Exception ex) {
             Logger.getLogger(TiqueteAPIController.class.getName()).log(Level.SEVERE, null, ex);
