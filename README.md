@@ -2,10 +2,10 @@
 ## ARSW 2019-2
 ## Descripcion:
 ### Con nuestra aplicacion queremos que esas largas horas de fila que hay en parques de diversiones se reduzca de manera muy considerable, haciendo que se aproveche cada segundo de la visita al parque, dando como resultado, una verdadero disfrute de dia.
-# Autores: 
-## Santiago Vega Romero, David Eduardo Caycedo Moyano y Miguel Armando Sanchez Guluma
+## Autores: 
+### Santiago Vega Romero, David Eduardo Caycedo Moyano y Miguel Armando Sanchez Guluma
 
-# (enlace heroku)
+## (enlace heroku)
 
 # Arquitectura de la app
 
@@ -14,9 +14,8 @@
 ![Diagrama de clases](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/clases.png)
 
 ## Diagrama Entidad relación 
-## Diagrama de despliegue
-## Diagrama de casos de uso
-## Diagrama de componentes
+
+
 
 # Intrucciones de uso:
 ## La app cuenta con dos tipos de usuario, una persona natural y el administrador.
