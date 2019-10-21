@@ -11,7 +11,7 @@
 
 ## Diagrama de Clases
 
-![Diagrama de clases](https://raw.githubusercontent.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/clases.png)
+![Diagrama de clases](https://raw.githubusercontent.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/clases.PNG)
 
 ## Diagrama Entidad relación 
 ## Diagrama de despliegue
