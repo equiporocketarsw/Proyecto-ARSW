@@ -7,6 +7,8 @@
 
 ## Enlace heroku: https://chillpark.herokuapp.com
 
+## Codacy: https://app.codacy.com/manual/svega99/Proyecto-ARSW/dashboard
+
 # Arquitectura de la app
 
 ## Diagrama de Clases
