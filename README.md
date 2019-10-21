@@ -5,7 +5,7 @@
 ## Autores: 
 ### Santiago Vega Romero, David Eduardo Caycedo Moyano y Miguel Armando Sanchez Guluma
 
-## https://chillpark.herokuapp.com
+## Enlace heroku: https://chillpark.herokuapp.com
 
 # Arquitectura de la app
 
