@@ -1,7 +1,7 @@
 # CHILLPARK
 ## ARSW 2019-2
 ## Descripcion:
-### Con nuestra aplicacion queremos que esas largas horas de fila que hay en parques de diversiones se reduzca de manera muy considerable, haciendo que se aproveche cada segundo de la visita al parque, dando como resultado, una verdadero disfrute de dia.
+### Con nuestra aplicacion queremos que esos largos tiempos de fila que hay en parques de diversiones se reduzcan de manera muy considerable, haciendo que se aproveche cada segundo de la visita al parque, dando como resultado, un dia realmente provechoso para los usuarios.
 ## Autores: 
 ### Santiago Vega Romero, David Eduardo Caycedo Moyano y Miguel Armando Sanchez Guluma
 
