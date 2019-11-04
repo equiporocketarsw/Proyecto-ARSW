@@ -16,12 +16,22 @@
       href="/webjars/bootstrap/4.1.2/css/bootstrap.min.css" />
       
 	  <script>
-	  $(document).ready(function(){
-		$(".message a").click(function(){
-			
-			$("form").animate({height: "toggle", opacity: "toggle"}, "slow");
-		});
-		});
+	  var data = null;
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function () {
+	if (this.readyState === this.DONE) {
+		console.log(this.responseText);
+	}
+});
+
+xhr.open("GET", "https://cometari-airportsfinder-v1.p.rapidapi.com/api/airports/by-radius?radius=50&lng=-157.895277&lat=21.265600");
+xhr.setRequestHeader("x-rapidapi-host", "cometari-airportsfinder-v1.p.rapidapi.com");
+xhr.setRequestHeader("x-rapidapi-key", "44e05e8a84msh20cfe27fb6ce493p1e0dcdjsnb2c38f63528b");
+
+xhr.send(data);
 	</script>
 	  
       <style>

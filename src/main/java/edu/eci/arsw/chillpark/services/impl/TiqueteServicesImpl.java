@@ -11,6 +11,8 @@ import edu.eci.arsw.chillpark.persistence.ChillParkNotFoundException;
 import edu.eci.arsw.chillpark.persistence.ChillParkPersistenceException;
 import edu.eci.arsw.chillpark.repository.TiqueteRepository;
 import edu.eci.arsw.chillpark.services.TiqueteServices;
+
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -57,5 +59,22 @@ public class TiqueteServicesImpl implements TiqueteServices{
     public void modifyTiquete(Tiquete tiq, int id) throws ChillParkPersistenceException{
         tiqrepo.updateTiquete(tiq, id);
     }
-    
+
+    @Override
+    public List<Tiquete> getTiqueteByUsuario(String usuario) {
+        List<Tiquete> result = new ArrayList<>();
+        System.out.println(usuario);
+        if (usuario.equals("anybody")){
+            result= tiqrepo.findByAnybody();
+
+        }
+        else if(usuario.equals("none")){
+
+            result= tiqrepo.findByNull();
+        }
+        else{
+            result= tiqrepo.findbyUser(usuario);
+        }
+        return result;
+    }
 }

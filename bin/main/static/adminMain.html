@@ -2,6 +2,7 @@
     <title>Chill Park</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="MobileOptimized" content="width" />
 
     <script src="/webjars/jquery/3.1.0/jquery.min.js"></script>
 
@@ -59,14 +60,15 @@ html {
 }
 
 body {
-  background: #52de97; /* fallback for old browsers */
-  background: -webkit-linear-gradient(right, #52de97, #7ee7b3);
-  background: -moz-linear-gradient(right, #52de97, #7ee7b3);
-  background: -o-linear-gradient(right, #52de97, #7ee7b3);
-  background: linear-gradient(to left, #52de97, #7ee7b3);
+  background: #ffafb0; /* fallback for old browsers */
+  background: -webkit-linear-gradient(right, #ffafb0, #ffcccd);
+  background: -moz-linear-gradient(right, #ffafb0, #ffcccd);
+  background: -o-linear-gradient(right, #ffafb0, #ffcccd);
+  background: linear-gradient(to left, #ffafb0, #ffcccd);
+
   
   
-  @include filter-gradient(#394a6d, #201e22, horizontal);
+  @include filter-gradient(#5eb7b7, #72c0c0, horizontal);
   @include background-image(radial-gradient(circle at top,  rgba(83,69,91,1) 0,rgba(32,30,34,1) 70%));
   color: #fff;
   
@@ -121,7 +123,7 @@ h1 {
 .wrapper {
   display: block;
   width: 850px;
-  background: #94ebbf;
+  background: #96d1c7;
   margin: 0 auto;
   padding: 10px 17px;
   -webkit-box-shadow: 2px 2px 3px -1px rgba(0,0,0,0.35);
@@ -136,7 +138,7 @@ h1 {
 
 #keywords thead {
   cursor: pointer;
-  background: #3c9d9b;
+  background: #5eb7b7;
 }
 #keywords thead tr th { 
   font-weight: bold;
@@ -228,11 +230,11 @@ h1 {
   
 }
 .grid-1-5:hover {
-  background-color: rgb(57,74,109);
-  @include filter-gradient(#394a6d, #232e43, vertical);
+  background-color: rgb(94, 183, 183);
+  @include filter-gradient(#5eb7b7, #72c0c0, vertical);
   @include background-image(linear-gradient(top,  rgba(57,74,109,1) 0%,rgba(35,46,67,1) 100%));  
-  border-top: 2px solid #80ff66;
-  border-bottom: 2px solid #95ff80;
+  border-top: 2px solid #000000;
+  border-bottom: 2px solid #000000;
   box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 1);
   transform: scale(1.025);
   z-index: 2;
@@ -265,14 +267,17 @@ h2, h3, p, ul {
   margin: 0
 }
 h2 {
-  font-size: 1em;
-  font-weight: 400;
+  font-size: 1.2em;
+  font-weight: bold;
   margin: 0 0 0.5em;
+  font-family: 'Roboto', Tahoma, sans-serif;
 }
 h3 {
-  font-size: 1.5em;
+  font-size: 1em;
+  font-weight: bold;
   letter-spacing: 0.0625em;
-  margin: 0 0 0.3333333333333333em;
+  margin: 0 0 0.5em;
+  font-family: 'Roboto', Tahoma, sans-serif;
 }
 p {
   font-size: 0.875em;  
@@ -291,7 +296,7 @@ ul {
   }
 }
 .button {
-  background-color: #80ff66;
+  background-color: #fc7978;
   border-radius: 20px;
   color: #fff;
   font-size: 1em;
@@ -315,7 +320,7 @@ sup, .small {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
-  background: #3c9d9b;
+  background: #5eb7b7;
   width: 100%;
   border: 0;
   padding: 15px;
@@ -327,7 +332,7 @@ sup, .small {
   font-weight: 700;
 }
 .otherbutton:hover,.otherbutton:active,.otherbutton:focus {
-  background: #46b9b7;
+  background: #72c0c0;
 }
 
 .inputtype {
@@ -349,11 +354,62 @@ sup, .small {
 	  
 </head>
 
-<body onLoad="atraccionApp.mostrarAtracciones();tiqueteApp.mostrarTiquetes();Module.validarUsuario();Module.validarAdmin();">
+<body onLoad="atraccionApp.mostrarAtracciones();Module.validarUsuario();Module.validarAdmin();">
 	
 	<div class="wrapper">
   <h1>Tiquetes</h1>
+  <h2><p>Buscar:</p></h2>
   
+  
+   <form id = "Buscarpor" action="javascript:tiqueteApp.mostrarTiquetes()"> 
+     <h2>
+      <input type="radio" name="search" id="idSearch" onclick="tiqueteApp.changeDisplay()"> Por ID del tiquete<br>
+
+      <input class="inputtype" id="idABuscar" type="number" style="display:none" placeholder="ID a buscar"/>
+
+      <input type="radio" name="search" id="userSearch" onclick="tiqueteApp.changeDisplay()"> Si esta asignado o no a un usuario<br>
+
+    </h2>
+      <select class="inputtype" name="tipodeAsignacion" id="userAsign" style="display:none" onchange="tiqueteApp.oneUser()">
+          <option value="">Buscar tiquetes:</option>
+          <option value="All">Asignados a cualquier usuario</option>
+          <option value="One">Asignados a un usuario especifico</option>
+          <option value="None">No asignados a ningun usuario</option>
+        </select>
+        
+    <input class="inputtype" id="userABuscar" type="text" style="display:none" placeholder="Usuario a buscar"/>  
+      
+    <h3>
+    <p id="filtros" style="display:none"> Otros filtros:</p>
+
+    <p id="fecha" style="display:none" >
+    <input type="checkbox"  value="Fecha" id="fechacheck" onclick="tiqueteApp.mostrarfecha()"> Fecha
+    </p>
+        <p id="fechaOpt" style="display:none" >
+            <input type="date" name="fecha" id="fechaTiquete">
+        </p>
+
+    <p id="tipo" style="display:none">
+    <input type="checkbox"  value="Tipo" id="tipocheck" onclick="tiqueteApp.mostrartipos()"> Tipo 
+    </p>
+
+        <p id="tipoOpt" style="display:none" >
+            <input type="radio" name="tipo" value="Premium"> Premium<br>
+            <input type="radio" name="tipo" value="Nitro"> Nitro
+        </p>
+
+    <p id="Valido" style="display:none">
+    <input type="checkbox" value="Valido" id="validocheck" onclick="tiqueteApp.mostrarvalidos()"> Valido 
+    </p>
+        <p id="ValidoOpt" style="display:none" >
+            <input type="radio" name="valido" value="true"> Si<br>
+            <input type="radio" name="valido" value="false"> No
+        </p>
+
+    <button  class="otherbutton" id="boton" >Buscar</button>
+  </form>
+    <br>
+      </h3>
   <table id="keywords" cellspacing="0" cellpadding="0">
     <thead>
       <tr>

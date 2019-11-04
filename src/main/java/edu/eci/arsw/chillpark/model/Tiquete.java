@@ -9,7 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
+@Entity(name="tiquete")
 @Table(name="tiquete")
 public class Tiquete implements Serializable{
 

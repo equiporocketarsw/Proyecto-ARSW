@@ -8,6 +8,8 @@ package edu.eci.arsw.chillpark.repository;
 import edu.eci.arsw.chillpark.model.Tiquete;
 import edu.eci.arsw.chillpark.repository.custom.TiqueteRepositoryCustom;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -17,5 +19,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface TiqueteRepository extends JpaRepository<Tiquete, Integer>,TiqueteRepositoryCustom{
+
     
 }

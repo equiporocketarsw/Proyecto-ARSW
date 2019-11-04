@@ -45,6 +45,20 @@ tiqueteClient= (function(){
                 async: true
             });
         },
+
+        getTiquetesbyuser: function(callback,user){
+            jQuery.ajax({
+                url: "tiquete/usuario/"+user,
+                success: function(result) {
+                  callback(result);
+                },
+                 error: function(XMLHttpRequest, textStatus, errorThrown) { 
+                     alert("Error obteniendo tiquete");
+                     
+                } ,
+                async: true
+            });
+        },
         
         asignarTiqueteaUsuario: function(tiquete){
 

@@ -28,4 +28,6 @@ public interface TiqueteServices {
     public List<Tiquete> getTiquetes();
 
     public void modifyTiquete(Tiquete tiq, int id) throws ChillParkPersistenceException;
+
+	public List<Tiquete> getTiqueteByUsuario(String usuario);
 }

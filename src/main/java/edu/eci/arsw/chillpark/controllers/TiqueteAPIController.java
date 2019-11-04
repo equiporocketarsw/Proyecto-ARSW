@@ -56,6 +56,16 @@ public class TiqueteAPIController {
             return new ResponseEntity<>(ex.getMessage(),HttpStatus.NOT_FOUND);
         } 
     }
+
+    @RequestMapping(path="/usuario/{usuario}",method = RequestMethod.GET)
+    public ResponseEntity<?> manejadorGetRecursoTiquetebyUsuario(@PathVariable("usuario") String usuario){
+        try {
+            return new ResponseEntity<>(ts.getTiqueteByUsuario(usuario),HttpStatus.ACCEPTED);
+        } catch (Exception ex) {
+            Logger.getLogger(TiqueteAPIController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>(ex.getMessage(),HttpStatus.NOT_FOUND);
+        } 
+    }
     
     @RequestMapping(method = RequestMethod.POST)	
     public ResponseEntity<?> manejadorPostRecursoTiquete(@RequestBody Tiquete tiquete){

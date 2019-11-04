@@ -267,14 +267,17 @@ h2, h3, p, ul {
   margin: 0
 }
 h2 {
-  font-size: 1em;
-  font-weight: 400;
+  font-size: 1.2em;
+  font-weight: bold;
   margin: 0 0 0.5em;
+  font-family: 'Roboto', Tahoma, sans-serif;
 }
 h3 {
-  font-size: 1.5em;
+  font-size: 1em;
+  font-weight: bold;
   letter-spacing: 0.0625em;
-  margin: 0 0 0.3333333333333333em;
+  margin: 0 0 0.5em;
+  font-family: 'Roboto', Tahoma, sans-serif;
 }
 p {
   font-size: 0.875em;  
@@ -351,25 +354,62 @@ sup, .small {
 	  
 </head>
 
-<body onLoad="atraccionApp.mostrarAtracciones();tiqueteApp.mostrarTiquetes();Module.validarUsuario();Module.validarAdmin();">
+<body onLoad="atraccionApp.mostrarAtracciones();Module.validarUsuario();Module.validarAdmin();">
 	
 	<div class="wrapper">
   <h1>Tiquetes</h1>
-  <h2>Buscar por:</h2>
-  <form id = "Buscarpor" action="#"> 
-      
-    
-    
-  </form>
-  <select name="buscarporlist" form="Buscarpor">
-      <option value="1">ID</option> 
-      <option value="2">Tipo</option> 
-      <option value="3">Fecha</option>
-      <option value="4">Valido</option> 
-      <option value="4">Usuario</option> 
-   </select>
-
+  <h2><p>Buscar:</p></h2>
   
+  
+   <form id = "Buscarpor" action="javascript:tiqueteApp.mostrarTiquetes()"> 
+     <h2>
+      <input type="radio" name="search" id="idSearch" onclick="tiqueteApp.changeDisplay()"> Por ID del tiquete<br>
+
+      <input class="inputtype" id="idABuscar" type="number" style="display:none" placeholder="ID a buscar"/>
+
+      <input type="radio" name="search" id="userSearch" onclick="tiqueteApp.changeDisplay()"> Si esta asignado o no a un usuario<br>
+
+    </h2>
+      <select class="inputtype" name="tipodeAsignacion" id="userAsign" style="display:none" onchange="tiqueteApp.oneUser()">
+          <option value="">Buscar tiquetes:</option>
+          <option value="All">Asignados a cualquier usuario</option>
+          <option value="One">Asignados a un usuario especifico</option>
+          <option value="None">No asignados a ningun usuario</option>
+        </select>
+        
+    <input class="inputtype" id="userABuscar" type="text" style="display:none" placeholder="Usuario a buscar"/>  
+      
+    <h3>
+    <p id="filtros" style="display:none"> Otros filtros:</p>
+
+    <p id="fecha" style="display:none" >
+    <input type="checkbox"  value="Fecha" id="fechacheck" onclick="tiqueteApp.mostrarfecha()"> Fecha
+    </p>
+        <p id="fechaOpt" style="display:none" >
+            <input type="date" name="fecha" id="fechaTiquete">
+        </p>
+
+    <p id="tipo" style="display:none">
+    <input type="checkbox"  value="Tipo" id="tipocheck" onclick="tiqueteApp.mostrartipos()"> Tipo 
+    </p>
+
+        <p id="tipoOpt" style="display:none" >
+            <input type="radio" name="tipo" value="Premium"> Premium<br>
+            <input type="radio" name="tipo" value="Nitro"> Nitro
+        </p>
+
+    <p id="Valido" style="display:none">
+    <input type="checkbox" value="Valido" id="validocheck" onclick="tiqueteApp.mostrarvalidos()"> Valido 
+    </p>
+        <p id="ValidoOpt" style="display:none" >
+            <input type="radio" name="valido" value="true"> Si<br>
+            <input type="radio" name="valido" value="false"> No
+        </p>
+
+    <button  class="otherbutton" id="boton" >Buscar</button>
+  </form>
+    <br>
+      </h3>
   <table id="keywords" cellspacing="0" cellpadding="0">
     <thead>
       <tr>

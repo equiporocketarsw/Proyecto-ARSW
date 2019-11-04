@@ -2,6 +2,7 @@
     <title>Chill Park</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="MobileOptimized" content="width" />
 
     <script src="/webjars/jquery/3.1.0/jquery.min.js"></script>
 
@@ -15,12 +16,22 @@
       href="/webjars/bootstrap/4.1.2/css/bootstrap.min.css" />
       
 	  <script>
-	  $(document).ready(function(){
-		$(".message a").click(function(){
-			
-			$("form").animate({height: "toggle", opacity: "toggle"}, "slow");
-		});
-		});
+	  var data = null;
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function () {
+	if (this.readyState === this.DONE) {
+		console.log(this.responseText);
+	}
+});
+
+xhr.open("GET", "https://cometari-airportsfinder-v1.p.rapidapi.com/api/airports/by-radius?radius=50&lng=-157.895277&lat=21.265600");
+xhr.setRequestHeader("x-rapidapi-host", "cometari-airportsfinder-v1.p.rapidapi.com");
+xhr.setRequestHeader("x-rapidapi-key", "44e05e8a84msh20cfe27fb6ce493p1e0dcdjsnb2c38f63528b");
+
+xhr.send(data);
 	</script>
 	  
       <style>
@@ -60,7 +71,7 @@ header {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
-  background: #3c9d9b;
+  background: #fc7978;
   width: 100%;
   border: 0;
   padding: 15px;
@@ -71,7 +82,7 @@ header {
   cursor: pointer;
 }
 .form button:hover,.form button:active,.form button:focus {
-  background: #46b9b7;
+  background: #fd9b9b;
 }
 .form .message {
   margin: 15px 0 0;
@@ -79,7 +90,7 @@ header {
   font-size: 12px;
 }
 .form .message a {
-  color: #3c9d9b;
+  color: #fc7978;
   text-decoration: none;
 }
 .form .register-form {
@@ -119,11 +130,11 @@ header {
   color: #EF3B3A;
 }
 body {
-  background: #52de97; /* fallback for old browsers */
-  background: -webkit-linear-gradient(right, #52de97, #7ee7b3);
-  background: -moz-linear-gradient(right, #52de97, #7ee7b3);
-  background: -o-linear-gradient(right, #52de97, #7ee7b3);
-  background: linear-gradient(to left, #52de97, #7ee7b3);
+  background: #ffafb0; /* fallback for old browsers */
+  background: -webkit-linear-gradient(right, #ffafb0, #ffcccd);
+  background: -moz-linear-gradient(right, #ffafb0, #ffcccd);
+  background: -o-linear-gradient(right, #ffafb0, #ffcccd);
+  background: linear-gradient(to left, #ffafb0, #ffcccd);
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;      
