@@ -32,11 +32,11 @@ atraccionClient= (function(){
             });
         },
 
-        getAtraccion: function(callback,id){
+        getAtraccion: function(callback,id,tipo){
             jQuery.ajax({
                 url: "atraccion/"+id,
                 success: function(result) {
-                  callback(result);
+                  callback(result,tipo);
                 },
                  error: function(XMLHttpRequest, textStatus, errorThrown) { 
                      alert("Error obteniendo atraccion");

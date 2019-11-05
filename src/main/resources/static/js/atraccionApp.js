@@ -19,21 +19,86 @@ var atraccionApp =( function (){
         }
         
         var darAtraccionporId = function(id){
-            atraccionClient.getAtraccion(cambiarEstado,id);
+            atraccionClient.getAtraccion(cambiarEstado,id,"estado");
 
         }
 
+       var editarAtracccion = function(id){
+            atraccionClient.getAtraccion(cambiarEstado,id,"todo");
+       }
 
-        var cambiarEstado =function(atraccion){
-            var estadoact = atraccion.activo;
-            if (estadoact){
-                atraccion.activo=false;
-            } 
-            else{
-                atraccion.activo=true;
+
+        var cambiarEstado =function(atraccion,tipo){
+            if (tipo=="estado"){
+                var estadoact = atraccion.activo;
+                if (estadoact){
+                    atraccion.activo=false;
+                } 
+                else{
+                    atraccion.activo=true;
+                }
+
+                atraccionClient.changeState(atraccion);
             }
+            else{
+                var n = $('#nombre').val();
+                var c = $('#capacidad').val();
+                var t = $('#tiempo').val();
+                var a = $('#activo').val();
+                var d = $('#descripcion').val();
+                var emx = $('#estaturamax').val();
+                var emn = $('#estaturamin').val();
+                var tp = $('#tipo').val();
+                if (n==""){
 
-            atraccionClient.changeState(atraccion);
+                }
+                else{
+                    atraccion.nombre = n;
+                }
+                if (c==""){
+
+                }
+                else{
+                    atraccion.capacidad = c;
+                }
+                if (t==""){
+
+                }
+                else{
+                    atraccion.tiempo = t;
+                }
+                if (a==""){
+
+                }
+                else{
+                    atraccion.activo = a;
+                }
+                if (d==""){
+
+                }
+                else{
+                    atraccion.descrpcion = d;
+                }
+                if (emx==""){
+
+                }
+                else{
+                    atraccion.estaturamax = emx;
+                }
+                if (emn==""){
+
+                }
+                else{
+                    atraccion.estaturamin = emn;
+                }
+                if (tp==""){
+
+                }
+                else{
+                    atraccion.tipo = tp;
+                }               
+                atraccionClient.changeState(atraccion);
+            }
         }
         
         
@@ -41,8 +106,7 @@ var atraccionApp =( function (){
                    if (tipo=="Editar"){
                        
                        var boton = " <a href=\"\" class=\"button\">"+tipo+"</a></div>"; 
-                       if(atracciones){}
-                       else{}
+                       
                    }
                 else{
                     
@@ -106,7 +170,8 @@ var atraccionApp =( function (){
 		mostrarAtracciones: mostrarAtracciones,
                 imprimirAtracciones: imprimirAtracciones,
                 mostrarAtraccionesCliente: mostrarAtraccionesCliente,
-                darAtraccionporId: darAtraccionporId
+                darAtraccionporId: darAtraccionporId,
+                editarAtracccion: editarAtracccion
 	};
 })();
 
