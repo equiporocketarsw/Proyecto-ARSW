@@ -18,5 +18,7 @@ public interface AtraccionServices {
     public List<Atraccion> getAllAtractions();
 
     public Atraccion getAtraccion(int nombreatraccion) throws ChillParkNotFoundException;
+
+	public void changeState(Atraccion at, int id);
     
 }

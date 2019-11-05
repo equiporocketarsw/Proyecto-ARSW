@@ -30,6 +30,37 @@ atraccionClient= (function(){
                 } ,
                 async: true
             });
+        },
+
+        getAtraccion: function(callback,id){
+            jQuery.ajax({
+                url: "atraccion/"+id,
+                success: function(result) {
+                  callback(result);
+                },
+                 error: function(XMLHttpRequest, textStatus, errorThrown) { 
+                     alert("Error obteniendo atraccion");
+                     
+                } ,
+                async: true
+            });
+        },
+
+        changeState: function(atraccion){
+
+            $.ajax({
+                url: "atraccion/"+atraccion.id,
+                type: "PUT",
+                data: JSON.stringify(atraccion),
+                contentType: "application/json",
+                success: function() {
+
+                   
+                },
+                 error: function(XMLHttpRequest, textStatus, errorThrown) { 
+                    alert("Error al cambiars"); 
+                }
+            });
         }
     };
 })();

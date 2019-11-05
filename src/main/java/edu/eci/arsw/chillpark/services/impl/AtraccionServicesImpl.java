@@ -31,8 +31,14 @@ public class AtraccionServicesImpl implements AtraccionServices{
             return atraccion;
         }
         catch(java.util.NoSuchElementException e){
-           throw new ChillParkNotFoundException("No existe el usuario");
+           throw new ChillParkNotFoundException("No existe la atraccion");
         }    
+    }
+
+    @Override
+    public void changeState(Atraccion at, int id) {
+        atracrepo.changeState(at, id);
+
     }
     
 }

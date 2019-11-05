@@ -17,7 +17,7 @@ public class Atraccion implements Serializable{
         private static final long serialVersionUID = 1L;
         
         
-	@Id
+		@Id
         @Column(name="id")
         int id;
 	
@@ -72,7 +72,17 @@ public class Atraccion implements Serializable{
 	public void addUsuario(Usuario u){
 		this.usuarios.add(u);
 	}
+
+	
 */
+	public int getID(){
+		return id;
+	}
+
+	public void setID(int id){
+		this.id=id;
+	}
+
 	 public String getNombre(){
 		 return nombre;
 	 }
