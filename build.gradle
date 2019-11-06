@@ -43,7 +43,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-websocket')
     compile 'org.springframework.boot:spring-boot-starter-web-services'
 
-    compile('org.springframework:spring-messaging')
+    compile('org.springframework:spring-messaging:4.3.10.RELEASE')
     compile("org.webjars:webjars-locator-core")
     compile("org.webjars:sockjs-client:1.0.2")
     compile("org.webjars:stomp-websocket:2.3.3")
