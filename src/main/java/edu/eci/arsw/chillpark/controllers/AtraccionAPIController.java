@@ -84,17 +84,7 @@ public class AtraccionAPIController {
         }
     }
 
-    @RequestMapping(path = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<?> EditAtraccion(@PathVariable ("id") int id,@RequestBody Atraccion at ){
-        
-        try {
-            as.changeState(at,id);
-            return new ResponseEntity<>(HttpStatus.CREATED);
-        } catch (Exception ex) {
-            Logger.getLogger(AtraccionAPIController.class.getName()).log(Level.SEVERE, null, ex);
-            return new ResponseEntity<>(ex.getMessage(),HttpStatus.FORBIDDEN);
-        }
-    }
+   
     
     
 }
