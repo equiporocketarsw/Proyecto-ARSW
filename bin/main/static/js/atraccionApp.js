@@ -2,12 +2,14 @@ var atraccionApp =( function (){
 	
 	
     var stompClient= null;
+    var estado;
     
 
          var  mostrarAtracciones= function(){
 
             
             atraccionClient.getAtracciones(imprimirAtracciones,"Editar");
+            estado="Admin";
         }
         
         
@@ -16,6 +18,7 @@ var atraccionApp =( function (){
 
             
             atraccionClient.getAtracciones(imprimirAtracciones,"Hacer Fila");
+            estado="Cliente";
         }
         
         var darAtraccionporId = function(id){
@@ -99,10 +102,14 @@ var atraccionApp =( function (){
                 }               
                 atraccionClient.changeState(atraccion);
             }
+     
+            stompClient.send('/atraccion/estado'+estado, {}, JSON.stringify(atraccion));
         }
         
         
        var  imprimirAtracciones= function(atracciones,tipo){
+            $("#tablaAtracciones div").remove(); 
+
                    if (tipo=="Editar"){
                        
                        var boton = " <a href=\"\" class=\"button\">"+tipo+"</a></div>"; 
@@ -126,6 +133,7 @@ var atraccionApp =( function (){
                     else{
                         if(atraccion.activo){
                             var activo="<span style=\"color:green;font-weight:bold\">Abierta</span></br>";
+                            boton = " <a href=\"\" class=\"button\">"+tipo+"</a></div>"; 
                         }
                         else{
                             var activo="<span style=\"color:red;font-weight:bold\">Cerrada</span></br>";
@@ -148,15 +156,23 @@ var atraccionApp =( function (){
         var connectAndSubscribe = function () {
             console.info('Connecting to WS...');
             var socket = new SockJS('/stompendpoint');
+            
             stompClient = Stomp.over(socket);
             
             
+
+            localStorage.setItem("stompClient",stompClient);
     
             stompClient.connect({}, function (frame) {
                 console.log('Connected: ' + frame);
                 
-                stompClient.subscribe('/atraccion/estado', function (eventbody) {
-
+                stompClient.subscribe('/atraccion/estado'+estado, function (eventbody) {
+                    if (estado=="Admin"){
+                        mostrarAtracciones();
+                    }
+                    else if (estado="Cliente"){
+                        mostrarAtraccionesCliente();
+                    }
                     
                     
                 });
@@ -167,11 +183,12 @@ var atraccionApp =( function (){
         };
 	
 	return {
-		mostrarAtracciones: mostrarAtracciones,
+		        mostrarAtracciones: mostrarAtracciones,
                 imprimirAtracciones: imprimirAtracciones,
                 mostrarAtraccionesCliente: mostrarAtraccionesCliente,
                 darAtraccionporId: darAtraccionporId,
-                editarAtracccion: editarAtracccion
+                editarAtracccion: editarAtracccion,
+                connectAndSubscribe: connectAndSubscribe
 	};
 })();
 
