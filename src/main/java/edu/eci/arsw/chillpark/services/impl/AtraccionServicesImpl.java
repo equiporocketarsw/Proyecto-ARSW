@@ -38,7 +38,6 @@ public class AtraccionServicesImpl implements AtraccionServices{
     @Override
     public void changeState(Atraccion at, int id) {
         atracrepo.changeState(at, id);
-
     }
     
 }
