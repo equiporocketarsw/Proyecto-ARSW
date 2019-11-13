@@ -27,6 +27,8 @@ bootJar {
 
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
 
 repositories {
     mavenCentral()
@@ -43,7 +45,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-websocket')
     compile 'org.springframework.boot:spring-boot-starter-web-services'
 
-    compile('org.springframework:spring-messaging:4.3.10.RELEASE')
+    compile('org.springframework:spring-messaging')
     compile("org.webjars:webjars-locator-core")
     compile("org.webjars:sockjs-client:1.0.2")
     compile("org.webjars:stomp-websocket:2.3.3")
@@ -63,7 +65,7 @@ dependencies {
     testCompile group: 'com.h2database', name: 'h2', version: '1.4.199'
 	
 
-
+    compile 'org.apache.maven.plugins:maven-compiler-plugin:3.8.1'
 
 }
 
