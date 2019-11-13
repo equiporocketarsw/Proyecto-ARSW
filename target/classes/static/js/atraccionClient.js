@@ -4,7 +4,7 @@ atraccionClient= (function(){
         saveAtraccion: function(atraccion){
 
             $.ajax({
-                url: "http://localhost:8080/atraccion/" ,
+                url: "atraccion/" ,
                 type: "POST",
                 data: JSON.stringify(atraccion),
                 contentType: "application/json",
@@ -29,6 +29,37 @@ atraccionClient= (function(){
                      
                 } ,
                 async: true
+            });
+        },
+
+        getAtraccion: function(callback,id,tipo){
+            jQuery.ajax({
+                url: "atraccion/"+id,
+                success: function(result) {
+                  callback(result,tipo);
+                },
+                 error: function(XMLHttpRequest, textStatus, errorThrown) { 
+                     alert("Error obteniendo atraccion");
+                     
+                } ,
+                async: true
+            });
+        },
+
+        changeState: function(atraccion){
+
+            $.ajax({
+                url: "atraccion/"+atraccion.id,
+                type: "PUT",
+                data: JSON.stringify(atraccion),
+                contentType: "application/json",
+                success: function() {
+
+                   
+                },
+                 error: function(XMLHttpRequest, textStatus, errorThrown) { 
+                    alert("Error al cambiars"); 
+                }
             });
         }
     };

@@ -4,7 +4,7 @@ tiqueteClient= (function(){
         saveTiquete: function(tiquete){
 
             $.ajax({
-                url: "http://localhost:8080/tiquete/" ,
+                url: "tiquete/" ,
                 type: "POST",
                 data: JSON.stringify(tiquete),
                 contentType: "application/json",
@@ -45,11 +45,25 @@ tiqueteClient= (function(){
                 async: true
             });
         },
+
+        getTiquetesbyuser: function(callback,user){
+            jQuery.ajax({
+                url: "tiquete/usuario/"+user,
+                success: function(result) {
+                  callback(result);
+                },
+                 error: function(XMLHttpRequest, textStatus, errorThrown) { 
+                     alert("Error obteniendo tiquete");
+                     
+                } ,
+                async: true
+            });
+        },
         
         asignarTiqueteaUsuario: function(tiquete){
 
             $.ajax({
-                url: "http://localhost:8080/tiquete/"+tiquete.id,
+                url: "tiquete/"+tiquete.id,
                 type: "PUT",
                 data: JSON.stringify(tiquete),
                 contentType: "application/json",
@@ -61,6 +75,28 @@ tiqueteClient= (function(){
                     alert("Error al asignar"); 
                 }
             });
+        },
+
+        crearTiquete: function(tiquete){
+
+            var postTiquete =$.ajax({
+                url: "tiquete/",
+                type: "POST",
+                data: JSON.stringify(tiquete),
+                contentType: "application/json",
+                
+            });
+
+            postTiquete.then(
+                function () {
+                    console.info("OK");
+                },
+                function () {
+                    alert("ERROR");
+                }
+
+        );
+                return postTiquete;
         }
         
     };
