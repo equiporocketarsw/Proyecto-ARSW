@@ -104,6 +104,7 @@ var atraccionApp =( function (){
             }
      
             stompClient.send('/atraccion/estado'+estado, {}, JSON.stringify(atraccion));
+            stompClient.send('/atraccion/estadoCliente', {}, JSON.stringify(atraccion));
         }
         
         
@@ -167,6 +168,7 @@ var atraccionApp =( function (){
                 console.log('Connected: ' + frame);
                 
                 stompClient.subscribe('/atraccion/estado'+estado, function (eventbody) {
+                   
                     if (estado=="Admin"){
                         mostrarAtracciones();
                     }
