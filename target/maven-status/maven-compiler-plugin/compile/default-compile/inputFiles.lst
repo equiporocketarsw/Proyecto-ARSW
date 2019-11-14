@@ -18,7 +18,7 @@ C:\Users\2133832\Documents\Proyecto-ARSW\src\main\java\edu\eci\arsw\chillpark\se
 C:\Users\2133832\Documents\Proyecto-ARSW\src\main\java\edu\eci\arsw\chillpark\model\Atraccion.java
 C:\Users\2133832\Documents\Proyecto-ARSW\src\main\java\edu\eci\arsw\chillpark\persistence\ChillParkNotFoundException.java
 C:\Users\2133832\Documents\Proyecto-ARSW\src\main\java\edu\eci\arsw\chillpark\controllers\TiqueteAPIController.java
-C:\Users\2133832\Documents\Proyecto-ARSW\src\main\java\edu\eci\arsw\chillpark\controllers\ChillParkWebSocketConfig.java
+C:\Users\2133832\Documents\Proyecto-ARSW\src\main\java\edu\eci\arsw\chillpark\websocket\ChillParkWebSocketConfig.java
 C:\Users\2133832\Documents\Proyecto-ARSW\src\main\java\edu\eci\arsw\chillpark\controllers\UsuarioAPIController.java
 C:\Users\2133832\Documents\Proyecto-ARSW\src\main\java\edu\eci\arsw\chillpark\services\TiqueteServices.java
 C:\Users\2133832\Documents\Proyecto-ARSW\src\main\java\edu\eci\arsw\chillpark\services\UsuarioServices.java

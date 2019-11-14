@@ -5,6 +5,7 @@ edu\eci\arsw\chillpark\persistence\ChillParkPersistenceException.class
 edu\eci\arsw\chillpark\repository\custom\AtraccionRepositoryCustom.class
 edu\eci\arsw\chillpark\repository\impl\TiqueteRepositoryImpl.class
 edu\eci\arsw\chillpark\services\TiqueteServices.class
+edu\eci\arsw\chillpark\websocket\ChillParkWebSocketConfig.class
 edu\eci\arsw\chillpark\services\impl\TiqueteServicesImpl.class
 edu\eci\arsw\chillpark\repository\AtraccionRepository.class
 edu\eci\arsw\chillpark\repository\UsuarioRepository.class
@@ -18,7 +19,6 @@ edu\eci\arsw\chillpark\services\UsuarioServices.class
 edu\eci\arsw\chillpark\model\Atraccion.class
 edu\eci\arsw\chillparkapi\ChillParkAPIApplication.class
 edu\eci\arsw\chillpark\repository\impl\AtraccionRepositoryImpl.class
-edu\eci\arsw\chillpark\controllers\ChillParkWebSocketConfig.class
 edu\eci\arsw\chillpark\persistence\ChillParkNotFoundException.class
 edu\eci\arsw\chillpark\services\AtraccionServices.class
 edu\eci\arsw\chillpark\repository\TiqueteRepository.class
