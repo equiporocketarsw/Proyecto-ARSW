@@ -9,7 +9,6 @@ package edu.eci.arsw.chillpark.repository;
 import edu.eci.arsw.chillpark.model.Atraccion;
 import edu.eci.arsw.chillpark.repository.custom.AtraccionRepositoryCustom;
 
-import javax.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

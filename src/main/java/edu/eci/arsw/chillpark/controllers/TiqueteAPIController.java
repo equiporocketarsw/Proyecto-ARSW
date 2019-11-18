@@ -77,18 +77,7 @@ public class TiqueteAPIController {
             return new ResponseEntity<>("Error al intentar crear el nuevo tiquete",HttpStatus.FORBIDDEN);            
         }
     }
-    /*
-    @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<?> manejadorPostNuevoTiquete(@RequestBody String tipo){
-        try{
-            ts.addTiquete(tipo);
-            return new ResponseEntity<>(HttpStatus.CREATED);
-        } catch(Exception ex){
-            Logger.getLogger(TiqueteAPIController.class.getName()).log(Level.SEVERE, null, ex);
-            return new ResponseEntity<>("Error al intentar crear el nuevo tiquete",HttpStatus.FORBIDDEN);  
-        }
-    }
-    */
+ 
     
     @RequestMapping(path = "/{id}",method = RequestMethod.PUT)	
     public ResponseEntity<?> PutBlueprint(@PathVariable ("id") int id,@RequestBody Tiquete tiq ){

@@ -1,7 +1,6 @@
 package edu.eci.arsw.chillpark.services.impl;
 
 import edu.eci.arsw.chillpark.model.Atraccion;
-import edu.eci.arsw.chillpark.model.Usuario;
 import edu.eci.arsw.chillpark.persistence.ChillParkNotFoundException;
 import edu.eci.arsw.chillpark.repository.AtraccionRepository;
 import edu.eci.arsw.chillpark.services.AtraccionServices;

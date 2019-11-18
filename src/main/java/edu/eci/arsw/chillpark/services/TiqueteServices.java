@@ -9,7 +9,7 @@ import edu.eci.arsw.chillpark.model.Tiquete;
 import edu.eci.arsw.chillpark.persistence.ChillParkNotFoundException;
 import edu.eci.arsw.chillpark.persistence.ChillParkPersistenceException;
 import java.util.List;
-import org.springframework.stereotype.Service;
+
 
 /**
  *

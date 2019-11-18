@@ -5,7 +5,7 @@
  */
 package edu.eci.arsw.chillpark.services.impl;
 
-import edu.eci.arsw.chillpark.model.Atraccion;
+
 import edu.eci.arsw.chillpark.model.Tiquete;
 import edu.eci.arsw.chillpark.persistence.ChillParkNotFoundException;
 import edu.eci.arsw.chillpark.persistence.ChillParkPersistenceException;
