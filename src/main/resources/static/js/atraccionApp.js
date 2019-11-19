@@ -119,7 +119,7 @@ var atraccionApp =( function (){
                    }
                 else{
                     
-                    var boton = " <a href=\"javascript:atraccionApp.hacerFila("+atraccion+")\" class=\"button\">"+tipo+"</a></div>"; 
+                    var boton = " <a href=\"javascript:atraccionApp.hacerFila()\" class=\"button\">"+tipo+"</a></div>"; 
                 }
            
                 atracciones.map(function(atraccion){
@@ -136,7 +136,7 @@ var atraccionApp =( function (){
                         if(atraccion.activo){
                             var activo="<span style=\"color:green;font-weight:bold\"> Abierta </span></br>";
              
-                            boton = " <a href=\"javascript:atraccionApp.hacerFila()\" class=\"button\">"+tipo+"</a></div>"; 
+                            boton = " <a href=\"javascript:atraccionApp.hacerFila("+atraccion+")\" class=\"button\">"+tipo+"</a></div>"; 
                         }
                         else{
                             var activo="<span style=\"color:red;font-weight:bold\">Cerrada</span></br>";
