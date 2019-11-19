@@ -2,7 +2,7 @@ var colaApp =( function (){
 	
 	var addCola = function(){
         var user = sessionStorage.getItem('currentUser');
-        tiqueteClient.getTiquetesbyuser(user);
+        tiqueteClient.getTiquetesbyuser(añadirAlaCola,user);
         
     }
    
