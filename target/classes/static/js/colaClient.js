@@ -18,9 +18,9 @@ apiClient= (function(){
             });
         },
 
-        get: function(username,callback){
+        getColasByUsuario: function(username,callback){
             jQuery.ajax({
-                url: "usuario/" + username ,
+                url: "cola/usuario" + username ,
                 success: function(result) {
                   callback(result);
                 },

@@ -3,6 +3,7 @@ var atraccionApp =( function (){
 	
     var stompClient= null;
     var estado;
+    var atraccionActual=null;
     
 
          var  mostrarAtracciones= function(){
@@ -118,7 +119,7 @@ var atraccionApp =( function (){
                    }
                 else{
                     
-                    var boton = " <a href=\"fila.html\" class=\"button\">"+tipo+"</a></div>"; 
+                    var boton = " <a href=\"javascript:atraccionApp.hacerFila("+atraccion+")\" class=\"button\">"+tipo+"</a></div>"; 
                 }
            
                 atracciones.map(function(atraccion){
@@ -135,7 +136,7 @@ var atraccionApp =( function (){
                         if(atraccion.activo){
                             var activo="<span style=\"color:green;font-weight:bold\"> Abierta </span></br>";
              
-                            boton = " <a href=\"fila.html\" class=\"button\">"+tipo+"</a></div>"; 
+                            boton = " <a href=\"javascript:atraccionApp.hacerFila()\" class=\"button\">"+tipo+"</a></div>"; 
                         }
                         else{
                             var activo="<span style=\"color:red;font-weight:bold\">Cerrada</span></br>";
@@ -184,6 +185,12 @@ var atraccionApp =( function (){
             });
     
         };
+
+        var hacerFila=function(atraccion){
+            atraccionActual=atraccion;
+            location.href = "/fila.html";
+
+        }
 	
 	return {
 		        mostrarAtracciones: mostrarAtracciones,
@@ -191,7 +198,8 @@ var atraccionApp =( function (){
                 mostrarAtraccionesCliente: mostrarAtraccionesCliente,
                 darAtraccionporId: darAtraccionporId,
                 editarAtracccion: editarAtracccion,
-                connectAndSubscribe: connectAndSubscribe
+                connectAndSubscribe: connectAndSubscribe,
+                hacerFila: hacerFila
 	};
 })();
 

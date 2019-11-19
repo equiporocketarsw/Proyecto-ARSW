@@ -1,5 +1,7 @@
 var colaApp =( function (){
-	
+    
+    
+
 	var addCola = function(){
         var user = sessionStorage.getItem('currentUser');
         tiqueteClient.getTiquetesbyuser(añadirAlaCola,user);
@@ -8,8 +10,10 @@ var colaApp =( function (){
    
     var añadirAlaCola=function(tiquetes){
         var tiqDisponibles=tiquetes.length;
-        var name = $('#cantidad').val();
-
+        var cantidadAIngresar = $('#cantidad').val();
+        for (var i=0; i<cantidadAIngresar;i++){
+            
+        }
         
 
     }
