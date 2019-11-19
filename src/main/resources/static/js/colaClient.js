@@ -13,7 +13,7 @@ colaClient= (function(){
                    location.href = "/main.html";
                 },
                  error: function(XMLHttpRequest, textStatus, errorThrown) { 
-                    alert("Error al entrar a la cola"); 
+                    alert("Error al entrar a la cola"+textStatus+" "+ errorThrown); 
                 }
             });
         },
