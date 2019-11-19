@@ -193,9 +193,16 @@ var atraccionApp =( function (){
     
         
         var atraccionActual= function(){
-            document.getElementById('currentAtraccion').innerHTML = sessionStorage.getItem('atraccion');
+            atraccionClient.getAtraccion(imprimirAtraccion,sessionStorage.getItem('atraccion'),"estado");
+            
 
         }
+
+        var imprimirAtraccion=function(atraccion,tipo){
+            document.getElementById('currentAtraccion').innerHTML = atraccion.nombre;
+            sessionStorage.setItem("Objetoatraccion",atraccion);
+        }
+
 	return {
 		        mostrarAtracciones: mostrarAtracciones,
                 imprimirAtracciones: imprimirAtracciones,
