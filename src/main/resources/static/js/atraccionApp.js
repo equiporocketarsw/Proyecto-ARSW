@@ -188,9 +188,14 @@ var atraccionApp =( function (){
 
         var hacerFila=function(atraccion){
             sessionStorage.setItem("atraccion",atraccion);
+            location.href = "/fila.html";
+        }
+    
+        
+        var atraccionActual= function(){
+            document.getElementById('currentAtraccion').innerHTML = sessionStorage.getItem('atraccion');
 
         }
-	
 	return {
 		        mostrarAtracciones: mostrarAtracciones,
                 imprimirAtracciones: imprimirAtracciones,
@@ -198,7 +203,8 @@ var atraccionApp =( function (){
                 darAtraccionporId: darAtraccionporId,
                 editarAtracccion: editarAtracccion,
                 connectAndSubscribe: connectAndSubscribe,
-                hacerFila: hacerFila
+                hacerFila: hacerFila,
+                atraccionActual: atraccionActual
 	};
 })();
 

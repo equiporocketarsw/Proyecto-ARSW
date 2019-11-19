@@ -32,7 +32,7 @@
 	  
 </head>
 
-<body onLoad="atraccionApp.mostrarAtracciones();Module.validarUsuario();Module.validarCliente();">
+<body onLoad="atraccionApp.mostrarAtracciones();Module.validarUsuario();Module.validarCliente();tiqueteApp.numerodeTiquetes();atraccionApp.atraccionActual();">
  
   <div class="container-fluid">
 
@@ -67,7 +67,7 @@
   </div>
 
 	<div class = "wrapper">
-    <h1>Hacer fila</h1>
+    <h1>Hacer fila en <label id="currentAtraccion"></label></h1>
 
     <form id = "Hacerfila" action="javascript:colaApp.addCola()"> 
       <input class="inputtype" id="cantidad" type="number" placeholder="Cuantas personas haran fila para la atraccion?"/>
