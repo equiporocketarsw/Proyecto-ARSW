@@ -20,7 +20,7 @@ var colaApp =( function (){
         else{
             for (var i=0;i<cantidadAIngresar;i++){
                 var cola={"atraccion":atraccion,"tiquete":tiquetes[i].id}
-                alert(cola);
+                alert(JSON.stringify(cola));
                 colaClient.saveCola(cola);
             }
 
