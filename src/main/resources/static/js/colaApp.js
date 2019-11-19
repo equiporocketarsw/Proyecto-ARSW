@@ -18,10 +18,11 @@ var colaApp =( function (){
 
         }
         else{
-            tiquetes.map(function(tiquete){
-                var cola={"atraccion":atraccion,"tiquete":tiquete}
+            for (var i=0;i<cantidadAIngresar;i++){
+                var cola={"atraccion":atraccion,"tiquete":tiquetes[i]}
                 colaClient.saveCola(cola);
-            })
+            }
+
 
         }
         
