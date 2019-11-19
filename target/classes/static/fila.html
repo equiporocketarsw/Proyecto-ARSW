@@ -13,6 +13,8 @@
         <script src="js/atraccionClient.js"></script>
         <script src="js/tiqueteApp.js"></script>
         <script src="js/tiqueteClient.js"></script>
+        <script src="js/colaApp.js"></script>
+        <script src="js/colaClient.js"></script>
 	
 	
     <link rel="stylesheet"
@@ -35,9 +37,9 @@
 	<div class = "wrapper">
     <h1>Hacer fila</h1>
 
-    <form id = "Hacerfila" action=""> 
+    <form id = "Hacerfila" action="javascript:colaApp.addCola()"> 
       <input class="inputtype" id="cantidad" type="number" placeholder="Cuantas personas haran fila para la atraccion?"/>
-      <button class="otherbutton" id="aceptar" onclick="location.href='main.html'">Aceptar</button>
+      <button class="otherbutton" id="aceptar">Aceptar</button>
     </form>
 
 
