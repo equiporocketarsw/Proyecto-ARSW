@@ -95,12 +95,12 @@ public class ColaAPIController {
     @RequestMapping(method = RequestMethod.POST)	
     public ResponseEntity<?> PostRecursoCola(@RequestBody Atraccionusuario cola){
         
-        try {
+       /* try {*/
             cs.addQueue(cola);
-            return new ResponseEntity<>(HttpStatus.CREATED);
+            return new ResponseEntity<>(HttpStatus.CREATED);/*
         } catch (Exception ex) {
             Logger.getLogger(UsuarioAPIController.class.getName()).log(Level.SEVERE, null, ex);
-            return new ResponseEntity<>(ex.getMessage(),HttpStatus.FORBIDDEN);            
+            return new ResponseEntity<>(ex.getMessage(),HttpStatus.FORBIDDEN);        */    
         }        
 
     }
