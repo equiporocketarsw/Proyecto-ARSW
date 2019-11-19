@@ -15,7 +15,7 @@ public class ColaID implements Serializable {
 
 
     private int atraccion;
-    private String usuario;
+    private int tiquete;
  
     // default constructor
     public ColaID()
@@ -24,9 +24,9 @@ public class ColaID implements Serializable {
     }
 
 
-    public ColaID(int atraccion, String usuario) {
+    public ColaID(int atraccion, int tiquete) {
         this.atraccion = atraccion;
-        this.usuario = usuario;
+        this.tiquete = tiquete;
     }
  
     public int getAtraccion(){
@@ -37,11 +37,11 @@ public class ColaID implements Serializable {
 		this.atraccion=atraccion;
 	}
 
-	 public String getUsuario(){
-		 return usuario;
+	 public int getTiquete(){
+		 return tiquete;
 	 }
 
-	 public void setUsuario(String usuario){
-		 this.usuario = usuario;
+	 public void setTiquete(int Tiquete){
+		 this.tiquete = tiquete;
 	 }
 }

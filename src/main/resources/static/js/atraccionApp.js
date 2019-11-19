@@ -134,6 +134,7 @@ var atraccionApp =( function (){
                     else{
                         if(atraccion.activo){
                             var activo="<span style=\"color:green;font-weight:bold\"> Abierta </span></br>";
+             
                             boton = " <a href=\"fila.html\" class=\"button\">"+tipo+"</a></div>"; 
                         }
                         else{

@@ -43,11 +43,11 @@ public class ColaAPIController {
      }
         
         
-    @RequestMapping(path = "/{atraccion}/{usuario}", method = RequestMethod.GET)
-    public ResponseEntity<?> getUsuario(@PathVariable(name = "atraccion") int idatraccion,@PathVariable(name = "usuario") String usuario) {
+    @RequestMapping(path = "/{atraccion}/{tiquete}", method = RequestMethod.GET)
+    public ResponseEntity<?> getUsuario(@PathVariable(name = "atraccion") int idatraccion,@PathVariable(name = "tiquete") int tiquete) {
         try {
  
-            Atraccionusuario cola = cs.getCola(idatraccion,usuario);
+            Atraccionusuario cola = cs.getCola(idatraccion,tiquete);
             return new ResponseEntity<>(cola, HttpStatus.ACCEPTED);
 
         } catch (Exception ex) {
@@ -56,7 +56,7 @@ public class ColaAPIController {
     }
 
     @RequestMapping(path = "/atraccion/{atraccion}", method = RequestMethod.GET)
-    public ResponseEntity<?> getUsuariosByAtraccion(@PathVariable(name = "atraccion") int atraccion) {
+    public ResponseEntity<?> getTiquetesByAtraccion(@PathVariable(name = "atraccion") int atraccion) {
         /*try {*/
  
             return new ResponseEntity<>(cs.findByAtraccion(atraccion), HttpStatus.ACCEPTED);
@@ -66,15 +66,16 @@ public class ColaAPIController {
         }*/
     }
     
-    @RequestMapping(path = "/usuario/{usuario}", method = RequestMethod.GET)
-    public ResponseEntity<?> getAtraccionByUsuario(@PathVariable(name = "usuario") String usuario) {
-        try {
+    @RequestMapping(path = "/tiquete/{tiquete}", method = RequestMethod.GET)
+    public ResponseEntity<?> getAtraccionByTiquete(@PathVariable(name = "tiquete") int tiquete) {
+        /*try {*/
  
-            return new ResponseEntity<>(cs.findByUsuario(usuario), HttpStatus.ACCEPTED);
-
+            return new ResponseEntity<>(cs.findByTiquete(tiquete), HttpStatus.ACCEPTED);
+/*
         } catch (Exception ex) {
             return new ResponseEntity<>("Error al encontrar atracciones", HttpStatus.NOT_FOUND);
         }
+        */
     }
 
     @RequestMapping(method = RequestMethod.POST)	

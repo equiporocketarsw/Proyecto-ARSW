@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import edu.eci.arsw.chillpark.model.Atraccion;
 import edu.eci.arsw.chillpark.model.Atraccionusuario;
 import edu.eci.arsw.chillpark.model.ColaID;
-import edu.eci.arsw.chillpark.model.Usuario;
+import edu.eci.arsw.chillpark.model.Tiquete;
 import edu.eci.arsw.chillpark.persistence.ChillParkNotFoundException;
 import edu.eci.arsw.chillpark.repository.ColaRepository;
 import edu.eci.arsw.chillpark.services.ColaServices;
@@ -30,20 +30,20 @@ public class ColaServicesImpl implements ColaServices {
     }
 
     @Override
-    public Atraccionusuario getCola(int atraccion, String usuario) throws ChillParkNotFoundException {
-        ColaID id = new ColaID(atraccion, usuario);
+    public Atraccionusuario getCola(int atraccion, int tiquete) throws ChillParkNotFoundException {
+        ColaID id = new ColaID(atraccion,tiquete);
         return colarepo.findById(id).get();
     }
 
     @Override
-    public List<Usuario> findByAtraccion(int atraccion) {
+    public List<Tiquete> findByAtraccion(int atraccion) {
        
         return colarepo.findByAtraccion(atraccion);
     }
 
     @Override
-    public List<Atraccion> findByUsuario(String usuario) {
-        return colarepo.findByUsuario(usuario);
+    public List<Atraccion> findByTiquete(int tiquete) {
+        return colarepo.findByUsuario(tiquete);
     }
 
     @Override
