@@ -19,7 +19,7 @@ var colaApp =( function (){
         }
         else{
             for (var i=0;i<cantidadAIngresar;i++){
-                var cola={"atraccion":atraccion,"tiquete":tiquetes[i].id}
+                var cola={"atraccion":parseInt(atraccion),"tiquete":tiquetes[i].id}
                 alert(JSON.stringify(cola));
                 colaClient.saveCola(cola);
             }
