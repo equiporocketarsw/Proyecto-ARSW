@@ -17,9 +17,16 @@ var colaApp =( function (){
             alert("Cantidad de tiquetes ingresados no es suficiente para que esa cantidad de personas hagan fila");
 
         }
-        for (var i=0; i<cantidadAIngresar;i++){
-            
+        else{
+            for (var i=0;i<cantidadAIngresar;i++){
+                var cola={"atraccion":parseInt(atraccion),"tiquete":tiquetes[i].id}
+                alert(JSON.stringify(cola));
+                colaClient.saveCola(cola);
+            }
+
+
         }
+        
         
 
     }

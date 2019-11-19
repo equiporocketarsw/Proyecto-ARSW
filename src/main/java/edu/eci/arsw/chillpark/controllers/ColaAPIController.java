@@ -100,8 +100,8 @@ public class ColaAPIController {
             return new ResponseEntity<>(HttpStatus.CREATED);/*
         } catch (Exception ex) {
             Logger.getLogger(UsuarioAPIController.class.getName()).log(Level.SEVERE, null, ex);
-            return new ResponseEntity<>(ex.getMessage(),HttpStatus.FORBIDDEN);        */    
-        }        
+            return new ResponseEntity<>(ex.getMessage(),HttpStatus.FORBIDDEN);        
+        }        */
 
     }
     
