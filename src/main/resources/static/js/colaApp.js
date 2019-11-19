@@ -11,15 +11,20 @@ var colaApp =( function (){
    
     var añadirAlaCola=function(tiquetes){
         var tiqDisponibles=tiquetes.length;
-        var atraccion = sessionStorage.getItem('atraccion');
+        var atraccion = sessionStorage.getItem('Objetoatraccion');
         var cantidadAIngresar = $('#cantidad').val();
         if (cantidadAIngresar>tiqDisponibles){
             alert("Cantidad de tiquetes ingresados no es suficiente para que esa cantidad de personas hagan fila");
 
         }
-        for (var i=0; i<cantidadAIngresar;i++){
-            
+        else{
+            tiquetes.map(function(tiquete){
+                var cola={"atraccion":atraccion,"tiquete":tiquete}
+                colaClient.saveCola(cola);
+            })
+
         }
+        
         
 
     }

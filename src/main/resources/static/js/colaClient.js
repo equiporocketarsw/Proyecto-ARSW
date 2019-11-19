@@ -1,4 +1,4 @@
-apiClient= (function(){
+colaClient= (function(){
     return {
 
         saveCola: function(cola){
@@ -10,10 +10,10 @@ apiClient= (function(){
                 contentType: "application/json",
                 success: function() {
                   alert("Cola del tiquete "+cola.tiquete+" en la fila "+ cola.atraccion+"creado satisfactoriamente");
-                   location.href = "/index.html";
+                   location.href = "/main.html";
                 },
                  error: function(XMLHttpRequest, textStatus, errorThrown) { 
-                    alert("Error: Nombre de usuario ya tomado"); 
+                    alert("Error al entrar a la cola"); 
                 }
             });
         },
