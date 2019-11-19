@@ -18,7 +18,7 @@ apiClient= (function(){
             });
         },
 
-        checkPassword: function(username,callback){
+        get: function(username,callback){
             jQuery.ajax({
                 url: "usuario/" + username ,
                 success: function(result) {

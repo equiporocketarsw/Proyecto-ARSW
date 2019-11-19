@@ -7,7 +7,10 @@ var colaApp =( function (){
     }
    
     var añadirAlaCola=function(tiquetes){
-        alert(tiquetes.length);
+        var tiqDisponibles=tiquetes.length;
+        var name = $('#cantidad').val();
+
+        
 
     }
 	

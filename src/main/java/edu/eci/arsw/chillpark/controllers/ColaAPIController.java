@@ -78,6 +78,20 @@ public class ColaAPIController {
         */
     }
 
+    @RequestMapping(path = "/usuario/{usuario}", method = RequestMethod.GET)
+    public ResponseEntity<?> colasByUsers(@PathVariable(name = "usuario") String usuario) {
+        /*try {*/
+ 
+            return new ResponseEntity<>(cs.colasByUsuario(usuario), HttpStatus.ACCEPTED);
+/*
+        } catch (Exception ex) {
+            return new ResponseEntity<>("Error al encontrar atracciones", HttpStatus.NOT_FOUND);
+        }
+        */
+    }
+
+    
+
     @RequestMapping(method = RequestMethod.POST)	
     public ResponseEntity<?> PostRecursoCola(@RequestBody Atraccionusuario cola){
         

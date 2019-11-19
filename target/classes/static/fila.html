@@ -33,7 +33,39 @@
 </head>
 
 <body onLoad="atraccionApp.mostrarAtracciones();Module.validarUsuario();Module.validarCliente();">
-	<br>
+ 
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col" style="background-color:#5eb7b7">
+        <h1>Usuario: <label id="currentUser"></label> </h1>
+
+      </div>
+      <div class="col" style="background-color:#5eb7b7">
+        <h1> N° de tiquetes: <label id="numtiquetes"></label> </h1>
+
+      </div>
+      <div class="col col-lg-2" style="background-color:#5eb7b7">
+        <form action="main.html">
+
+          <button class="otherbutton">Volver</button>
+
+        </form>
+
+        <form action="javascript:Module.cerrarSesion();">
+
+          <button class="otherbutton">Log out</button>
+
+        </form>
+
+
+      </div>
+    </div>
+
+
+    <br />
+  </div>
+
 	<div class = "wrapper">
     <h1>Hacer fila</h1>
 

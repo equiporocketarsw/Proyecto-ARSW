@@ -17,5 +17,8 @@ public interface ColaRepositoryCustom {
     @Transactional
     public List<Atraccion> findByUsuario(int tiquete);
 
+    @Transactional
+    public List<Tiquete> ColasByUsuario(String user);
+
     
 }

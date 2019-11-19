@@ -38,6 +38,14 @@ public class ColaRepositoryImpl implements ColaRepositoryCustom {
         return query.getResultList();
     }
 
+     @Override
+    public List<Tiquete> ColasByUsuario(String user) {
+        Query query = entityManager.createQuery("select t from Atraccionusuario au , tiquete t where  t.id=au.tiquete and  t.usuario=:username group by  t.id", Tiquete.class);
+        
+        query.setParameter("username", user);
+        return query.getResultList();
+    }
+
 
 
 }
