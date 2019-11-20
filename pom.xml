@@ -3,10 +3,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>edu.eci.pdsw.examples</groupId>
-	<artifactId>chillpark-api</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	
+
+    <groupId>org.springframework</groupId>
+    <artifactId>gs-messaging-stomp-websocket</artifactId>
+    <version>0.1.0</version>
+
 
 	<name>ChilPark_API</name>
 	<description>Demo project for Spring Boot</description>
@@ -106,6 +108,16 @@
                     <groupId>org.webjars</groupId>
                     <artifactId>stomp-websocket</artifactId>
                     <version>2.3.3-1</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.webjars</groupId>
+                    <artifactId>bootstrap</artifactId>
+                    <version>3.3.7</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.webjars</groupId>
+                    <artifactId>jquery</artifactId>
+                    <version>3.1.0</version>
                 </dependency>
 
 
