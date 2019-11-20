@@ -6,9 +6,9 @@
 package edu.eci.arsw.chillpark.controllers;
 
 import edu.eci.arsw.chillpark.model.Atraccion;
-import edu.eci.arsw.chillpark.model.Usuario;
+
 import edu.eci.arsw.chillpark.services.AtraccionServices;
-import edu.eci.arsw.chillpark.services.impl.AtraccionServicesImpl;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

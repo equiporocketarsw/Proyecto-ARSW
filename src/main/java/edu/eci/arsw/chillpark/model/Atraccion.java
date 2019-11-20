@@ -1,12 +1,11 @@
 package edu.eci.arsw.chillpark.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+
 import javax.persistence.Column;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -47,34 +46,12 @@ public class Atraccion implements Serializable{
           @Column(name="tipo")
 	String tipo;
         
-       /* ArrayList<Usuario> usuarios;*/
+      
         
 	public Atraccion() {
-            /*
-		this.nombre = nombre;
-		this.capacidad = capacidad;
-		this.tiempo = tiempo;
-		usuarios = new ArrayList<Usuario>();*/
-	}
-/*
-	public ArrayList<Usuario> getUsuarios(){
-		return usuarios;
+           
 	}
 
-	public Usuario getUsuario(int i){
-		return usuarios.get(i);
-	}
-
-	public void setUsuario(ArrayList<Usuario> usuarios){
-		this.usuarios = usuarios;
-	}
-	
-	public void addUsuario(Usuario u){
-		this.usuarios.add(u);
-	}
-
-	
-*/
 	public int getID(){
 		return id;
 	}

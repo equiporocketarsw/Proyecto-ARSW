@@ -11,6 +11,11 @@ package edu.eci.arsw.chillpark.persistence;
  */
 public class ChillParkPersistenceException extends Exception {
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+
     public ChillParkPersistenceException(String message) {
     }
     

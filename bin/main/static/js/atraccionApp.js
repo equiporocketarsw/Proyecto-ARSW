@@ -104,6 +104,7 @@ var atraccionApp =( function (){
             }
      
             stompClient.send('/atraccion/estado'+estado, {}, JSON.stringify(atraccion));
+            stompClient.send('/atraccion/estadoCliente', {}, JSON.stringify(atraccion));
         }
         
         
@@ -112,12 +113,12 @@ var atraccionApp =( function (){
 
                    if (tipo=="Editar"){
                        
-                       var boton = " <a href=\"\" class=\"button\">"+tipo+"</a></div>"; 
+                       var boton = " <a href=\"editarAtraccion.html\" class=\"button\">"+tipo+"</a></div>"; 
                        
                    }
                 else{
                     
-                    var boton = " <a href=\"\" class=\"button\">"+tipo+"</a></div>"; 
+                    var boton = " <a href=\"fila.html\" class=\"button\">"+tipo+"</a></div>"; 
                 }
            
                 atracciones.map(function(atraccion){
@@ -132,8 +133,8 @@ var atraccionApp =( function (){
                     }
                     else{
                         if(atraccion.activo){
-                            var activo="<span style=\"color:green;font-weight:bold\">Abierta</span></br>";
-                            boton = " <a href=\"\" class=\"button\">"+tipo+"</a></div>"; 
+                            var activo="<span style=\"color:green;font-weight:bold\"> Abierta </span></br>";
+                            boton = " <a href=\"fila.html\" class=\"button\">"+tipo+"</a></div>"; 
                         }
                         else{
                             var activo="<span style=\"color:red;font-weight:bold\">Cerrada</span></br>";
@@ -167,6 +168,7 @@ var atraccionApp =( function (){
                 console.log('Connected: ' + frame);
                 
                 stompClient.subscribe('/atraccion/estado'+estado, function (eventbody) {
+                   
                     if (estado=="Admin"){
                         mostrarAtracciones();
                     }

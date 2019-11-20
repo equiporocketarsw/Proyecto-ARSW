@@ -8,11 +8,10 @@ package edu.eci.arsw.chillpark.controllers;
 import edu.eci.arsw.chillpark.model.Usuario;
 import edu.eci.arsw.chillpark.services.UsuarioServices;
 
-import edu.eci.arsw.chillpark.services.impl.UsuarioServicesImpl;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
