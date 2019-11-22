@@ -13,6 +13,8 @@
         <script src="js/atraccionClient.js"></script>
         <script src="js/tiqueteApp.js"></script>
         <script src="js/tiqueteClient.js"></script>
+        <script src="js/colaApp.js"></script>
+        <script src="js/colaClient.js"></script>
 	
 	
     <link rel="stylesheet"
@@ -30,14 +32,46 @@
 	  
 </head>
 
-<body onLoad="atraccionApp.mostrarAtracciones();Module.validarUsuario();Module.validarAdmin();">
-	<br>
-	<div class = "wrapper">
-    <h1>Hacer fila</h1>
+<body onLoad="atraccionApp.mostrarAtracciones();Module.validarUsuario();Module.validarCliente();tiqueteApp.numerodeTiquetes();atraccionApp.atraccionActual();">
+ 
+  <div class="container-fluid">
 
-    <form id = "Hacerfila" action="javascript:atraccionApp.cambiarEstado()"> 
+    <div class="row">
+      <div class="col" style="background-color:#5eb7b7">
+        <h1>Usuario: <label id="currentUser"></label> </h1>
+
+      </div>
+      <div class="col" style="background-color:#5eb7b7">
+        <h1> N° de tiquetes: <label id="numtiquetes"></label> </h1>
+
+      </div>
+      <div class="col col-lg-2" style="background-color:#5eb7b7">
+        <form action="main.html">
+
+          <button class="otherbutton">Volver</button>
+
+        </form>
+
+        <form action="javascript:Module.cerrarSesion();">
+
+          <button class="otherbutton">Log out</button>
+
+        </form>
+
+
+      </div>
+    </div>
+
+
+    <br />
+  </div>
+
+	<div class = "wrapper">
+    <h1>Hacer fila en <label id="currentAtraccion"></label></h1>
+
+    <form id = "Hacerfila" action="javascript:colaApp.addCola()"> 
       <input class="inputtype" id="cantidad" type="number" placeholder="Cuantas personas haran fila para la atraccion?"/>
-      <button class="otherbutton" id="aceptar" onclick="location.href='main.html'">Aceptar</button>
+      <button class="otherbutton" id="aceptar">Aceptar</button>
     </form>
 
 

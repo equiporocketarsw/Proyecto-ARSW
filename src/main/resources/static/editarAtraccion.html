@@ -30,26 +30,11 @@
 	  
 </head>
 
-<body onLoad="atraccionApp.mostrarAtracciones();Module.validarUsuario();Module.validarAdmin();">
+<body onLoad="atraccionApp.mostrarEditar();">
 	<br>
-	<div class = "wrapper">
-    <h1>Editar Atraccion</h1>
-
-    <form id = "EditarAtraccion" action="javascript:atraccionApp.cambiarEstado()"> 
-      <input class="inputtype" id="nombre" type="text" placeholder="Nombre de la atraccion"/>
-      <input class="inputtype" id="capacidad" type="number" placeholder="Capacidad de la atraccion"/>
-      <input class="inputtype" id="tiempo" type="number" placeholder="Tiempo de la atraccion(minutos)"/>
-      <input class="inputtype" id="activo" type="number" placeholder="Estado de la atraccion"/>
-      <input class="inputtype" id="descripcion" type="number" placeholder="Descripcion de la atraccion"/>
-      <input class="inputtype" id="estaturamax" type="number" placeholder="Estatura maxima de la atraccion(centimetros)"/>
-      <input class="inputtype" id="estaturamin" type="number" placeholder="Estatura minima de la atraccion(centimetros)"/>
-      <input class="inputtype" id="tipo" type="text" placeholder="tipo de la atraccion"/>
-      <button class="otherbutton" id="aceptar" onclick="location.href='adminMain.html'">Aceptar</button>
-    </form>
-
-
+	<div class = "container" id="editarAtracciones">
   </div>
-</br>
+  </br>
 
 	
 	
