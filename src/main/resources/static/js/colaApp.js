@@ -53,12 +53,15 @@ var colaApp =( function (){
     }
 
     var connectAndSubscribe = function () {
+
+        estado=sessionStorage.getItem('currentRol'); 
+
         console.info('Connecting to WS...');
         var socket = new SockJS('/stompendpoint');
         
         stompClient = Stomp.over(socket);
         
-        var estado=sessionStorage.getItem('currentRol'); 
+        
 
         stompClient.connect({}, function (frame) {
             console.log('Connected: ' + frame);
