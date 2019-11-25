@@ -9,7 +9,7 @@ colaClient= (function(){
                 data: JSON.stringify(cola),
                 contentType: "application/json",
                 success: function() {
-                  alert("Cola del tiquete "+cola.tiquete+" en la fila "+ cola.atraccion+"creado satisfactoriamente");
+                   
                    location.href = "/main.html";
                 },
                  error: function(XMLHttpRequest, textStatus, errorThrown) { 
