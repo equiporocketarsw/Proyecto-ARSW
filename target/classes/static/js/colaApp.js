@@ -3,6 +3,8 @@ var colaApp =( function (){
     var atraccion ;
     var numTiquetesUsados;    
     var user;
+    var estado;
+    var stompClient= null;
 
 	var addCola = function(){
         user = sessionStorage.getItem('currentUser');
@@ -39,7 +41,10 @@ var colaApp =( function (){
 
                     colaClient.saveCola(cola);
                 }
+                stompClient.send('/cola/estadoAdmin', {}, JSON.stringify(tiquetes));
+                stompClient.send('/cola/estadoCliente', {}, JSON.stringify(tiquetes));
                 alert(cantidadAIngresar+" personas mas dentro de la cola");
+                
             }
         
         }
@@ -48,11 +53,45 @@ var colaApp =( function (){
         }
 
     }
+
+    var connectAndSubscribe = function () {
+
+        estado=sessionStorage.getItem('currentRol'); 
+
+        console.info('Connecting to WS...');
+        var socket = new SockJS('/stompendpoint');
+        
+        stompClient = Stomp.over(socket);
+        
+        
+
+        stompClient.connect({}, function (frame) {
+            console.log('Connected: ' + frame);
+
+            stompClient.subscribe('/cola/estado'+estado, function (eventbody) {
+               alert(estado);
+                if (estado=="Admin"){
+                    alert("admin");
+                    atraccionApp.mostrarAtracciones();
+                }
+                else if (estado=="Cliente"){
+                    alert("cliente");
+                    atraccionApp.mostrarAtraccionesCliente();
+                }
+                
+                
+            });
+            
+            
+        });
+
+    };
 	
 	return {
         addCola: addCola,
         añadirAlaCola: añadirAlaCola,
-        añadirCola: añadirCola
+        añadirCola: añadirCola,
+        connectAndSubscribe: connectAndSubscribe
                 
 	};
 })();
