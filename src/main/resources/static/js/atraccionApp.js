@@ -163,9 +163,7 @@ var atraccionApp =( function (){
             
             stompClient = Stomp.over(socket);
             
-            
 
-            localStorage.setItem("stompClient",stompClient);
     
             stompClient.connect({}, function (frame) {
                 console.log('Connected: ' + frame);

@@ -59,7 +59,7 @@ var colaApp =( function (){
         
         
 
-        localStorage.setItem("stompClient",stompClient);
+
 
         stompClient.connect({}, function (frame) {
             console.log('Connected: ' + frame);
