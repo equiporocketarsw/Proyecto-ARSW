@@ -40,6 +40,8 @@ var colaApp =( function (){
                     colaClient.saveCola(cola);
                 }
                 alert(cantidadAIngresar+" personas mas dentro de la cola");
+                stompClient.send('/cola/estadoAdmin', {}, JSON.stringify(atraccion));
+                stompClient.send('/cola/estadoCliente', {}, JSON.stringify(atraccion));
             }
         
         }
@@ -48,11 +50,42 @@ var colaApp =( function (){
         }
 
     }
+
+    var connectAndSubscribe = function () {
+        console.info('Connecting to WS...');
+        var socket = new SockJS('/stompendpoint');
+        
+        stompClient = Stomp.over(socket);
+        
+        
+
+        localStorage.setItem("stompClient",stompClient);
+
+        stompClient.connect({}, function (frame) {
+            console.log('Connected: ' + frame);
+            
+            stompClient.subscribe('/cola/estado'+estado, function (eventbody) {
+               
+                if (estado=="Admin"){
+                    atraccionApp.mostrarAtracciones();
+                }
+                else if (estado="Cliente"){
+                    atraccionApp.mostrarAtraccionesCliente();
+                }
+                
+                
+            });
+            
+            
+        });
+
+    };
 	
 	return {
         addCola: addCola,
         añadirAlaCola: añadirAlaCola,
-        añadirCola: añadirCola
+        añadirCola: añadirCola,
+        connectAndSubscribe: connectAndSubscribe
                 
 	};
 })();
