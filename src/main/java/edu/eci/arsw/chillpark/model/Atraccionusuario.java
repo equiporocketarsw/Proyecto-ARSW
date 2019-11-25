@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 import edu.eci.arsw.chillpark.model.ColaID;
 
-@Entity
+@Entity(name="atraccionusuario")
 @IdClass(ColaID.class)
 @Table(name="atraccionusuario")
 public class Atraccionusuario implements Serializable{
@@ -61,7 +61,7 @@ public class Atraccionusuario implements Serializable{
 		 return tiquete;
 	 }
 
-	 public void setTiquete(int Tiquete){
+	 public void setTiquete(int tiquete){
 		 this.tiquete = tiquete;
 	 }
 

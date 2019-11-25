@@ -5,11 +5,14 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import edu.eci.arsw.chillpark.model.Atraccion;
+import edu.eci.arsw.chillpark.model.Atraccionusuario;
 import edu.eci.arsw.chillpark.model.Tiquete;
 
 
 public interface ColaRepositoryCustom {
     
+    @Transactional
+    public void addQueue(Atraccionusuario cola);
     
     @Transactional
     public List<Tiquete> findByAtraccion(int atraccion);

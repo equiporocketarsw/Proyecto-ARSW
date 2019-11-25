@@ -20,7 +20,7 @@ colaClient= (function(){
 
         getColasByUsuario: function(username,callback){
             jQuery.ajax({
-                url: "cola/usuario" + username ,
+                url: "cola/usuario/" + username ,
                 success: function(result) {
                   callback(result);
                 },
@@ -34,7 +34,20 @@ colaClient= (function(){
 
         getColasByAtraccion: function(atraccion,callback){
             jQuery.ajax({
-                url: "cola/atraccion" + atraccion ,
+                url: "cola/atraccion/" + atraccion ,
+                success: function(result) {
+                  callback(result);
+                },
+                 error: function(XMLHttpRequest, textStatus, errorThrown) { 
+                     alert("Usuario no encontrado");
+                     
+                } ,
+                async: true
+            });
+        },
+        getcolasByAtraccionAndUser: function(atraccion,username,callback){
+            jQuery.ajax({
+                url: "cola/atraccion/" + atraccion +"/usuario/"+username,
                 success: function(result) {
                   callback(result);
                 },

@@ -1,33 +1,42 @@
 var colaApp =( function (){
     
+    var atraccion ;
     
 
 	var addCola = function(){
         var user = sessionStorage.getItem('currentUser');
-        
-        tiqueteClient.getTiquetesbyuser(añadirAlaCola,user);
+        atraccion = sessionStorage.getItem('atraccion');
+        colaClient.getcolasByAtraccionAndUser(atraccion,user,añadirAlaCola);
         
     }
    
     var añadirAlaCola=function(tiquetes){
-        var tiqDisponibles=tiquetes.length;
+        var numTiquetes= document.getElementById('numtiquetes').innerHTML;
+        alert(numTiquetes);
         var atraccion = sessionStorage.getItem('atraccion');
         var cantidadAIngresar = $('#cantidad').val();
-        if (cantidadAIngresar>tiqDisponibles){
-            alert("Cantidad de tiquetes ingresados no es suficiente para que esa cantidad de personas hagan fila");
+        var cantidadDisponible = numTiquetes - tiquetes.length;
+        if (cantidadAIngresar>0){
+            if (cantidadAIngresar>numTiquetes){
+                alert("Solo tiene disponibles por el momento"+ cantidadDisponible +" espacios para la fila");
 
+            }
+            else if (cantidadAIngresar>cantidadDisponible){
+                alert("Ya hay "+tiquetes.length+" personas haciendo fila, solo tiene disponibles "+ cantidadDisponible +" espacios para la fila");
+            }
+            else{
+                for (var i=numTiquetes-cantidadDisponible;i<(numTiquetes-cantidadDisponible)+(cantidadAIngresar-1);i++){
+                    var cola={"atraccion":parseInt(atraccion),"tiquete":tiquetes[i].id};
+                    
+                    colaClient.saveCola(cola);
+                }
+                alert(cantidadAIngresar+" personas mas dentro de la cola");
+            }
+        
         }
         else{
-            for (var i=0;i<cantidadAIngresar;i++){
-                var cola={"atraccion":parseInt(atraccion),"tiquete":tiquetes[i].id};
-                alert(JSON.stringify(cola));
-                colaClient.saveCola(cola);
-            }
-
-
+            alert("Numero de personas no valido");
         }
-        
-        
 
     }
 	
