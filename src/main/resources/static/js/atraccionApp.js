@@ -70,7 +70,7 @@ var atraccionApp =( function (){
                 atraccionClient.changeState(atraccion);
             }
      
-            stompClient.send('/atraccion/estado'+estado, {}, JSON.stringify(atraccion));
+            stompClient.send('/atraccion/estadoAdmin', {}, JSON.stringify(atraccion));
             stompClient.send('/atraccion/estadoCliente', {}, JSON.stringify(atraccion));
         }
         

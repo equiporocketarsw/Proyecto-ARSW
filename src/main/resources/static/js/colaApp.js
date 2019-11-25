@@ -66,9 +66,11 @@ var colaApp =( function (){
             stompClient.subscribe('/cola/estado'+estado, function (eventbody) {
                
                 if (estado=="Admin"){
+                    alert("admin");
                     atraccionApp.mostrarAtracciones();
                 }
                 else if (estado=="Cliente"){
+                    alert("cliente");
                     atraccionApp.mostrarAtraccionesCliente();
                 }
                 
