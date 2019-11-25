@@ -43,6 +43,9 @@ var atraccionApp =( function (){
                 var estadoact = atraccion.activo;
                 if (estadoact){
                     atraccion.activo=false;
+                    
+
+
                 } 
                 else{
                     atraccion.activo=true;

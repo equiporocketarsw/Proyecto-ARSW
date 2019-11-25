@@ -43,6 +43,9 @@ var atraccionApp =( function (){
                 var estadoact = atraccion.activo;
                 if (estadoact){
                     atraccion.activo=false;
+                    
+                    colaClient.deleteColasByAtraccion(atraccion.id);
+
                 } 
                 else{
                     atraccion.activo=true;

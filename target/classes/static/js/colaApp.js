@@ -41,8 +41,8 @@ var colaApp =( function (){
 
                     colaClient.saveCola(cola);
                 }
-                stompClient.send('/cola/estadoAdmin', {}, JSON.stringify(tiquetes));
-                stompClient.send('/cola/estadoCliente', {}, JSON.stringify(tiquetes));
+                stompClient.send('/atraccion/cola/estadoAdmin', {}, JSON.stringify(tiquetes));
+                stompClient.send('/atraccion/cola/estadoCliente', {}, JSON.stringify(tiquetes));
                 alert(cantidadAIngresar+" personas mas dentro de la cola");
                 
             }
@@ -68,14 +68,14 @@ var colaApp =( function (){
         stompClient.connect({}, function (frame) {
             console.log('Connected: ' + frame);
 
-            stompClient.subscribe('/cola/estado'+estado, function (eventbody) {
-               alert(estado);
+            stompClient.subscribe('/atraccion/cola/estado'+estado, function (eventbody) {
+
                 if (estado=="Admin"){
-                    alert("admin");
+
                     atraccionApp.mostrarAtracciones();
                 }
                 else if (estado=="Cliente"){
-                    alert("cliente");
+
                     atraccionApp.mostrarAtraccionesCliente();
                 }
                 

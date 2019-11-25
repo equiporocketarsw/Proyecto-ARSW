@@ -116,5 +116,16 @@ public class ColaAPIController {
         }        */
 
     }
+
+    @RequestMapping(path = "/atraccion/{atraccion}",method = RequestMethod.DELETE)
+    public ResponseEntity<?> deleteColas(@PathVariable (name = "atraccion") int atraccion) {
+    try {
+        cs.deleteColas(atraccion);
+        return new ResponseEntity<>(HttpStatus.ACCEPTED); 
+    } catch (Exception e) {
+            Logger.getLogger(ColaAPIController.class.getName()).log(Level.SEVERE, null, e);
+            return new ResponseEntity<>(e.getMessage(),HttpStatus.FORBIDDEN);
+    }
+}
     
 }

@@ -25,5 +25,8 @@ public interface ColaRepositoryCustom {
 
     @Transactional
     public List <Tiquete> colasByAtraccionAndUser(int atraccion, String usuario);
+
+    @Transactional
+    public void deleteColas(int atraccion);
     
 }

@@ -62,5 +62,13 @@ public class ColaRepositoryImpl implements ColaRepositoryCustom {
 
     }
 
+    @Override
+    public void deleteColas(int atraccion){
+        Query query = entityManager.createNativeQuery("DELETE FROM atraccionusuario WHERE atraccion=:idAtraccion",Atraccionusuario.class);
+        
+        query.setParameter("idAtraccion", atraccion).executeUpdate();
+
+    }
+
 
 }

@@ -62,5 +62,11 @@ public class ColaServicesImpl implements ColaServices {
         return colarepo.colasByAtraccionAndUser(atraccion,usuario);
 
     }
+
+    @Override
+    public void deleteColas(int atraccion) {
+        colarepo.deleteColas(atraccion);
+
+    }
     
 }
