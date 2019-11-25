@@ -18,7 +18,7 @@ var colaApp =( function (){
 
    
     var añadirAlaCola=function(tiquetes){
-        var numTiquetes= document.getElementById('numtiquetes').innerHTML;
+        var numTiquetes=parseInt( document.getElementById('numtiquetes').innerHTML);
         
  
         var cantidadAIngresar = $('#cantidad').val();
@@ -34,9 +34,9 @@ var colaApp =( function (){
             else{
 
                 for (var i=numTiquetes-cantidadDisponible;i<=(numTiquetes-cantidadDisponible)+(cantidadAIngresar-1);i++){
-                    alert(i); 
+
                     var cola={"atraccion":parseInt(atraccion),"tiquete":tiquetes[i].id};
-                    alert(JSON.stringify(cola));
+
                     colaClient.saveCola(cola);
                 }
                 alert(cantidadAIngresar+" personas mas dentro de la cola");

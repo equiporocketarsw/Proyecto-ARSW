@@ -9,7 +9,7 @@ colaClient= (function(){
                 data: JSON.stringify(cola),
                 contentType: "application/json",
                 success: function() {
-                  alert("Cola del tiquete "+cola.tiquete+" en la fila "+ cola.atraccion+"creado satisfactoriamente");
+                   
                    location.href = "/main.html";
                 },
                  error: function(XMLHttpRequest, textStatus, errorThrown) { 
@@ -32,14 +32,14 @@ colaClient= (function(){
             });
         },
 
-        getColasByAtraccion: function(atraccion,callback){
+        getColasByAtraccion: function(atraccion){
             jQuery.ajax({
                 url: "cola/atraccion/" + atraccion ,
                 success: function(result) {
-                  callback(result);
+                  return result.length;
                 },
                  error: function(XMLHttpRequest, textStatus, errorThrown) { 
-                     alert("Usuario no encontrado");
+                     alert("Atraccion no encontrada");
                      
                 } ,
                 async: true
