@@ -12,7 +12,7 @@ var colaApp =( function (){
    
     var añadirAlaCola=function(tiquetes){
         var numTiquetes= document.getElementById('numtiquetes').innerHTML;
-        alert(JSON.stringify(tiquetes));
+        
         var atraccion = sessionStorage.getItem('atraccion');
         var cantidadAIngresar = $('#cantidad').val();
         var cantidadDisponible = numTiquetes - tiquetes.length;
@@ -25,6 +25,8 @@ var colaApp =( function (){
                 alert("Ya hay "+tiquetes.length+" personas haciendo fila, solo tiene disponibles "+ cantidadDisponible +" espacios para la fila");
             }
             else{
+                alert(JSON.stringify(tiquetes));
+                alert(JSON.stringify(tiquetes[1]));
                 for (var i=numTiquetes-cantidadDisponible;i<=(numTiquetes-cantidadDisponible)+(cantidadAIngresar-1);i++){
                     
                     var cola={"atraccion":parseInt(atraccion),"tiquete":tiquetes[i].id};
