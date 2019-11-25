@@ -91,7 +91,6 @@ var atraccionApp =( function (){
            
                 atracciones.map(function(atraccion){
                     
-                    alert(personasEnFila);
                     //personasEnFila=personasEnFila.length;
                     if (tipo=="Editar"){
                        
