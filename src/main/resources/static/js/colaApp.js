@@ -18,7 +18,7 @@ var colaApp =( function (){
         var cantidadDisponible = numTiquetes - tiquetes.length;
         if (cantidadAIngresar>0){
             if (cantidadAIngresar>numTiquetes){
-                alert("Solo tiene disponibles por el momento"+ cantidadDisponible +" espacios para la fila");
+                alert("Solo tiene disponibles por el momento "+ cantidadDisponible +" espacios para la fila");
 
             }
             else if (cantidadAIngresar>cantidadDisponible){
@@ -26,7 +26,7 @@ var colaApp =( function (){
             }
             else{
                 for (var i=numTiquetes-cantidadDisponible;i<=(numTiquetes-cantidadDisponible)+(cantidadAIngresar-1);i++){
-                    alert(i);
+                    alert(JSON.stringify(tiquetes[i]));
                     var cola={"atraccion":parseInt(atraccion),"tiquete":tiquetes[i].id};
                     
                     colaClient.saveCola(cola);
