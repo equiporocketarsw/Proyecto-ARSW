@@ -25,10 +25,9 @@ var colaApp =( function (){
                 alert("Ya hay "+tiquetes.length+" personas haciendo fila, solo tiene disponibles "+ cantidadDisponible +" espacios para la fila");
             }
             else{
-                alert(JSON.stringify(tiquetes));
-                alert(JSON.stringify(tiquetes[1]));
+
                 for (var i=numTiquetes-cantidadDisponible;i<=(numTiquetes-cantidadDisponible)+(cantidadAIngresar-1);i++){
-                    
+                    alert(i); 
                     var cola={"atraccion":parseInt(atraccion),"tiquete":tiquetes[i].id};
                     
                     colaClient.saveCola(cola);
