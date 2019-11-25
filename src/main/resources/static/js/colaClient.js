@@ -32,11 +32,11 @@ colaClient= (function(){
             });
         },
 
-        getColasByAtraccion: function(atraccion){
+        getColasByAtraccion: function(atraccion,activo,boton,callback){
             jQuery.ajax({
-                url: "cola/atraccion/" + atraccion ,
+                url: "cola/atraccion/" + atraccion.id ,
                 success: function(result) {
-                  return result;
+                    callback(atraccion,result,activo,boton);
                 },
                  error: function(XMLHttpRequest, textStatus, errorThrown) { 
                      alert("Atraccion no encontrada");
