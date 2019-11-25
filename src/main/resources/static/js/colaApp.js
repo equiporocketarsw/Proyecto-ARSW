@@ -12,10 +12,11 @@ var colaApp =( function (){
    
     var añadirAlaCola=function(tiquetes){
         var numTiquetes= document.getElementById('numtiquetes').innerHTML;
-        alert(numTiquetes);
+        
         var atraccion = sessionStorage.getItem('atraccion');
         var cantidadAIngresar = $('#cantidad').val();
         var cantidadDisponible = numTiquetes - tiquetes.length;
+        alert("Empieza en "+numTiquetes-cantidadDisponible+"  Termina en"+(numTiquetes-cantidadDisponible)+(cantidadAIngresar-1));
         if (cantidadAIngresar>0){
             if (cantidadAIngresar>numTiquetes){
                 alert("Solo tiene disponibles por el momento"+ cantidadDisponible +" espacios para la fila");
