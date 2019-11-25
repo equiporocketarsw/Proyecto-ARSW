@@ -64,7 +64,7 @@ colaClient= (function(){
                 url: "cola/atraccion/" + atraccion ,
                 type: 'DELETE',
                 success: function(result) {
-                    alert("atraccion vacia");
+                    
                 },
                  error: function(XMLHttpRequest, textStatus, errorThrown) { 
                     alert("Error al borrar");
