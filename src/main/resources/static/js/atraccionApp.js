@@ -91,6 +91,8 @@ var atraccionApp =( function (){
            
                 atracciones.map(function(atraccion){
                     var personasEnFila = colaClient.getColasByAtraccion(atraccion.id);
+                    alert(personasEnFila);
+                    personasEnFila=personasEnFila.length;
                     if (tipo=="Editar"){
                        
                         if(atraccion.activo){

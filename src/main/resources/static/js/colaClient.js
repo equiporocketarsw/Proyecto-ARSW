@@ -36,7 +36,7 @@ colaClient= (function(){
             jQuery.ajax({
                 url: "cola/atraccion/" + atraccion ,
                 success: function(result) {
-                  return result.length;
+                  return result;
                 },
                  error: function(XMLHttpRequest, textStatus, errorThrown) { 
                      alert("Atraccion no encontrada");
