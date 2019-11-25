@@ -4,6 +4,7 @@ var colaApp =( function (){
     var numTiquetesUsados;    
     var user;
     var estado;
+    var stompClient= null;
 
 	var addCola = function(){
         user = sessionStorage.getItem('currentUser');
