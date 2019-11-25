@@ -1,34 +1,42 @@
 var colaApp =( function (){
     
     var atraccion ;
-    
+    var numTiquetesUsados;    
+    var user;
 
 	var addCola = function(){
-        var user = sessionStorage.getItem('currentUser');
+        user = sessionStorage.getItem('currentUser');
         atraccion = sessionStorage.getItem('atraccion');
-        colaClient.getcolasByAtraccionAndUser(atraccion,user,añadirAlaCola);
+        colaClient.getcolasByAtraccionAndUser(atraccion,user,añadirCola);
         
     }
+
+    var añadirCola=function(tiquetes){
+        numTiquetesUsados=tiquetes.length;
+        tiqueteClient.getTiquetesbyuser(añadirAlaCola,user);
+    }
+
    
     var añadirAlaCola=function(tiquetes){
         var numTiquetes= document.getElementById('numtiquetes').innerHTML;
         
-        var atraccion = sessionStorage.getItem('atraccion');
+ 
         var cantidadAIngresar = $('#cantidad').val();
-        var cantidadDisponible = numTiquetes - tiquetes.length;
-        alert("Empieza en "+numTiquetes-cantidadDisponible+"  Termina en"+(numTiquetes-cantidadDisponible)+(cantidadAIngresar-1));
+        var cantidadDisponible = numTiquetes - numTiquetesUsados;
         if (cantidadAIngresar>0){
             if (cantidadAIngresar>numTiquetes){
-                alert("Solo tiene disponibles por el momento"+ cantidadDisponible +" espacios para la fila");
+                alert("Solo tiene disponibles por el momento "+ cantidadDisponible +" espacios para la fila");
 
             }
             else if (cantidadAIngresar>cantidadDisponible){
-                alert("Ya hay "+tiquetes.length+" personas haciendo fila, solo tiene disponibles "+ cantidadDisponible +" espacios para la fila");
+                alert("Ya hay "+numTiquetesUsados+" personas haciendo fila, solo tiene disponibles "+ cantidadDisponible +" espacios para la fila");
             }
             else{
-                for (var i=numTiquetes-cantidadDisponible;i<(numTiquetes-cantidadDisponible)+(cantidadAIngresar-1);i++){
+
+                for (var i=numTiquetes-cantidadDisponible;i<=(numTiquetes-cantidadDisponible)+(cantidadAIngresar-1);i++){
+                    alert(i); 
                     var cola={"atraccion":parseInt(atraccion),"tiquete":tiquetes[i].id};
-                    
+                    alert(JSON.stringify(cola));
                     colaClient.saveCola(cola);
                 }
                 alert(cantidadAIngresar+" personas mas dentro de la cola");
@@ -43,7 +51,8 @@ var colaApp =( function (){
 	
 	return {
         addCola: addCola,
-        añadirAlaCola: añadirAlaCola
+        añadirAlaCola: añadirAlaCola,
+        añadirCola: añadirCola
                 
 	};
 })();
