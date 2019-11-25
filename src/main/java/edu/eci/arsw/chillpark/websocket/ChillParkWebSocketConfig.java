@@ -19,7 +19,6 @@ public class ChillParkWebSocketConfig extends AbstractWebSocketMessageBrokerConf
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
         config.enableSimpleBroker("/atraccion");
-        config.enableSimpleBroker("/cola");
         config.setApplicationDestinationPrefixes("/app");        
     }
 
