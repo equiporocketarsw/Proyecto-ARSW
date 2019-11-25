@@ -3,6 +3,7 @@ var colaApp =( function (){
     var atraccion ;
     var numTiquetesUsados;    
     var user;
+    var estado;
 
 	var addCola = function(){
         user = sessionStorage.getItem('currentUser');
@@ -57,19 +58,17 @@ var colaApp =( function (){
         
         stompClient = Stomp.over(socket);
         
-        
-
-
+        var estado=sessionStorage.getItem('currentRol'); 
 
         stompClient.connect({}, function (frame) {
             console.log('Connected: ' + frame);
-            
+
             stompClient.subscribe('/cola/estado'+estado, function (eventbody) {
                
                 if (estado=="Admin"){
                     atraccionApp.mostrarAtracciones();
                 }
-                else if (estado="Cliente"){
+                else if (estado=="Cliente"){
                     atraccionApp.mostrarAtraccionesCliente();
                 }
                 

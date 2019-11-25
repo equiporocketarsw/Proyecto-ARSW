@@ -173,7 +173,7 @@ var atraccionApp =( function (){
                     if (estado=="Admin"){
                         mostrarAtracciones();
                     }
-                    else if (estado="Cliente"){
+                    else if (estado=="Cliente"){
                         mostrarAtraccionesCliente();
                     }
                     
