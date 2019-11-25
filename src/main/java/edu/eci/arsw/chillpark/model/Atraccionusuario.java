@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 import edu.eci.arsw.chillpark.model.ColaID;
 
-@Entity
+@Entity(name="atraccionusuario")
 @IdClass(ColaID.class)
 @Table(name="atraccionusuario")
 public class Atraccionusuario implements Serializable{
@@ -27,8 +27,8 @@ public class Atraccionusuario implements Serializable{
 	private int atraccion;
 
 	@Id
-    @Column(name="usuario")
-    private String usuario;
+    @Column(name="tiquete")
+    private int tiquete;
         
         /*
 		@EmbeddedId
@@ -57,12 +57,13 @@ public class Atraccionusuario implements Serializable{
 		this.atraccion=atraccion;
 	}
 
-	public String getUsuario(){
-		return usuario;
-	}
+	 public int getTiquete(){
+		 return tiquete;
+	 }
 
-	public void setUsuario(String usuario){
-		this.usuario = usuario;
-	}
-	
+	 public void setTiquete(int tiquete){
+		 this.tiquete = tiquete;
+	 }
+
+	 
 }

@@ -3,12 +3,18 @@ var atraccionApp =( function (){
 	
     var stompClient= null;
     var estado;
+    var atraccionActual=null;
     
 
          var  mostrarAtracciones= function(){
 
             
             atraccionClient.getAtracciones(imprimirAtracciones,"Editar");
+            estado="Admin";
+        }
+
+        var mostrarEditar= function(){
+            atraccionClient.getAtraccion(imprimirEditar, id, "todo");
             estado="Admin";
         }
         
@@ -52,54 +58,14 @@ var atraccionApp =( function (){
                 var emx = $('#estaturamax').val();
                 var emn = $('#estaturamin').val();
                 var tp = $('#tipo').val();
-                if (n==""){
-
-                }
-                else{
-                    atraccion.nombre = n;
-                }
-                if (c==""){
-
-                }
-                else{
-                    atraccion.capacidad = c;
-                }
-                if (t==""){
-
-                }
-                else{
-                    atraccion.tiempo = t;
-                }
-                if (a==""){
-
-                }
-                else{
-                    atraccion.activo = a;
-                }
-                if (d==""){
-
-                }
-                else{
-                    atraccion.descrpcion = d;
-                }
-                if (emx==""){
-
-                }
-                else{
-                    atraccion.estaturamax = emx;
-                }
-                if (emn==""){
-
-                }
-                else{
-                    atraccion.estaturamin = emn;
-                }
-                if (tp==""){
-
-                }
-                else{
-                    atraccion.tipo = tp;
-                }               
+                atraccion.nombre = n;
+                atraccion.capacidad = c;
+                atraccion.tiempo = t;
+                atraccion.activo = a;
+                atraccion.descrpcion = d;
+                atraccion.estaturamax = emx;
+                atraccion.estaturamin = emn;
+                atraccion.tipo = tp;
                 atraccionClient.changeState(atraccion);
             }
      
@@ -118,7 +84,7 @@ var atraccionApp =( function (){
                    }
                 else{
                     
-                    var boton = " <a href=\"fila.html\" class=\"button\">"+tipo+"</a></div>"; 
+                    var boton = " <a href=\"javascript:atraccionApp.hacerFila()\" class=\"button\">"+tipo+"</a></div>"; 
                 }
            
                 atracciones.map(function(atraccion){
@@ -134,7 +100,8 @@ var atraccionApp =( function (){
                     else{
                         if(atraccion.activo){
                             var activo="<span style=\"color:green;font-weight:bold\"> Abierta </span></br>";
-                            boton = " <a href=\"fila.html\" class=\"button\">"+tipo+"</a></div>"; 
+             
+                            boton = " <a href=\"javascript:atraccionApp.hacerFila("+atraccion.id+")\" class=\"button\">"+tipo+"</a></div>"; 
                         }
                         else{
                             var activo="<span style=\"color:red;font-weight:bold\">Cerrada</span></br>";
@@ -148,6 +115,26 @@ var atraccionApp =( function (){
                            
                     $("#tablaAtracciones").append(contenedor);
 
+                })
+            
+        }
+
+
+        var imprimirEditar= function(atraccion, id, tipo){
+            $("#editarAtracciones div").remove(); 
+                
+                
+                atraccion.map(function(atraccion){
+                    var nom = "<input class=\"inputtype\" id=\"nom\" type=\"text\" placeholder=\""+atraccion.nombre+"\" /> ";
+                    var cap = "<input class=\"inputtype\" id=\"cap\" type=\"number\" placeholder=\""+atraccion.capacidad+"\" />";
+                    var tie = "<input class=\"inputtype\" id=\"tie\" type=\"number\" placeholder=\""+atraccion.tiempo+"\" />";
+                    var descr = "<input class=\"inputtype\" id=\"descr\" type=\"text\" placeholder=\""+atraccion.descrpcion+"\" />";
+                    var estamax = "input class=\"inputtype\" id=\"estamax\" type=\"text\" placeholder=\""+atraccion.estaturamax+"\" />";
+                    var estamin = "<input class=\"inputtype\" id=\"estamin\" type=\"text\" placeholder=\""+atraccion.estaturamin+"\" />";
+                    var tip = "<input class=\"inputtype\" id=\"tip\" type=\"text\" placeholder=\""+atraccion.tipo+"\" />"; 
+                    var conte = "<div class=\"wrapper\">"+nom+bot+cap+tie+descr+estamax+estamin+tip+bot+"</div>";
+                    var bot = " <a href=\"adminMain.html\"  class=\"button\">Aceptar</a></div>";
+                    $("#editarAtracciones").append(conte);
                 })
             
         }
@@ -183,14 +170,35 @@ var atraccionApp =( function (){
             });
     
         };
-	
+
+        var hacerFila=function(atraccion){
+            sessionStorage.setItem("atraccion",atraccion);
+            location.href = "/fila.html";
+        }
+    
+        
+        var atraccionActual= function(){
+            atraccionClient.getAtraccion(imprimirAtraccion,sessionStorage.getItem('atraccion'),"estado");
+            
+
+        }
+
+        var imprimirAtraccion=function(atraccion,tipo){
+            document.getElementById('currentAtraccion').innerHTML = atraccion.nombre;
+            sessionStorage.setItem("Objetoatraccion",atraccion);
+        }
+
 	return {
-		        mostrarAtracciones: mostrarAtracciones,
+                mostrarAtracciones: mostrarAtracciones,
+                mostrarEditar: mostrarEditar,
                 imprimirAtracciones: imprimirAtracciones,
+                imprimirEditar: imprimirEditar,
                 mostrarAtraccionesCliente: mostrarAtraccionesCliente,
                 darAtraccionporId: darAtraccionporId,
                 editarAtracccion: editarAtracccion,
-                connectAndSubscribe: connectAndSubscribe
+                connectAndSubscribe: connectAndSubscribe,
+                hacerFila: hacerFila,
+                atraccionActual: atraccionActual
 	};
 })();
 

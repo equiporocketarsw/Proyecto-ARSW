@@ -34,12 +34,7 @@ public class TiqueteServicesImpl implements TiqueteServices{
         tiqrepo.postTiquete(t);
 
     }
-    /*
-    @Override
-    public void addTiquete(Tiquete t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    */
+ 
     @Override
     public Tiquete getTiquete(int id) throws ChillParkNotFoundException{
         try{
