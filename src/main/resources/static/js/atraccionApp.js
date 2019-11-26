@@ -178,7 +178,7 @@ var atraccionApp =( function (){
                     var id = (JSON.parse(eventbody.body)).id;
 
                     var fila=sessionStorage.getItem('fila');
-                   if (fila=="haciendo" && id==sessionStorage.getItem('atraccion')){
+                   if (fila=="Haciendo" && id==sessionStorage.getItem('atraccion')){
                         alert("Lo sentimos: La atraccion se acaba de cerrar");
                         location.href = "/fila.html";
                     }
