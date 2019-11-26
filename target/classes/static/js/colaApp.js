@@ -7,6 +7,7 @@ var colaApp =( function (){
     var stompClient= null;
 
 	var addCola = function(){
+        sessionStorage.setItem("fila",null);
         user = sessionStorage.getItem('currentUser');
         atraccion = sessionStorage.getItem('atraccion');
         colaClient.getcolasByAtraccionAndUser(atraccion,user,añadirCola);

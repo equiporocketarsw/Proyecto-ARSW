@@ -4,7 +4,7 @@ var atraccionApp =( function (){
     var stompClient= null;
     var estado;
     var atraccionActual=null;
-    var fila=null;
+    
   
 
          var  mostrarAtracciones= function(){
@@ -23,8 +23,8 @@ var atraccionApp =( function (){
         
          var  mostrarAtraccionesCliente= function(){
 
-            fila=null;
-            alert(fila);
+            
+            
             atraccionClient.getAtracciones(imprimirAtracciones,"Hacer Fila");
             estado="Cliente";
         }
@@ -177,7 +177,7 @@ var atraccionApp =( function (){
 
                     var id = (JSON.parse(eventbody.body)).id;
 
-                    
+                    var fila=sessionStorage.getItem('fila');
                    if (fila=="haciendo" && id==sessionStorage.getItem('atraccion')){
                         alert("Lo sentimos: La atraccion se acaba de cerrar");
                         location.href = "/fila.html";
@@ -199,8 +199,8 @@ var atraccionApp =( function (){
         };
 
         var hacerFila=function(atraccion){
-            fila="haciendo";
-            alert(fila);
+            sessionStorage.setItem("fila","Haciendo");
+ 
             sessionStorage.setItem("atraccion",atraccion);
             location.href = "/fila.html";
         }
