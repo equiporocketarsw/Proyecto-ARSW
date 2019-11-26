@@ -224,7 +224,7 @@ var atraccionApp =( function (){
         var salirFila=function(atraccion){
  
             user = sessionStorage.getItem('currentUser');
-            deleteColasByAtraccionAndUser(atraccion,user);
+            colaClient.deleteColasByAtraccionAndUser(atraccion,user);
             stompClient.send('/atraccion/estadoAdmin', {}, JSON.stringify(atraccion));
             stompClient.send('/atraccion/estadoCliente', {}, JSON.stringify(atraccion));
             stompClient.send('/atraccion/estadoFilas', {}, JSON.stringify(atraccion));
