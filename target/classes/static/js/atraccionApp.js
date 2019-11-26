@@ -175,6 +175,8 @@ var atraccionApp =( function (){
                 stompClient.subscribe('/atraccion/estado'+estado, function (eventbody) {
 
                     var id = (JSON.parse(eventbody.body)).id;
+                    alert(id);
+                    alert(fila);
                    if (fila=="haciendo" && id==sessionStorage.getItem('atraccion')){
                         alert("Lo sentimos: La atraccion se acaba de cerrar");
                         location.href = "/fila.html";
