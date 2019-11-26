@@ -1,36 +1,50 @@
 var colaApp =( function (){
     
     var atraccion ;
-    
+    var numTiquetesUsados;    
+    var user;
+    var estado;
+    var stompClient= null;
 
 	var addCola = function(){
-        var user = sessionStorage.getItem('currentUser');
+        user = sessionStorage.getItem('currentUser');
         atraccion = sessionStorage.getItem('atraccion');
-        colaClient.getcolasByAtraccionAndUser(atraccion,user,añadirAlaCola);
+        colaClient.getcolasByAtraccionAndUser(atraccion,user,añadirCola);
         
     }
+
+    var añadirCola=function(tiquetes){
+        numTiquetesUsados=tiquetes.length;
+        tiqueteClient.getTiquetesbyuser(añadirAlaCola,user);
+    }
+
    
     var añadirAlaCola=function(tiquetes){
-        var numTiquetes= document.getElementById('numtiquetes').innerHTML;
-        alert(numTiquetes);
-        var atraccion = sessionStorage.getItem('atraccion');
+        var numTiquetes=parseInt( document.getElementById('numtiquetes').innerHTML);
+        
+ 
         var cantidadAIngresar = $('#cantidad').val();
-        var cantidadDisponible = numTiquetes - tiquetes.length;
+        var cantidadDisponible = numTiquetes - numTiquetesUsados;
         if (cantidadAIngresar>0){
             if (cantidadAIngresar>numTiquetes){
-                alert("Solo tiene disponibles por el momento"+ cantidadDisponible +" espacios para la fila");
+                alert("Solo tiene disponibles por el momento "+ cantidadDisponible +" espacios para la fila");
 
             }
             else if (cantidadAIngresar>cantidadDisponible){
-                alert("Ya hay "+tiquetes.length+" personas haciendo fila, solo tiene disponibles "+ cantidadDisponible +" espacios para la fila");
+                alert("Ya hay "+numTiquetesUsados+" personas haciendo fila, solo tiene disponibles "+ cantidadDisponible +" espacios para la fila");
             }
             else{
-                for (var i=numTiquetes-cantidadDisponible;i<(numTiquetes-cantidadDisponible)+(cantidadAIngresar-1);i++){
+
+                for (var i=numTiquetes-cantidadDisponible;i<=(numTiquetes-cantidadDisponible)+(cantidadAIngresar-1);i++){
+
                     var cola={"atraccion":parseInt(atraccion),"tiquete":tiquetes[i].id};
-                    
+
                     colaClient.saveCola(cola);
                 }
+                stompClient.send('/atraccion/cola/estadoAdmin', {}, JSON.stringify(tiquetes));
+                stompClient.send('/atraccion/cola/estadoCliente', {}, JSON.stringify(tiquetes));
                 alert(cantidadAIngresar+" personas mas dentro de la cola");
+                
             }
         
         }
@@ -39,10 +53,45 @@ var colaApp =( function (){
         }
 
     }
+
+    var connectAndSubscribe = function () {
+
+        estado=sessionStorage.getItem('currentRol'); 
+
+        console.info('Connecting to WS...');
+        var socket = new SockJS('/stompendpoint');
+        
+        stompClient = Stomp.over(socket);
+        
+        
+
+        stompClient.connect({}, function (frame) {
+            console.log('Connected: ' + frame);
+
+            stompClient.subscribe('/atraccion/cola/estado'+estado, function (eventbody) {
+
+                if (estado=="Admin"){
+
+                    atraccionApp.mostrarAtracciones();
+                }
+                else if (estado=="Cliente"){
+
+                    atraccionApp.mostrarAtraccionesCliente();
+                }
+                
+                
+            });
+            
+            
+        });
+
+    };
 	
 	return {
         addCola: addCola,
-        añadirAlaCola: añadirAlaCola
+        añadirAlaCola: añadirAlaCola,
+        añadirCola: añadirCola,
+        connectAndSubscribe: connectAndSubscribe
                 
 	};
 })();

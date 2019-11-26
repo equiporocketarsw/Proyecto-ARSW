@@ -7,6 +7,10 @@
     <script src="/webjars/jquery/3.1.0/jquery.min.js"></script>
 
     <script src="/webjars/bootstrap/4.1.2/js/bootstrap.min.js"></script>
+
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+
 	<script src="js/apimock.js"></script>
 	<script src="js/app.js"></script>
         <script src="js/atraccionApp.js"></script>
@@ -17,8 +21,7 @@
         <script src="js/colaClient.js"></script>
 	
 	
-    <link rel="stylesheet"
-      href="/webjars/bootstrap/4.1.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/webjars/bootstrap/4.1.2/css/bootstrap.min.css" />
     <link rel="stylesheet" href="./styles/style.css">
 	  <script>
 	  
@@ -32,7 +35,7 @@
 	  
 </head>
 
-<body onLoad="atraccionApp.mostrarAtracciones();Module.validarUsuario();Module.validarCliente();tiqueteApp.numerodeTiquetes();atraccionApp.atraccionActual();">
+<body onLoad="atraccionApp.mostrarAtracciones();Module.validarUsuario();Module.validarCliente();tiqueteApp.numerodeTiquetes();atraccionApp.atraccionActual();colaApp.connectAndSubscribe();">
  
   <div class="container-fluid">
 

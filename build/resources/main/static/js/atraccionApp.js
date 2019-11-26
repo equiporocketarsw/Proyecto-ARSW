@@ -4,7 +4,7 @@ var atraccionApp =( function (){
     var stompClient= null;
     var estado;
     var atraccionActual=null;
-    
+  
 
          var  mostrarAtracciones= function(){
 
@@ -26,7 +26,8 @@ var atraccionApp =( function (){
             atraccionClient.getAtracciones(imprimirAtracciones,"Hacer Fila");
             estado="Cliente";
         }
-        
+
+
         var darAtraccionporId = function(id){
             atraccionClient.getAtraccion(cambiarEstado,id,"estado");
 
@@ -42,6 +43,9 @@ var atraccionApp =( function (){
                 var estadoact = atraccion.activo;
                 if (estadoact){
                     atraccion.activo=false;
+                    
+                    colaClient.deleteColasByAtraccion(atraccion.id);
+
                 } 
                 else{
                     atraccion.activo=true;
@@ -69,11 +73,12 @@ var atraccionApp =( function (){
                 atraccionClient.changeState(atraccion);
             }
      
-            stompClient.send('/atraccion/estado'+estado, {}, JSON.stringify(atraccion));
+            stompClient.send('/atraccion/estadoAdmin', {}, JSON.stringify(atraccion));
             stompClient.send('/atraccion/estadoCliente', {}, JSON.stringify(atraccion));
         }
         
-        
+       
+
        var  imprimirAtracciones= function(atracciones,tipo){
             $("#tablaAtracciones div").remove(); 
 
@@ -88,6 +93,8 @@ var atraccionApp =( function (){
                 }
            
                 atracciones.map(function(atraccion){
+                    
+                    //personasEnFila=personasEnFila.length;
                     if (tipo=="Editar"){
                        
                         if(atraccion.activo){
@@ -110,14 +117,26 @@ var atraccionApp =( function (){
                          
                     }
                     
-                    var contenedor = "<div class=\"grid-1-5\"><h2>"+atraccion.tipo+"</h2><h3>"+activo+"<span class=\"uppercase\">"+atraccion.nombre+"</span></h3> <p>Capacidad: "+atraccion.capacidad+" personas</p>  <p>Duración: "+atraccion.tiempo+" minutos</p>  <p>Estatura minima: "+atraccion.estaturamin+"</p>   <p>Estatura maxima: "+atraccion.estaturamax+"</p>  <p>"+atraccion.descrpcion+"</p> "+boton ;
+                    colaClient.getColasByAtraccion(atraccion,activo,boton,imprimirPersonasEnfila);
+
+                    //var contenedor = "<div class=\"grid-1-5\"><h2>"+atraccion.tipo+"</h2><h3>"+activo+"<span class=\"uppercase\">"+atraccion.nombre+"</span></h3> <p>Capacidad: "+atraccion.capacidad+" personas</p> <p>Personas en fila: "+personasEnFila+" personas</p> <p>Duración: "+atraccion.tiempo+" minutos</p>  <p>Estatura minima: "+atraccion.estaturamin+"</p>   <p>Estatura maxima: "+atraccion.estaturamax+"</p>  <p>"+atraccion.descrpcion+"</p> "+boton ;
 			
                            
-                    $("#tablaAtracciones").append(contenedor);
+                    //$("#tablaAtracciones").append(contenedor);
 
                 })
             
         }
+
+        var imprimirPersonasEnfila = function(atraccion,tiquetes,activo,boton){
+            var personasEnFila = tiquetes.length;
+
+            var contenedor = "<div class=\"grid-1-5\"><h2>"+atraccion.tipo+"</h2><h3>"+activo+"<span class=\"uppercase\">"+atraccion.nombre+"</span></h3> <p>Capacidad: "+atraccion.capacidad+" personas</p> <p>Personas en fila: "+personasEnFila+"</p> <p>Duración: "+atraccion.tiempo+" minutos</p>  <p>Estatura minima: "+atraccion.estaturamin+"</p>   <p>Estatura maxima: "+atraccion.estaturamax+"</p>  <p>"+atraccion.descrpcion+"</p> "+boton ;
+			
+                           
+            $("#tablaAtracciones").append(contenedor);
+
+        } 
 
 
         var imprimirEditar= function(atraccion, id, tipo){
@@ -147,9 +166,7 @@ var atraccionApp =( function (){
             
             stompClient = Stomp.over(socket);
             
-            
 
-            localStorage.setItem("stompClient",stompClient);
     
             stompClient.connect({}, function (frame) {
                 console.log('Connected: ' + frame);
@@ -159,7 +176,7 @@ var atraccionApp =( function (){
                     if (estado=="Admin"){
                         mostrarAtracciones();
                     }
-                    else if (estado="Cliente"){
+                    else if (estado=="Cliente"){
                         mostrarAtraccionesCliente();
                     }
                     
