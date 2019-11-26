@@ -29,5 +29,7 @@ public interface ColaServices {
     public List <Tiquete> colasByAtraccionAndUser(int atraccion, String usuario);
 
     public void deleteColas(int atraccion);
+    
+    public void deletecolasByAtraccionAndUser(int atraccion,String usuario);
 
 }

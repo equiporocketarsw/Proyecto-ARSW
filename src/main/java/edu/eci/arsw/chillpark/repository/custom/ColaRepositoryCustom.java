@@ -29,4 +29,7 @@ public interface ColaRepositoryCustom {
     @Transactional
     public void deleteColas(int atraccion);
     
+    @Transactional
+    public void deletecolasByAtraccionAndUser(int atraccion, String usuario);
+    
 }

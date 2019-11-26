@@ -72,6 +72,22 @@ colaClient= (function(){
                 } ,
                 async: true
             });
+        },
+
+        deleteColasByAtraccionAndUser: function(atraccion,username){
+            jQuery.ajax({
+                url: "cola/atraccion/" + atraccion +"/usuario/"+username,
+                type: 'DELETE',
+                success: function(result) {
+                    alert("Salio de las filas");
+                    
+                },
+                 error: function(XMLHttpRequest, textStatus, errorThrown) { 
+                    alert("Error al borrar");
+                     
+                } ,
+                async: true
+            });
         }
 
 

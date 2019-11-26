@@ -80,6 +80,7 @@ var atraccionApp =( function (){
      
             stompClient.send('/atraccion/estadoAdmin', {}, JSON.stringify(atraccion));
             stompClient.send('/atraccion/estadoCliente', {}, JSON.stringify(atraccion));
+            stompClient.send('/atraccion/estadoFilas', {}, JSON.stringify(atraccion));
         }
         
        
@@ -218,7 +219,17 @@ var atraccionApp =( function (){
             sessionStorage.setItem("atraccion",atraccion);
             location.href = "/fila.html";
         }
-    
+        
+
+        var salirFila=function(atraccion){
+ 
+            user = sessionStorage.getItem('currentUser');
+            deleteColasByAtraccionAndUser(atraccion,user);
+            stompClient.send('/atraccion/estadoAdmin', {}, JSON.stringify(atraccion));
+            stompClient.send('/atraccion/estadoCliente', {}, JSON.stringify(atraccion));
+            stompClient.send('/atraccion/estadoFilas', {}, JSON.stringify(atraccion));
+            
+        }
         
         var atraccionActual= function(){
             atraccionClient.getAtraccion(imprimirAtraccion,sessionStorage.getItem('atraccion'),"estado");
@@ -242,7 +253,8 @@ var atraccionApp =( function (){
                 connectAndSubscribe: connectAndSubscribe,
                 hacerFila: hacerFila,
                 atraccionActual: atraccionActual,
-                mostrarAtraccionesFilas: mostrarAtraccionesFilas
+                mostrarAtraccionesFilas: mostrarAtraccionesFilas,
+                salirFila: salirFila
 	};
 })();
 

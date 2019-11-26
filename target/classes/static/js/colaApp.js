@@ -44,6 +44,7 @@ var colaApp =( function (){
                 }
                 stompClient.send('/atraccion/cola/estadoAdmin', {}, JSON.stringify(tiquetes));
                 stompClient.send('/atraccion/cola/estadoCliente', {}, JSON.stringify(tiquetes));
+                stompClient.send('/atraccion/cola/estadoFilas', {}, JSON.stringify(tiquetes));
                 alert(cantidadAIngresar+" personas mas dentro de la cola");
                 
             }
@@ -57,6 +58,7 @@ var colaApp =( function (){
 
     var connectAndSubscribe = function () {
 
+        
         estado=sessionStorage.getItem('currentRol'); 
 
         console.info('Connecting to WS...');
@@ -78,6 +80,9 @@ var colaApp =( function (){
                 else if (estado=="Cliente"){
 
                     atraccionApp.mostrarAtraccionesCliente();
+                }
+                else if (estado=="Filas"){
+                    atraccionApp.mostrarAtraccionesFilas();
                 }
                 
                 

@@ -12,4 +12,6 @@ import edu.eci.arsw.chillpark.repository.custom.ColaRepositoryCustom;
 @Repository
 public interface ColaRepository extends JpaRepository<Atraccionusuario, ColaID>,ColaRepositoryCustom{
 
+    
+
 }
