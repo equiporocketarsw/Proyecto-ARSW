@@ -180,7 +180,7 @@ var atraccionApp =( function (){
                     var fila=sessionStorage.getItem('fila');
                    if (fila=="Haciendo" && id==sessionStorage.getItem('atraccion')){
                         alert("Lo sentimos: La atraccion se acaba de cerrar");
-                        location.href = "/fila.html";
+                        location.href = "/main.html";
                     }
                    
                     if (estado=="Admin"){
