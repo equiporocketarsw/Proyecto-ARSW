@@ -23,6 +23,8 @@
 
   <link rel="stylesheet" href="/webjars/bootstrap/4.1.2/css/bootstrap.min.css" />
   <link rel="stylesheet" href="./styles/main.css"> 
+  <link rel="stylesheet" href="./styles/menudesp.css"> 
+  
   <script>
 
     $(document).ready(function () {
@@ -32,13 +34,33 @@
 
   </script>
       
-              
+  
 
 
 </head>
 
 <body
   onLoad="atraccionApp.mostrarAtraccionesCliente();Module.validarUsuario();Module.validarCliente();tiqueteApp.numerodeTiquetes();atraccionApp.connectAndSubscribe();colaApp.connectAndSubscribe();">
+  <div class="container-fluid">
+    <nav class="nav">
+      <ul class="menu_fila">
+        <li><a href="#">Menu</a>
+          <ul class ="sub_menu">
+            <li><a href="#">Atracciones</a></li>
+            <li><a href="#">Filas</a></li>
+          </ul>
+        
+        </li>
+        
+  
+      </ul>
+  
+  
+    </nav>
+  </div>
+  
+
+
 
   <div class="container-fluid">
 
