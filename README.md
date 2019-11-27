@@ -50,12 +50,38 @@ En nuestro caso la disponibilidad definira los medios y el tiempo, donde la app 
 
  ## Rendimiento:
  
- En el rendimiento mediremos cuanta cpu consume nuestra app.
+ Nuestra app, apenas consume recursos en donde este siendo ejecutada.
+ 
+ ![cpu](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/cpu.PNG)
+ ![cpu2](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/cpu2.PNG)
+ 
  
  ## Usabilidad:
  
- En la usabilidad, el como funciona la app, lo facil que es, lo accesible y bien fundamentada, para ser amigable y facil para el usuario
- final.
+ En la usabilidad, definimos el como funciona la app, lo facil que es, lo accesible y bien fundamentada, para ser amigable y facil para   el usuario final.
+ 
+ Primero que todo queda claro que hay dos tipos de usuarios, el administrador y el usuario natural, el cual debe entrar con su nombre de usuario y contraseña, en caso de no tenerla, un usuario puede crearse de manera sencilla.
+ 
+ ![sesion](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/uti0.PNG)
+ 
+ ![crearsesion](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/uti.PNG)
+ 
+ al ingresar como administrador, este puede de manera muy sencilla, ver y filtrar los tiquetes que estan activos o que lo estuvieron, crear nuevos tiquetes solo indicando cuantos y de que tipo. Ademas de habilitar o deshabilitar la disponibilidad de una atraccion, lo cual directamente afectara en las colas, haciendo que quienes hicieran cola en ese momento salgan de la cola; tambien se puede modificar toda la atraccion entera si se requiere.
+ ![admtiquetes](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/uti2.PNG)
+ ![admatraccion](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/uti3.PNG)
+ 
+ Como usuario, al ingresar puede inscribir uno o mas tiquetes relacionados al mismo usuario, y paso siguiente entrar al menu principal del usuario.
+ 
+ ![ingtiquetes](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/uti4.PNG)
+ 
+ En el menu principal el usuario tendra la posibilidad de ver cuantos boletos tiene asignados, volver al menu anterior para agregar mas tiquetes, cerrar sesion, ver el estado de las atracciones y hacer fila.
+ 
+ ![menuuser](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/uti5.PNG)
+ ![atraccionuser](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/uti0.PNG)
+ 
+ al hacer fila puede inlcuir a todos los boletos que tiene relacionados o simplemente los que sean necesarios.
+ 
+ ![fila](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/uti7.PNG)
  
  ## Escalabilidad:
  
