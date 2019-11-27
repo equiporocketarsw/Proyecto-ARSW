@@ -33,3 +33,30 @@ Nuestra aplicación busca resolver el problema de los largos tiempos de espera e
 
 ## Como administrador:
  Como administrador, ya tendras una cuenta con permisos, la cual al acceder puede añadir n tiquetes que seran validos para ese dia, ademas de modificar las atracciones y su disponibilidad, asi como añadir nuevas.
+ 
+ # Atributos no funcionales:
+ Estos atributos son los que definiran las caracteristicas generales, restricciones y limitaciones de nuestra app.
+ 
+ ## Disponibilidad:
+ 
+En nuestro caso la disponibilidad definira los medios y el tiempo, donde la app sera accesible, por ejemplo, nuestra app, va en diferentes navegadores, tales como google crhome, microsoft edge, firefox y opera. ademas de ser compatible con smartphones.
+
+![google](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/google.PNG)
+![edge](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/microsoft edge.PNG)
+![firefox](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/mozilla.PNG)
+![opera](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/opera.PNG)
+![smart](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/smart.jpg)
+
+
+ ## Rendimiento:
+ 
+ En el rendimiento mediremos cuanta cpu consume nuestra app.
+ 
+ ## Usabilidad:
+ 
+ En la usabilidad, el como funciona la app, lo facil que es, lo accesible y bien fundamentada, para ser amigable y facil para el usuario
+ final.
+ 
+ ## Escalabilidad:
+ 
+ En la escalabilidad veremos lo dificil o facil que seria implementar nuevas funcionalidades y hacer cambios en la app.
