@@ -77,7 +77,7 @@ En nuestro caso la disponibilidad definira los medios y el tiempo, donde la app 
  En el menu principal el usuario tendra la posibilidad de ver cuantos boletos tiene asignados, volver al menu anterior para agregar mas tiquetes, cerrar sesion, ver el estado de las atracciones y hacer fila.
  
  ![menuuser](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/uti5.PNG)
- ![atraccionuser](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/uti0.PNG)
+ ![atraccionuser](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/uti6.PNG)
  
  al hacer fila puede inlcuir a todos los boletos que tiene relacionados o simplemente los que sean necesarios.
  
