@@ -42,7 +42,7 @@ Nuestra aplicación busca resolver el problema de los largos tiempos de espera e
 En nuestro caso la disponibilidad definira los medios y el tiempo, donde la app sera accesible, por ejemplo, nuestra app, va en diferentes navegadores, tales como google crhome, microsoft edge, firefox y opera. ademas de ser compatible con smartphones.
 
 ![google](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/google.PNG)
-![edge](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/microsoft edge.PNG)
+![edge](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/edge.PNG)
 ![firefox](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/mozilla.PNG)
 ![opera](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/opera.PNG)
 ![smart](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/smart.jpg)
