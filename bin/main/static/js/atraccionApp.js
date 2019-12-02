@@ -27,7 +27,8 @@ var atraccionApp =( function (){
         }
 
         var mostrarAtraccionesFilas = function(){
-            atraccionClient.getAtracciones(imprimirAtracciones,"Salir de la Fila");
+            user = sessionStorage.getItem('currentUser');
+            colaClient.getColasByUsuario(user,imprimirAtracciones,"Salir de la Fila");
             estado="Filas";
         }
         

@@ -18,11 +18,11 @@ colaClient= (function(){
             });
         },
 
-        getColasByUsuario: function(username,callback){
+        getColasByUsuario: function(username,callback,tipo){
             jQuery.ajax({
                 url: "cola/usuario/" + username ,
                 success: function(result) {
-                  callback(result);
+                  callback(result,tipo);
                 },
                  error: function(XMLHttpRequest, textStatus, errorThrown) { 
                      alert("Usuario no encontrado");
