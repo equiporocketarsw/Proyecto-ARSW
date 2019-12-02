@@ -87,10 +87,10 @@ En nuestro caso la disponibilidad definira los medios y el tiempo, donde la app 
  
 Al estar desplegado en Heroku esto nos permite que la aplicación pueda ser escalable verticalmente aumentando la capacidad de los dynos:
 
-![escalabilidadvertical](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/escalable1.jpg)
+![escalabilidadvertical](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/escalable1.PNG)
 
 O escalable horizontalmente añadiendo mas "Add-ons":
 
-![escalabilidadhorizontal](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/escalable2.jpg)
+![escalabilidadhorizontal](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/escalable2.PNG)
 
 

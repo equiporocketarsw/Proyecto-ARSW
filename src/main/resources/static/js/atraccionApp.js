@@ -188,11 +188,13 @@ var atraccionApp =( function (){
                 
                 stompClient.subscribe('/atraccion/estado'+estado, function (eventbody) {
 
-                    var id = (JSON.parse(eventbody.body)).id;
+                    var at = (JSON.parse(eventbody.body));
 
                     var fila=sessionStorage.getItem('fila');
-                   if (fila=="Haciendo" && id==sessionStorage.getItem('atraccion')){
-                        alert("Lo sentimos: La atraccion se acaba de cerrar");
+                   if (fila=="Haciendo" && at.id==sessionStorage.getItem('atraccion')){
+                        if (at.activo==false){
+                            alert("Lo sentimos: La atraccion se acaba de cerrar");
+                        }
                         location.href = "/main.html";
                     }
                    
