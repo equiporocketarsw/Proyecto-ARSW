@@ -4,6 +4,7 @@ var atraccionApp =( function (){
     var stompClient= null;
     var estado;
     var atraccionActual=null;
+    
   
 
          var  mostrarAtracciones= function(){
@@ -20,12 +21,16 @@ var atraccionApp =( function (){
         
         
         
-         var  mostrarAtraccionesCliente= function(){
-
-            
+        var  mostrarAtraccionesCliente= function(){
             atraccionClient.getAtracciones(imprimirAtracciones,"Hacer Fila");
             estado="Cliente";
         }
+
+        var mostrarAtraccionesFilas = function(){
+            atraccionClient.getAtracciones(imprimirAtracciones,"Salir de la Fila");
+            estado="Filas";
+        }
+        
 
 
         var darAtraccionporId = function(id){
@@ -75,6 +80,7 @@ var atraccionApp =( function (){
      
             stompClient.send('/atraccion/estadoAdmin', {}, JSON.stringify(atraccion));
             stompClient.send('/atraccion/estadoCliente', {}, JSON.stringify(atraccion));
+            stompClient.send('/atraccion/estadoFilas', {}, JSON.stringify(atraccion));
         }
         
        
@@ -87,9 +93,12 @@ var atraccionApp =( function (){
                        var boton = " <a href=\"editarAtraccion.html\" class=\"button\">"+tipo+"</a></div>"; 
                        
                    }
-                else{
+                else if (tipo=="Hacer Fila"){
                     
                     var boton = " <a href=\"javascript:atraccionApp.hacerFila()\" class=\"button\">"+tipo+"</a></div>"; 
+                }
+                else{
+                    var boton = " <a href=\"javascript:atraccionApp.salirFila()\" class=\"button\">"+tipo+"</a></div>"; 
                 }
            
                 atracciones.map(function(atraccion){
@@ -104,7 +113,7 @@ var atraccionApp =( function (){
                             var activo="<label class=\"switch\"> <input id=\""+atraccion.id+"\" onclick=\"atraccionApp.darAtraccionporId("+atraccion.id+")\" type=\"checkbox\"> <span class=\"slider round\"></span> </label> </br>"
                         }
                     }
-                    else{
+                    else if (tipo=="Hacer Fila"){
                         if(atraccion.activo){
                             var activo="<span style=\"color:green;font-weight:bold\"> Abierta </span></br>";
              
@@ -115,6 +124,11 @@ var atraccionApp =( function (){
                             boton = " <a class=\"button\">"+tipo+"</a></div>"; 
                         }
                          
+                    }
+                    else{
+                        var activo="<span style=\"color:green;font-weight:bold\"> Abierta </span></br>";
+             
+                        boton = " <a href=\"javascript:atraccionApp.salirFila("+atraccion.id+")\" class=\"button\">"+tipo+"</a></div>";
                     }
                     
                     colaClient.getColasByAtraccion(atraccion,activo,boton,imprimirPersonasEnfila);
@@ -166,19 +180,30 @@ var atraccionApp =( function (){
             
             stompClient = Stomp.over(socket);
             
-
+            
     
             stompClient.connect({}, function (frame) {
                 console.log('Connected: ' + frame);
                 
                 stompClient.subscribe('/atraccion/estado'+estado, function (eventbody) {
+
+                    var id = (JSON.parse(eventbody.body)).id;
+
+                    var fila=sessionStorage.getItem('fila');
+                   if (fila=="Haciendo" && id==sessionStorage.getItem('atraccion')){
+                        alert("Lo sentimos: La atraccion se acaba de cerrar");
+                        location.href = "/main.html";
+                    }
                    
                     if (estado=="Admin"){
                         mostrarAtracciones();
                     }
                     else if (estado=="Cliente"){
                         mostrarAtraccionesCliente();
+                    }else if (estado=="Filas"){
+                        mostrarAtraccionesFilas();
                     }
+
                     
                     
                 });
@@ -189,10 +214,22 @@ var atraccionApp =( function (){
         };
 
         var hacerFila=function(atraccion){
+            sessionStorage.setItem("fila","Haciendo");
+ 
             sessionStorage.setItem("atraccion",atraccion);
             location.href = "/fila.html";
         }
-    
+        
+
+        var salirFila=function(atraccion){
+ 
+            user = sessionStorage.getItem('currentUser');
+            colaClient.deleteColasByAtraccionAndUser(atraccion,user);
+            stompClient.send('/atraccion/estadoAdmin', {}, JSON.stringify(atraccion));
+            stompClient.send('/atraccion/estadoCliente', {}, JSON.stringify(atraccion));
+            stompClient.send('/atraccion/estadoFilas', {}, JSON.stringify(atraccion));
+            
+        }
         
         var atraccionActual= function(){
             atraccionClient.getAtraccion(imprimirAtraccion,sessionStorage.getItem('atraccion'),"estado");
@@ -215,7 +252,9 @@ var atraccionApp =( function (){
                 editarAtracccion: editarAtracccion,
                 connectAndSubscribe: connectAndSubscribe,
                 hacerFila: hacerFila,
-                atraccionActual: atraccionActual
+                atraccionActual: atraccionActual,
+                mostrarAtraccionesFilas: mostrarAtraccionesFilas,
+                salirFila: salirFila
 	};
 })();
 

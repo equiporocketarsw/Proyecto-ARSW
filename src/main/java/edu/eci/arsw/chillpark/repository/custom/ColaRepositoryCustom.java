@@ -21,7 +21,7 @@ public interface ColaRepositoryCustom {
     public List<Atraccion> findByUsuario(int tiquete);
 
     @Transactional
-    public List<Tiquete> ColasByUsuario(String user);
+    public List<Atraccion> ColasByUsuario(String user);
 
     @Transactional
     public List <Tiquete> colasByAtraccionAndUser(int atraccion, String usuario);

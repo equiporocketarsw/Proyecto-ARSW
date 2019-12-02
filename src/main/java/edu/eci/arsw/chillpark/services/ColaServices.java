@@ -24,7 +24,7 @@ public interface ColaServices {
 
 	public void addQueue(Atraccionusuario cola);
 
-    public List<Tiquete> colasByUsuario(String user);
+    public List<Atraccion> colasByUsuario(String user);
 
     public List <Tiquete> colasByAtraccionAndUser(int atraccion, String usuario);
 

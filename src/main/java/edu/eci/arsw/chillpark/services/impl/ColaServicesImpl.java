@@ -53,7 +53,7 @@ public class ColaServicesImpl implements ColaServices {
     }
 
     @Override
-    public List<Tiquete> colasByUsuario(String user){
+    public List<Atraccion> colasByUsuario(String user){
         return colarepo.ColasByUsuario(user);
     }
 
