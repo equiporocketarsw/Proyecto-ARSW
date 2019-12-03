@@ -79,7 +79,7 @@ colaClient= (function(){
                 url: "cola/atraccion/" + atraccion +"/usuario/"+username,
                 type: 'DELETE',
                 success: function(result) {
-                    alert("Salio de las fila");
+                    alert("Salio de la fila");
                     
                 },
                  error: function(XMLHttpRequest, textStatus, errorThrown) { 
