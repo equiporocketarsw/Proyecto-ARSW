@@ -85,4 +85,12 @@ En nuestro caso la disponibilidad definira los medios y el tiempo, donde la app 
  
  ## Escalabilidad:
  
- En la escalabilidad veremos lo dificil o facil que seria implementar nuevas funcionalidades y hacer cambios en la app.
+Al estar desplegado en Heroku esto nos permite que la aplicación pueda ser escalable verticalmente aumentando la capacidad de los dynos:
+
+![escalabilidadvertical](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/escalable1.PNG)
+
+O escalable horizontalmente añadiendo mas "Add-ons":
+
+![escalabilidadhorizontal](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/escalable2.PNG)
+
+
