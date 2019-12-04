@@ -58,8 +58,15 @@ var colaApp =( function (){
 
     var connectAndSubscribe = function () {
 
+        es = sessionStorage.getItem('estadoFilas');
+        if (es=="yes"){
+
+            estado="Filas";
+        }
+        else{
+            estado=sessionStorage.getItem('currentRol'); 
+        }
         
-        estado=sessionStorage.getItem('currentRol'); 
 
         console.info('Connecting to WS...');
         var socket = new SockJS('/stompendpoint');

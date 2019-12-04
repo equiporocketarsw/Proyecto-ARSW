@@ -12,11 +12,14 @@ var atraccionApp =( function (){
             
             atraccionClient.getAtracciones(imprimirAtracciones,"Editar");
             estado="Admin";
+            sessionStorage.setItem("estadoFilas","no");
+
         }
 
         var mostrarEditar= function(){
             atraccionClient.getAtraccion(imprimirEditar, id, "todo");
             estado="Admin";
+            sessionStorage.setItem("estadoFilas","no");
         }
         
         
@@ -24,12 +27,15 @@ var atraccionApp =( function (){
         var  mostrarAtraccionesCliente= function(){
             atraccionClient.getAtracciones(imprimirAtracciones,"Hacer Fila");
             estado="Cliente";
+            sessionStorage.setItem("estadoFilas","no");
         }
 
         var mostrarAtraccionesFilas = function(){
             user = sessionStorage.getItem('currentUser');
             colaClient.getColasByUsuario(user,imprimirAtracciones,"Salir de la Fila");
             estado="Filas";
+            sessionStorage.setItem("estadoFilas","yes");
+
         }
         
 

@@ -41,7 +41,7 @@ public class ColaID implements Serializable {
 		 return tiquete;
 	 }
 
-	 public void setTiquete(int Tiquete){
+	 public void setTiquete(int tiquete){
 		 this.tiquete = tiquete;
 	 }
 }

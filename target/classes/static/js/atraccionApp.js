@@ -12,11 +12,14 @@ var atraccionApp =( function (){
             
             atraccionClient.getAtracciones(imprimirAtracciones,"Editar");
             estado="Admin";
+            sessionStorage.setItem("estadoFilas","no");
+
         }
 
         var mostrarEditar= function(){
             atraccionClient.getAtraccion(imprimirEditar, id, "todo");
             estado="Admin";
+            sessionStorage.setItem("estadoFilas","no");
         }
         
         
@@ -24,12 +27,15 @@ var atraccionApp =( function (){
         var  mostrarAtraccionesCliente= function(){
             atraccionClient.getAtracciones(imprimirAtracciones,"Hacer Fila");
             estado="Cliente";
+            sessionStorage.setItem("estadoFilas","no");
         }
 
         var mostrarAtraccionesFilas = function(){
             user = sessionStorage.getItem('currentUser');
             colaClient.getColasByUsuario(user,imprimirAtracciones,"Salir de la Fila");
             estado="Filas";
+            sessionStorage.setItem("estadoFilas","yes");
+
         }
         
 
@@ -146,7 +152,7 @@ var atraccionApp =( function (){
         var imprimirPersonasEnfila = function(atraccion,tiquetes,activo,boton){
             var personasEnFila = tiquetes.length;
 
-            var contenedor = "<div class=\"grid-1-5\"><h2>"+atraccion.tipo+"</h2><h3>"+activo+"<span class=\"uppercase\">"+atraccion.nombre+"</span></h3> <p>Capacidad: "+atraccion.capacidad+" personas</p> <p>Personas en fila: "+personasEnFila+"</p> <p>Duración: "+atraccion.tiempo+" minutos</p>  <p>Estatura minima: "+atraccion.estaturamin+"</p>   <p>Estatura maxima: "+atraccion.estaturamax+"</p>  <p>"+atraccion.descrpcion+"</p> "+boton ;
+            var contenedor = "<div class=\"grid-1-5\"><h2>"+atraccion.tipo+"</h2><h3>"+activo+"<span class=\"uppercase\">"+atraccion.nombre+"</span></h3> <p style=\"color:blue;font-weight:bold\">Personas en fila: "+personasEnFila+"</p> <p>Capacidad: "+atraccion.capacidad+" personas</p>  <p>Duración: "+atraccion.tiempo+" minutos</p>  <p>Estatura minima: "+atraccion.estaturamin+"</p>   <p>Estatura maxima: "+atraccion.estaturamax+"</p>  <p>"+atraccion.descrpcion+"</p> "+boton ;
 			
                            
             $("#tablaAtracciones").append(contenedor);
