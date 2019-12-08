@@ -39,7 +39,23 @@ Nuestra aplicación busca resolver el problema de los largos tiempos de espera e
  
  ## Disponibilidad:
  
-En nuestro caso la disponibilidad definira los medios y el tiempo, donde la app sera accesible, por ejemplo, nuestra app, va en diferentes navegadores, tales como google crhome, microsoft edge, firefox y opera. ademas de ser compatible con smartphones.
+  **Escenario:** 
+ 
+1. **Source:** 
+2. **Stimulus:**
+3. **Artifact:**
+4. **Enviroment:**
+5. **Response:**
+6. **Response Measure:**
+
+**Escenario:** 
+ 
+1. **Source:**
+2. **Stimulus:**
+3. **Artifact:**
+4. **Enviroment:**
+5. **Response:**
+6. **Response Measure:**
 
 ![google](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/google.PNG)
 ![edge](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/edge.PNG)
@@ -50,47 +66,69 @@ En nuestro caso la disponibilidad definira los medios y el tiempo, donde la app 
 
  ## Rendimiento:
  
- Nuestra app, apenas consume recursos en donde este siendo ejecutada.
+ **Escenario:** 
  
- ![cpu](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/cpu.PNG)
- ![cpu2](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/cpu2.PNG)
+1. **Source:**
+2. **Stimulus:**
+3. **Artifact:**
+4. **Enviroment:**
+5. **Response:**
+6. **Response Measure:**
+
+**Escenario:** 
+ 
+1. **Source:**
+2. **Stimulus:**
+3. **Artifact:**
+4. **Enviroment:**
+5. **Response:**
+6. **Response Measure:**
  
  
  ## Usabilidad:
  
- En la usabilidad, definimos el como funciona la app, lo facil que es, lo accesible y bien fundamentada, para ser amigable y facil para   el usuario final.
+**Escenario:** Cliente ingresando a fila
  
- Primero que todo queda claro que hay dos tipos de usuarios, el administrador y el usuario natural, el cual debe entrar con su nombre de usuario y contraseña, en caso de no tenerla, un usuario puede crearse de manera sencilla.
+1. **Source:** Cliente final
+2. **Stimulus:** Cliente ingresando  a una fila.
+3. **Artifact:** Frontend, Backend, base de datos.
+4. **Enviroment:** Aplicación bajo coindiciones normales.
+5. **Response:** El cliente se añade a la fila.
+6. **Response Measure:** El cliente es capaz de seleccionar la atracción e introducir la cantidad de personas que van hacer fila con tan solo dos clicks, una vez se encuentre en la pantalla principal. 
+
+ [Vista Escenario Cliente](http://damien.pobel.fr/post/youtube-video-github/)
  
- ![sesion](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/uti0.PNG)
+ [Vista Escenario Administrador](http://damien.pobel.fr/post/youtube-video-github/)
+
+ **Escenario:** Varios clientes entrando y saliendo de las filas mientras el administrador puede cerrar una atracción.
  
- ![crearsesion](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/uti.PNG)
- 
- al ingresar como administrador, este puede de manera muy sencilla, ver y filtrar los tiquetes que estan activos o que lo estuvieron, crear nuevos tiquetes solo indicando cuantos y de que tipo. Ademas de habilitar o deshabilitar la disponibilidad de una atraccion, lo cual directamente afectara en las colas, haciendo que quienes hicieran cola en ese momento salgan de la cola; tambien se puede modificar toda la atraccion entera si se requiere.
- ![admtiquetes](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/uti2.PNG)
- ![admatraccion](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/uti3.PNG)
- 
- Como usuario, al ingresar puede inscribir uno o mas tiquetes relacionados al mismo usuario, y paso siguiente entrar al menu principal del usuario.
- 
- ![ingtiquetes](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/uti4.PNG)
- 
- En el menu principal el usuario tendra la posibilidad de ver cuantos boletos tiene asignados, volver al menu anterior para agregar mas tiquetes, cerrar sesion, ver el estado de las atracciones y hacer fila.
- 
- ![menuuser](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/uti5.PNG)
- ![atraccionuser](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/uti6.PNG)
- 
- al hacer fila puede inlcuir a todos los boletos que tiene relacionados o simplemente los que sean necesarios.
- 
- ![fila](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/uti7.PNG)
+1. **Source:** Cliente final, administrador.
+2. **Stimulus:** Clientes entrando y saliendo de las filas, administrador cerrado atracciones.
+3. **Artifact:** Frontend, Backend, base de datos.
+4. **Enviroment:** Aplicación bajo coindiciones normales.
+5. **Response:** El numero de personas en fila cambia, algunas atracciones se cierran.
+6. **Response Measure:** Tanto el cliente como el administrador son capaces de ver el numero de personas en fila cambiar y si una atracción es cerrada en menos de 1 segundo desde la pantalla principal, sin dar un solo click ni actualizar la aplicación.
+
+[Vista Escenario](https://raw.githubusercontent.com/equiporocketarsw/Proyecto-ARSW/master/img/Usabilidad2.webm)
  
  ## Escalabilidad:
  
-Al estar desplegado en Heroku esto nos permite que la aplicación pueda ser escalable verticalmente aumentando la capacidad de los dynos:
+**Escenario:** 
+ 
+1. **Source:**
+2. **Stimulus:**
+3. **Artifact:**
+4. **Enviroment:**
+5. **Response:**
+6. **Response Measure:**
 
-![escalabilidadvertical](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/escalable1.PNG)
-
-O escalable horizontalmente añadiendo mas "Add-ons":
-
-![escalabilidadhorizontal](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/escalable2.PNG)
+**Escenario:** 
+ 
+1. **Source:**
+2. **Stimulus:**
+3. **Artifact:**
+4. **Enviroment:**
+5. **Response:**
+6. **Response Measure:**
 
 
