@@ -1,14 +1,22 @@
 # CHILLPARK
 ## ARSW 2019-2
-## Descripcion:
+## Descripción
 Nuestra aplicación busca resolver el problema de los largos tiempos de espera en los parques de diversiones, dando la posibilidad de que los usuarios hagan cola en una atracción de manera virtual, con lo cual no debe quedarse en una cola real esperando por su turno, y pueden hacer otras actividades en el parque de diversiones, aprovechando el máximo tiempo posible en su estadía por el parque.
 
-## Autores: 
- Santiago Vega Romero, David Eduardo Caycedo Moyano y Miguel Armando Sanchez Guluma
+## Autores
 
-## Enlace heroku: https://chillpark.herokuapp.com
+ [Miguel Armando Sanchez Guluma](https://github.com/MiguelASG)
+ 
+ [Santiago Vega Romero](https://github.com/svega99)
 
-## Analisis de calidad de código en Codacy: https://app.codacy.com/manual/svega99/Proyecto-ARSW/dashboard
+
+## Enlace heroku
+
+[![Heroku](https://camo.githubusercontent.com/be46aee4f8d55e322c3e7db60ea23a4deb5427c9/68747470733a2f2f6865726f6b752d62616467652e6865726f6b756170702e636f6d2f3f6170703d6865726f6b752d6261646765)](https://chillpark.herokuapp.com)
+
+## Analisis de calidad de código en Codacy
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/c42353620eed40daaf4102f82214411e)](https://app.codacy.com/manual/svega99/Proyecto-ARSW/dashboard)
+
 
 # Arquitectura de la app
 
@@ -26,18 +34,18 @@ Nuestra aplicación busca resolver el problema de los largos tiempos de espera e
 
 
 
-# Intrucciones de uso:
-## La app cuenta con dos tipos de usuario, una persona natural y el administrador.
-## Como persona natural:
+# Intrucciones de uso
+## La app cuenta con dos tipos de usuario, una persona natural y el administrador
+## Como persona natural
  Como persona natural, primero que todo desde la página principal puedes o crear una cuenta o acceder en una existente, ya al entrar en la cuenta podemos fijar una cantidad n de boletos a ese usuario, de modo que pueden hacer fila mas de una persona por un usuario, esto para grupos de amigos, o familias. Al hacer lo anterior, se podra revisar las diferentes atracciones que hay en el parque, con sus respectivos tiempos de espera y obviamente el poder hacer fila en la atraccion; ademas de añadir boletos que faltaron o cerrar sesión.
 
-## Como administrador:
+## Como administrador
  Como administrador, ya tendras una cuenta con permisos, la cual al acceder puede añadir n tiquetes que seran validos para ese dia, ademas de modificar las atracciones y su disponibilidad, asi como añadir nuevas.
  
- # Atributos no funcionales:
+ # Atributos no funcionales
  Estos atributos son los que definiran las caracteristicas generales, restricciones y limitaciones de nuestra app.
  
- ## Disponibilidad:
+ ## Disponibilidad
  
   **Escenario:** 
  
@@ -57,14 +65,8 @@ Nuestra aplicación busca resolver el problema de los largos tiempos de espera e
 5. **Response:**
 6. **Response Measure:**
 
-![google](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/google.PNG)
-![edge](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/edge.PNG)
-![firefox](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/mozilla.PNG)
-![opera](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/opera.PNG)
-![smart](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/smart.jpg)
 
-
- ## Rendimiento:
+ ## Rendimiento
  
  **Escenario:** 
  
@@ -85,7 +87,7 @@ Nuestra aplicación busca resolver el problema de los largos tiempos de espera e
 6. **Response Measure:**
  
  
- ## Usabilidad:
+ ## Usabilidad
  
 **Escenario:** Cliente ingresando a fila
  
@@ -96,9 +98,9 @@ Nuestra aplicación busca resolver el problema de los largos tiempos de espera e
 5. **Response:** El cliente se añade a la fila.
 6. **Response Measure:** El cliente es capaz de seleccionar la atracción e introducir la cantidad de personas que van hacer fila con tan solo dos clicks, una vez se encuentre en la pantalla principal. 
 
- [Vista Escenario Cliente](http://damien.pobel.fr/post/youtube-video-github/)
+ [Vista Escenario Cliente](https://drive.google.com/open?id=1ocUApz1_g9pCkgjeHKFdaZOaQac7DZgv)
  
- [Vista Escenario Administrador](http://damien.pobel.fr/post/youtube-video-github/)
+ [Vista Escenario Administrador](https://drive.google.com/open?id=1xhHUD6E1S8mfT0YMUudBNvkKtG0aTgle)
 
  **Escenario:** Varios clientes entrando y saliendo de las filas mientras el administrador puede cerrar una atracción.
  
@@ -109,9 +111,9 @@ Nuestra aplicación busca resolver el problema de los largos tiempos de espera e
 5. **Response:** El numero de personas en fila cambia, algunas atracciones se cierran.
 6. **Response Measure:** Tanto el cliente como el administrador son capaces de ver el numero de personas en fila cambiar y si una atracción es cerrada en menos de 1 segundo desde la pantalla principal, sin dar un solo click ni actualizar la aplicación.
 
-[Vista Escenario](https://raw.githubusercontent.com/equiporocketarsw/Proyecto-ARSW/master/img/Usabilidad2.webm)
+[Vista Escenario](https://drive.google.com/open?id=1DpN5uJvdw-dvXoyal2p5oFk7O3eRC3hN)
  
- ## Escalabilidad:
+ ## Escalabilidad
  
 **Escenario:** 
  
