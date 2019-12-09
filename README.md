@@ -2,6 +2,9 @@
 ## Descripción
 Nuestra aplicación busca resolver el problema de los largos tiempos de espera en los parques de diversiones, dando la posibilidad de que los usuarios hagan cola en una atracción de manera virtual, con lo cual no debe quedarse en una cola real esperando por su turno, y pueden hacer otras actividades en el parque de diversiones, aprovechando el máximo tiempo posible en su estadía por el parque.
 
+![logo](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/salitre.PNG)
+![logo](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/fila.PNG)
+
 ## Autores
 
  [Miguel Armando Sanchez Guluma](https://github.com/MiguelASG)
