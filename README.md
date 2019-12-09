@@ -48,7 +48,7 @@ Nuestra aplicación busca resolver el problema de los largos tiempos de espera e
 
 En el siguiente video podemos ver de forma simple y detallada las funcionalidades que puede usar cualquier persona.
 
-![tutorial de usuario](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/tutouser.mp4)
+![tutorial de usuario](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/tutouser.gif)
 
 ## Como administrador
  Como administrador, ya tendras una cuenta con permisos, la cual al acceder puede añadir n tiquetes que seran validos para ese dia, ademas de modificar las atracciones y su disponibilidad, asi como añadir nuevas.
