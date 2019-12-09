@@ -4,6 +4,7 @@ var atraccionApp =( function (){
     var stompClient= null;
     var estado;
     var atraccionActual=null;
+    
   
 
          var  mostrarAtracciones= function(){
@@ -11,21 +12,32 @@ var atraccionApp =( function (){
             
             atraccionClient.getAtracciones(imprimirAtracciones,"Editar");
             estado="Admin";
+            sessionStorage.setItem("estadoFilas","no");
+
         }
 
         var mostrarEditar= function(){
             atraccionClient.getAtraccion(imprimirEditar, id, "todo");
             estado="Admin";
+            sessionStorage.setItem("estadoFilas","no");
         }
         
         
         
-         var  mostrarAtraccionesCliente= function(){
-
-            
+        var  mostrarAtraccionesCliente= function(){
             atraccionClient.getAtracciones(imprimirAtracciones,"Hacer Fila");
             estado="Cliente";
+            sessionStorage.setItem("estadoFilas","no");
         }
+
+        var mostrarAtraccionesFilas = function(){
+            user = sessionStorage.getItem('currentUser');
+            colaClient.getColasByUsuario(user,imprimirAtracciones,"Salir de la Fila");
+            estado="Filas";
+            sessionStorage.setItem("estadoFilas","yes");
+
+        }
+        
 
 
         var darAtraccionporId = function(id){
@@ -75,6 +87,7 @@ var atraccionApp =( function (){
      
             stompClient.send('/atraccion/estadoAdmin', {}, JSON.stringify(atraccion));
             stompClient.send('/atraccion/estadoCliente', {}, JSON.stringify(atraccion));
+            stompClient.send('/atraccion/estadoFilas', {}, JSON.stringify(atraccion));
         }
         
        
@@ -87,9 +100,12 @@ var atraccionApp =( function (){
                        var boton = " <a href=\"editarAtraccion.html\" class=\"button\">"+tipo+"</a></div>"; 
                        
                    }
-                else{
+                else if (tipo=="Hacer Fila"){
                     
                     var boton = " <a href=\"javascript:atraccionApp.hacerFila()\" class=\"button\">"+tipo+"</a></div>"; 
+                }
+                else{
+                    var boton = " <a href=\"javascript:atraccionApp.salirFila()\" class=\"button\">"+tipo+"</a></div>"; 
                 }
            
                 atracciones.map(function(atraccion){
@@ -104,7 +120,7 @@ var atraccionApp =( function (){
                             var activo="<label class=\"switch\"> <input id=\""+atraccion.id+"\" onclick=\"atraccionApp.darAtraccionporId("+atraccion.id+")\" type=\"checkbox\"> <span class=\"slider round\"></span> </label> </br>"
                         }
                     }
-                    else{
+                    else if (tipo=="Hacer Fila"){
                         if(atraccion.activo){
                             var activo="<span style=\"color:green;font-weight:bold\"> Abierta </span></br>";
              
@@ -115,6 +131,11 @@ var atraccionApp =( function (){
                             boton = " <a class=\"button\">"+tipo+"</a></div>"; 
                         }
                          
+                    }
+                    else{
+                        var activo="<span style=\"color:green;font-weight:bold\"> Abierta </span></br>";
+             
+                        boton = " <a href=\"javascript:atraccionApp.salirFila("+atraccion.id+")\" class=\"button\">"+tipo+"</a></div>";
                     }
                     
                     colaClient.getColasByAtraccion(atraccion,activo,boton,imprimirPersonasEnfila);
@@ -131,7 +152,7 @@ var atraccionApp =( function (){
         var imprimirPersonasEnfila = function(atraccion,tiquetes,activo,boton){
             var personasEnFila = tiquetes.length;
 
-            var contenedor = "<div class=\"grid-1-5\"><h2>"+atraccion.tipo+"</h2><h3>"+activo+"<span class=\"uppercase\">"+atraccion.nombre+"</span></h3> <p>Capacidad: "+atraccion.capacidad+" personas</p> <p>Personas en fila: "+personasEnFila+"</p> <p>Duración: "+atraccion.tiempo+" minutos</p>  <p>Estatura minima: "+atraccion.estaturamin+"</p>   <p>Estatura maxima: "+atraccion.estaturamax+"</p>  <p>"+atraccion.descrpcion+"</p> "+boton ;
+            var contenedor = "<div class=\"grid-1-5\"><h2>"+atraccion.tipo+"</h2><h3>"+activo+"<span class=\"uppercase\">"+atraccion.nombre+"</span></h3> <p style=\"color:blue;font-weight:bold\">Personas en fila: "+personasEnFila+"</p> <p>Capacidad: "+atraccion.capacidad+" personas</p>  <p>Duración: "+atraccion.tiempo+" minutos</p>  <p>Estatura minima: "+atraccion.estaturamin+"</p>   <p>Estatura maxima: "+atraccion.estaturamax+"</p>  <p>"+atraccion.descrpcion+"</p> "+boton ;
 			
                            
             $("#tablaAtracciones").append(contenedor);
@@ -166,19 +187,32 @@ var atraccionApp =( function (){
             
             stompClient = Stomp.over(socket);
             
-
+            
     
             stompClient.connect({}, function (frame) {
                 console.log('Connected: ' + frame);
                 
                 stompClient.subscribe('/atraccion/estado'+estado, function (eventbody) {
+
+                    var at = (JSON.parse(eventbody.body));
+
+                    var fila=sessionStorage.getItem('fila');
+                   if (fila=="Haciendo" && at.id==sessionStorage.getItem('atraccion')){
+                        if (at.activo==false){
+                            alert("Lo sentimos: La atraccion se acaba de cerrar");
+                        }
+                        location.href = "/main.html";
+                    }
                    
                     if (estado=="Admin"){
                         mostrarAtracciones();
                     }
                     else if (estado=="Cliente"){
                         mostrarAtraccionesCliente();
+                    }else if (estado=="Filas"){
+                        mostrarAtraccionesFilas();
                     }
+
                     
                     
                 });
@@ -189,10 +223,22 @@ var atraccionApp =( function (){
         };
 
         var hacerFila=function(atraccion){
+            sessionStorage.setItem("fila","Haciendo");
+ 
             sessionStorage.setItem("atraccion",atraccion);
             location.href = "/fila.html";
         }
-    
+        
+
+        var salirFila=function(atraccion){
+ 
+            user = sessionStorage.getItem('currentUser');
+            colaClient.deleteColasByAtraccionAndUser(atraccion,user);
+            stompClient.send('/atraccion/estadoAdmin', {}, JSON.stringify(atraccion));
+            stompClient.send('/atraccion/estadoCliente', {}, JSON.stringify(atraccion));
+            stompClient.send('/atraccion/estadoFilas', {}, JSON.stringify(atraccion));
+            
+        }
         
         var atraccionActual= function(){
             atraccionClient.getAtraccion(imprimirAtraccion,sessionStorage.getItem('atraccion'),"estado");
@@ -215,7 +261,9 @@ var atraccionApp =( function (){
                 editarAtracccion: editarAtracccion,
                 connectAndSubscribe: connectAndSubscribe,
                 hacerFila: hacerFila,
-                atraccionActual: atraccionActual
+                atraccionActual: atraccionActual,
+                mostrarAtraccionesFilas: mostrarAtraccionesFilas,
+                salirFila: salirFila
 	};
 })();
 

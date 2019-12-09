@@ -92,7 +92,7 @@ h1 {
 /** page structure **/
 .wrapper {
   display: block;
-  width: 850px;
+  width: 80%;
   background: #96d1c7;
   margin: 0 auto;
   padding: 10px 17px;
