@@ -20,6 +20,14 @@ Nuestra aplicación busca resolver el problema de los largos tiempos de espera e
 
 # Arquitectura de la app
 
+## Diagrama de despliegue 
+
+![Diagrama de despliegue](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/despliegue.PNG)
+
+## Diagrama de componentes
+
+![Diagrama de componentes](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/componentes.PNG)
+
 ## Diagrama de Clases
 
 ![Diagrama de clases](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/clases.png)
