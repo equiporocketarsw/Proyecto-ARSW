@@ -45,7 +45,10 @@ Nuestra aplicación busca resolver el problema de los largos tiempos de espera e
 # Intrucciones de uso
 ## La app cuenta con dos tipos de usuario, una persona natural y el administrador
 ## Como persona natural
- Como persona natural, primero que todo desde la página principal puedes o crear una cuenta o acceder en una existente, ya al entrar en la cuenta podemos fijar una cantidad n de boletos a ese usuario, de modo que pueden hacer fila mas de una persona por un usuario, esto para grupos de amigos, o familias. Al hacer lo anterior, se podra revisar las diferentes atracciones que hay en el parque, con sus respectivos tiempos de espera y obviamente el poder hacer fila en la atraccion; ademas de añadir boletos que faltaron o cerrar sesión.
+
+Se tiene facilidad y simpleza para la persona natural, esto para no agoviar al usuario, en el siguiente video podemos ver lo que este usuario puede hacer en la app:
+
+![tutorial de usuario](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/tutouser.gif)
 
 ## Como administrador
  Como administrador, ya tendras una cuenta con permisos, la cual al acceder puede añadir n tiquetes que seran validos para ese dia, ademas de modificar las atracciones y su disponibilidad, asi como añadir nuevas.
@@ -134,37 +137,22 @@ Nuestra aplicación busca resolver el problema de los largos tiempos de espera e
  
  ## Escalabilidad
  
-**Escenario:** Escabilidad vertical
-  
-1. **Source:** Usuarios finales
-2. **Stimulus:** Sobrecarga de usuarios finales
-3. **Artifact:** Heroku
-4. **Enviroment:** Aplicación bajo coindiciones de estres.
-5. **Response:** Dependiendo de la carga que reciba la aplicación se cambiara el tipo de dyno que se esta usando Adept Scale.
-6. **Response Measure:** El tiempo de respuesta seguira siendo el mismo de un segundo aproximadamente sin importar la carga que se reciba.
-
-Dynos disponibles:
-
-![Dynos](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/escabilidad1.PNG)
-
-Caracteristicas de cada dyno:
-
-![Dynos](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/escabilidadTodos.PNG)
-
-Add-on que permite la escabilidad automatica:
-
-![Dynos](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/escabilidad3.PNG)
-
-**Escenario:** Escabilidad horizontal
+**Escenario:** 
  
-1. **Source:** Usuarios finales
-2. **Stimulus:** Sobrecarga de usuarios finales
-3. **Artifact:** Heroku
-4. **Enviroment:** Aplicación bajo coindiciones de estres.
-5. **Response:** Para distribuir mejor la carga se aumnetaran la cantidad de dynos.
-6. **Response Measure:** El tiempo de respuesta seguira siendo el mismo de un segundo aproximadamente sin importar la carga que se reciba.
+1. **Source:**
+2. **Stimulus:**
+3. **Artifact:**
+4. **Enviroment:**
+5. **Response:**
+6. **Response Measure:**
 
-![Dynos](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/escabilidadh.PNG)
-
+**Escenario:** 
+ 
+1. **Source:**
+2. **Stimulus:**
+3. **Artifact:**
+4. **Enviroment:**
+5. **Response:**
+6. **Response Measure:**
 
 
