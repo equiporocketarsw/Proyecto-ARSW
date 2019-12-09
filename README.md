@@ -45,10 +45,7 @@ Nuestra aplicación busca resolver el problema de los largos tiempos de espera e
 # Intrucciones de uso
 ## La app cuenta con dos tipos de usuario, una persona natural y el administrador
 ## Como persona natural
-
-En el siguiente video podemos ver de forma simple y detallada las funcionalidades que puede usar cualquier persona.
-
-![tutorial de usuario](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/tutouser.gif)
+ Como persona natural, primero que todo desde la página principal puedes o crear una cuenta o acceder en una existente, ya al entrar en la cuenta podemos fijar una cantidad n de boletos a ese usuario, de modo que pueden hacer fila mas de una persona por un usuario, esto para grupos de amigos, o familias. Al hacer lo anterior, se podra revisar las diferentes atracciones que hay en el parque, con sus respectivos tiempos de espera y obviamente el poder hacer fila en la atraccion; ademas de añadir boletos que faltaron o cerrar sesión.
 
 ## Como administrador
  Como administrador, ya tendras una cuenta con permisos, la cual al acceder puede añadir n tiquetes que seran validos para ese dia, ademas de modificar las atracciones y su disponibilidad, asi como añadir nuevas.
@@ -58,45 +55,55 @@ En el siguiente video podemos ver de forma simple y detallada las funcionalidade
  
  ## Disponibilidad
  
-  **Escenario:** 
+ **Escenario:** Ingresar a la aplicacion desde navegador en computador de mesa y celular en coindiciones normales.
  
-1. **Source:** 
-2. **Stimulus:**
-3. **Artifact:**
-4. **Enviroment:**
-5. **Response:**
-6. **Response Measure:**
+1. **Source:** Usuario final.
+2. **Stimulus:** Ingresar a la aplicación.
+3. **Artifact:** Frontend, Backend, base de datos.
+4. **Enviroment:** Aplicacion bajo coindiciones normales
+5. **Response:** Se visualizan las atracciones normalmente.
+6. **Response Measure:** Las atracciones y demas funcionalidades se cargan en un tiempo promedio de 1 segundo.
 
-**Escenario:** 
+[Vista Escenario Computador](https://drive.google.com/open?id=1b_odim5Vmme60oNosCEbTQGyatT3_flp)
+
+[Vista Escenario Celular](https://drive.google.com/open?id=1LR1lqVUe3hDMH4YRT4DrGywLq68LeZ04)
  
-1. **Source:**
-2. **Stimulus:**
-3. **Artifact:**
-4. **Enviroment:**
-5. **Response:**
-6. **Response Measure:**
+  **Escenario:** Ingresar a la aplicacion desde navegador en computador de mesa y celular en coindiciones de estres.
+ 
+1. **Source:** Usuario final
+2. **Stimulus:** Ingresar a la aplicación y ver atracciones disponibles
+3. **Artifact:** Frontend, Backend.
+4. **Enviroment:** Aplicación bajo coindiciones de estres.
+5. **Response:** Se visualizan las atracciones normalmente.
+6. **Response Measure:** Las atracciones y demas funcionalidades se siguen cargando en un tiempo promedio de 1 segundo.
 
+[Vista Escenario Computador](https://drive.google.com/open?id=1pPakcBv-675J27pk3r5FR_o2qCcirH0Y)
+
+[Vista Escenario Celular](https://drive.google.com/open?id=1LGwPgnp9Uy_tJoUZAFhGKUfxVFY-HtlU)
 
  ## Rendimiento
  
- **Escenario:** 
+ **Escenario:** Administrador cerrando atracción
  
-1. **Source:**
-2. **Stimulus:**
-3. **Artifact:**
-4. **Enviroment:**
-5. **Response:**
-6. **Response Measure:**
+1. **Source:** Administrador.
+2. **Stimulus:** Cerrar atracción.
+3. **Artifact:** Frontend, Backend, base de datos.
+4. **Enviroment:** Aplicacion bajo coindiciones normales.
+5. **Response:** El usuario ahora ve la atracción cerrada.
+6. **Response Measure:** El cambio en la atracción se realiza en menos de un 1 segundo.
 
-**Escenario:** 
+[Vista Escenario](https://drive.google.com/open?id=1E8nnYgq7pk17_P5rgcOmJ2ldJ9gIfhzb)
+
+**Escenario:** Usuario entrando a fila.
  
-1. **Source:**
-2. **Stimulus:**
-3. **Artifact:**
-4. **Enviroment:**
-5. **Response:**
-6. **Response Measure:**
- 
+1. **Source:** Usuario final.
+2. **Stimulus:** Ingresar a la fila de una atracción.
+3. **Artifact:** Frontend, Backend, base de datos.
+4. **Enviroment:** Aplicacion bajo coindiciones normales.
+5. **Response:** Los demás usuario ven como el numero de personas en la fila cambia.
+6. **Response Measure:**  El cambio en la atracción se realiza en menos de un 1 segundo.
+
+ [Vista Escenario](https://drive.google.com/open?id=1ePgPgb8SFL858nOIG5Y95Hs9LUthqiQF)
  
  ## Usabilidad
  
@@ -109,9 +116,7 @@ En el siguiente video podemos ver de forma simple y detallada las funcionalidade
 5. **Response:** El cliente se añade a la fila.
 6. **Response Measure:** El cliente es capaz de seleccionar la atracción e introducir la cantidad de personas que van hacer fila con tan solo dos clicks, una vez se encuentre en la pantalla principal. 
 
- [Vista Escenario Cliente](https://drive.google.com/open?id=1ocUApz1_g9pCkgjeHKFdaZOaQac7DZgv)
- 
- [Vista Escenario Administrador](https://drive.google.com/open?id=1xhHUD6E1S8mfT0YMUudBNvkKtG0aTgle)
+[Vista Escenario](https://drive.google.com/open?id=1DpN5uJvdw-dvXoyal2p5oFk7O3eRC3hN)
 
  **Escenario:** Varios clientes entrando y saliendo de las filas mientras el administrador puede cerrar una atracción.
  
@@ -120,9 +125,12 @@ En el siguiente video podemos ver de forma simple y detallada las funcionalidade
 3. **Artifact:** Frontend, Backend, base de datos.
 4. **Enviroment:** Aplicación bajo coindiciones normales.
 5. **Response:** El numero de personas en fila cambia, algunas atracciones se cierran.
-6. **Response Measure:** Tanto el cliente como el administrador son capaces de ver el numero de personas en fila cambiar y si una atracción es cerrada en menos de 1 segundo desde la pantalla principal, sin dar un solo click ni actualizar la aplicación.
+6. **Response Measure:** Tanto el cliente como el administrador son capaces de ver el numero de personas en fila cambiar y si una atracción es cerrada sin dar un solo click ni actualizar la aplicación.
 
-[Vista Escenario](https://drive.google.com/open?id=1DpN5uJvdw-dvXoyal2p5oFk7O3eRC3hN)
+
+ [Vista Escenario Cliente](https://drive.google.com/open?id=1ocUApz1_g9pCkgjeHKFdaZOaQac7DZgv)
+ 
+ [Vista Escenario Administrador](https://drive.google.com/open?id=1xhHUD6E1S8mfT0YMUudBNvkKtG0aTgle)
  
  ## Escalabilidad
  
