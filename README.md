@@ -134,22 +134,37 @@ Nuestra aplicación busca resolver el problema de los largos tiempos de espera e
  
  ## Escalabilidad
  
-**Escenario:** 
- 
-1. **Source:**
-2. **Stimulus:**
-3. **Artifact:**
-4. **Enviroment:**
-5. **Response:**
-6. **Response Measure:**
+**Escenario:** Escabilidad vertical
+  
+1. **Source:** Usuarios finales
+2. **Stimulus:** Sobrecarga de usuarios finales
+3. **Artifact:** Heroku
+4. **Enviroment:** Aplicación bajo coindiciones de estres.
+5. **Response:** Dependiendo de la carga que reciba la aplicación se cambiara el tipo de dyno que se esta usando Adept Scale.
+6. **Response Measure:** El tiempo de respuesta seguira siendo el mismo de un segundo aproximadamente sin importar la carga que se reciba.
 
-**Escenario:** 
+Dynos disponibles:
+
+![Dynos](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/escabilidad1.PNG)
+
+Caracteristicas de cada dyno:
+
+![Dynos](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/escabilidadTodos.PNG)
+
+Add-on que permite la escabilidad automatica:
+
+![Dynos](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/escabilidad3.PNG)
+
+**Escenario:** Escabilidad horizontal
  
-1. **Source:**
-2. **Stimulus:**
-3. **Artifact:**
-4. **Enviroment:**
-5. **Response:**
-6. **Response Measure:**
+1. **Source:** Usuarios finales
+2. **Stimulus:** Sobrecarga de usuarios finales
+3. **Artifact:** Heroku
+4. **Enviroment:** Aplicación bajo coindiciones de estres.
+5. **Response:** Para distribuir mejor la carga se aumnetaran la cantidad de dynos.
+6. **Response Measure:** El tiempo de respuesta seguira siendo el mismo de un segundo aproximadamente sin importar la carga que se reciba.
+
+![Dynos](https://github.com/equiporocketarsw/Proyecto-ARSW/blob/master/img/escabilidadh.PNG)
+
 
 
